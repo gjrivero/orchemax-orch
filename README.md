@@ -102,6 +102,26 @@ Peers are **orchestrators** (Orca, Traycer, OpenClaw, Hermes, Prime Agent…) �
 
 **This GitHub repo** does not compete with Orca/Traycer; it **feeds** OrcheMax workshops with community language craft.
 
+### OrcheMax vs Orca
+
+Looking for an **Orca** alternative that keeps your native agent CLI (Claude/Cursor/OpenCode) instead of a full ADE panes product? OrcheMax is a **governed workshop**: one Chair, shared locks, symbol reuse, optional CTO overlook — not another agent IDE. See the matrix above and [orchemax.com](https://orchemax.com#compare).
+
+### OrcheMax vs Traycer
+
+**Traycer**-style hosts wrap BYO agents with tasks and reviews. OrcheMax adds **workshop law** (shared locks, one Chair, disk bus) and a **Zero-Code-Leak** org overlook. Packs in this repo harden language footguns on that floor.
+
+### OrcheMax vs OpenClaw / Hermes
+
+**OpenClaw** / **Hermes** excel as personal multi-channel agent gateways. OrcheMax targets **multi-project coding workshops** (repo factory + governance), not Telegram/WhatsApp-first personal bots. Use them beside OrcheMax if you need channels; use OrcheMax for the codebase floor.
+
+### OrcheMax vs Prime Agent
+
+**Prime Agent** leans self-improving research harnesses. OrcheMax leans **one Chair + workers**, locks/symbols, and plan-gated overlook — shipping apps under governance, not a long RLM loop as the headline.
+
+### Search / discoverability
+
+GitHub **Topics** on this repo include `orchemax`, `agent-orchestration`, `multi-agent`, `claude-code`, `cursor`, `opencode`, and related tags so people hunting orchestrators can land here. The product landing already has `#compare` with the same competitor names. For Google: dedicated pages like `orchemax.com/vs/orca` (when published) beat a single homepage — names in **titles and H1/H2** matter more than hashtags.
+
 ---
 
 ## Compare: where should a rule live?
