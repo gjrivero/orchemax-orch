@@ -19,6 +19,8 @@ Taxonomy: **O.** = Orche built-in · **P.** = pack/prose · **W.** = owner judgm
 | O.tracker | `orch guard tracker` | Optional TRACKER table shape (T1–T3) |
 | O.wire | `orch guard wire` | Git / Claude / Cursor adapters |
 
+These **O.** rows are **OrcheMax product** features. This pack only documents them for workshop authors.
+
 ## W — owner
 
 | Id | Practice |

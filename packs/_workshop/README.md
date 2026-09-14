@@ -1,7 +1,8 @@
-# Workshop pack — agnostic defaults
+# Workshop pack — agnostic defaults (any language)
 
-Install tips for any Orche workshop (Go, Delphi, TS, …).  
-Language packs stack **on top** of this.
+Start here for **every** OrcheMax workshop, regardless of Go, TypeScript, Python, Delphi, …
+
+Language packs (`packs/go`, `packs/delphi`, …) stack **on top** of this. You do not need them all.
 
 ## Copy
 
@@ -12,10 +13,10 @@ Language packs stack **on top** of this.
 | `defaults.yaml` | fragment into `orch.yaml` | merge carefully |
 | `GATES.md` | `.orch/gates/user/WORKSHOP.md` or root GATES owner section | merge |
 
-## Orche built-ins to enable early
+## OrcheMax built-ins to enable early
 
 ```text
-orch guard profile shared          # or lite day-1
+orch guard profile lite            # or shared when ready
 orch guard wire --profile
 orch harness scan
 ```
@@ -28,4 +29,4 @@ workspace:
   code_lang: en       # identifiers + shipping strings
 ```
 
-See pack `encoding` if you ship HTML/email. See `delphi` / `go` for language craft.
+Next: `packs/encoding` if you ship HTML/email; then **only** the language packs you use.

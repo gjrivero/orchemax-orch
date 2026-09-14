@@ -1,13 +1,26 @@
 # SPEC — orchemax-orch pack contract
 
 Version: **1**  
+Product: **OrcheMax** (CLI: `orch`).  
+This repo: **community packs** for any language — not the OrcheMax binary, not a single-stack (e.g. Delphi-only) project.
+
 Consumers: humans (copy/paste), future `orch pack *`, CI that validates MANIFESTs.
+
+## 0. Naming
+
+| Name | Meaning |
+|------|---------|
+| **OrcheMax** | The product (workshop orchestration for AI agents) |
+| **`orch`** | The CLI command |
+| **orchemax-orch** | This public GitHub repo — language seeds + optional packs |
+| **Workshop** | User’s multi-project folder using OrcheMax |
+| **Pack** | Opt-in folder under `packs/` you merge into a workshop |
 
 ## 1. Language seeds (`langs/`)
 
-Same shape as Orche `internal/langspec`:
+Same shape as OrcheMax `internal/langspec` (many languages; Delphi is only one id):
 
-- `langs/catalog.json` → `{ "languages": ["go", "delphi", …] }` (order = preference).
+- `langs/catalog.json` → `{ "languages": ["go", "javascript", "typescript", …] }` (order = preference).
 - `langs/<id>.json` →
 
 ```json
@@ -23,10 +36,10 @@ Same shape as Orche `internal/langspec`:
 }
 ```
 
-- `engine: "go-ast"` → Orche uses Go AST; leave `rules` empty.
+- `engine: "go-ast"` → OrcheMax uses Go AST; leave `rules` empty.
 - Otherwise `rules` drive regex symbol seeding.
 
-**Sync:** Orche may vendor a snapshot. PRs that change `langs/` should note breaking regex changes.
+**Sync:** OrcheMax may vendor a snapshot. PRs that change `langs/` should note breaking regex changes. Prefer extending **any** language — do not treat one stack as the default.
 
 ## 2. Packs (`packs/<id>/`)
 
