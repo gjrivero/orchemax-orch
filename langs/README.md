@@ -1,8 +1,10 @@
-# Language seeds
+# Language seeds (OrcheMax symbol index)
 
-Copied from OrcheMax `client/internal/langspec` (community may extend).
+JSON seeds for **many** languages — same contract OrcheMax embeds for symbol indexing.
+
+Not a Delphi catalog. See `catalog.json` for the full id list (Go, TypeScript, Python, Rust, Delphi, …).
 
 - `catalog.json` — ordered ids  
 - `<id>.json` — extensions, comment marker, regex `rules` or `engine`
 
-See root [SPEC.md](../SPEC.md). When Orche vendors an update, prefer merging **from this public repo** so community PRs are not lost.
+Root [SPEC.md](../SPEC.md) and [README.md](../README.md) explain how this feeds OrcheMax workshops.

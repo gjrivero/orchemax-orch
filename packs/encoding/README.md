@@ -1,10 +1,10 @@
-# Encoding pack — HTML / email (anti mojibake)
+# Encoding pack — HTML / email (any language)
 
-Cross-cutting. Any workshop that ships HTML or email in **any language**.
+Cross-cutting OrcheMax workshop craft. Applies whether you write Go templates, Delphi HTML, React (if you must), or static sites.
 
 ## Why
 
-LLMs omit charset constantly. Accented copy without UTF-8 declaration → mojibake (`cafÃ©`) in browsers and mail clients.
+LLMs omit charset constantly. Accented or non-English copy without UTF-8 → mojibake (`cafÃ©`).
 
 ## Install
 
@@ -12,15 +12,13 @@ LLMs omit charset constantly. Accented copy without UTF-8 declaration → mojiba
 copy packs\encoding\GATES.md  <workshop>\.orch\gates\user\ENCODING.md
 ```
 
-Prefer Orche built-in:
+Prefer OrcheMax built-in:
 
 ```text
 orch guard encoding path\to\file.html
 ```
 
-Pre-commit hooks (profile shared/strict) already scan staged HTML/email when using current Orche.
-
 ## Not this pack
 
-Delphi FireDAC / WideString → `packs/delphi`.  
-i18n key discipline (data-i18n) → owner / product pack.
+Language-specific DB drivers (e.g. Delphi FireDAC) → that language’s pack.  
+i18n key discipline → owner / product docs.
