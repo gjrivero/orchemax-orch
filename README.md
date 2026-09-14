@@ -1,54 +1,87 @@
 # orchemax-orch
 
-**Community language packs for [OrcheMax](https://orchemax.com)**
-
-Public craft library for multi-language workshops.  
-Not the OrcheMax binary. Not a Delphi-only repo. Not another agent IDE.
-
-> OrcheMax runs the **governed workshop** (Chair, locks, symbols, guards, overlook).  
-> **orchemax-orch** is where the community publishes **per-language and cross-cutting agent craft** so you download, merge, and harden *your* stack.
+**Community language packs for [OrcheMax](https://orchemax.com)**  
+Public craft for any language · Not the product binary · Not Delphi-only
 
 ---
 
 ## What is OrcheMax?
 
-**OrcheMax** governs multi-agent AI teams without wrecking the repo or the budget.
+**OrcheMax is the product that governs multi-agent AI coding teams** — a local workshop factory plus an optional cloud overlook for whoever pays the bill.
 
-Parallel agents need a **chair**, **rules**, and **teamwork** — not another chat tab. Local factory + optional CTO overlook; your CLIs stay native (Claude, Cursor, OpenCode, …). Source stays on your machines (**Zero-Code-Leak**: SaaS sees metadata, never source).
+It is **not** another chat tab, not another agent IDE, and not a replacement for Claude, Cursor, or OpenCode. Those stay your seats. OrcheMax sits **under** them (`orch` CLI) and gives the floor a chair, laws, and teamwork.
 
-Under the seat (`orch` CLI): token compression, LLM gateway with key rotation, message bus (Chair + sibling workers), shared locks/reuse, git worktrees, optional guards.
+### What it is
 
-The product is written in Go for a small local binary; **your workshops stay polyglot** via language templates (TypeScript, Python, Go, Delphi, Rust, C#, …) — about **30 language seeds**. Go is only how OrcheMax itself is built.
+| | |
+|--|--|
+| **Product** | OrcheMax — multi-agent · multi-session **workshop governance** |
+| **CLI** | `orch` — opens seats, locks shared code, buses messages, optional guards |
+| **Model** | Your agents keep their **native UI**; OrcheMax is the factory underneath |
+| **Code** | Stays on **your machines** (Zero-Code-Leak: SaaS sees usage metadata, never source) |
+| **Stack** | OrcheMax itself is Go; **your** workshop is polyglot (~30 language templates) |
 
-**Buy vs build:** as a founder or CTO, your job is to ship apps and invoice — not build the infrastructure to babysit AIs. OrcheMax is the assembly line; this repo is the community toolbox that bolts onto that line.
+### What it is for
 
-Site: [orchemax.com](https://orchemax.com) · Signup / plans on the product site.
+- Founders and CTOs who need **several agents / sessions** on one codebase without babysitting chaos  
+- Teams that already bought Claude / Cursor / OpenCode and need **one director (Chair)** plus workers — not five directors racing the same files  
+- Workshops with **shared libraries** across apps (search before invent, lock before edit)  
+- Orgs that want **spend visibility, caps, allowlists, and an overlook** without uploading the repo  
+
+**Day-to-day:** install `orch` → bind a workshop → open a seat (`orch claude`, `orch opencode`, …) → Chair coordinates → workers execute secondary tasks → shared paths under locks → optional account for overlook / plans (Free → Enterprise).
+
+### What it avoids (the pain it kills)
+
+| Without OrcheMax | With OrcheMax |
+|------------------|---------------|
+| Every agent acts like a director → races, duplicate helpers, knotted work | **One Chair** per project; workers for secondary tasks only |
+| Parallel sessions rewrite the same shared unit | **Shared locks** + symbol search before create |
+| Fat `CLAUDE.md` that agents ignore under pressure | Optional **`orch guard *`** (code-lang, encoding, ddl, …) + hooks |
+| Vendor chat as the only “bus” between agents | **Disk message bus** (parent / child / sibling) |
+| Surprise invoices; no floor view for the CTO | Caps, usage by project/model, **metadata overlook** |
+| Building your own babysitting infra | Buy the assembly line — ship apps instead |
+
+### Why it beats “just another orchestrator”
+
+Peers (Orca, Traycer, OpenClaw/Hermes, Prime Agent…) are orchestrators too — not Claude/Cursor. OrcheMax wins on the **workshop + governance** wedge:
+
+1. **BYO CLI** — keep the agent UI you already pay for; `orch` does not force a new ADE face.  
+2. **One Chair law** — stops multi-director chaos that spawn-happy harnesses invite.  
+3. **Shared locks + reuse** — real workshop law for common code, not only worktree isolation.  
+4. **Zero-Code-Leak overlook** — CTOs see the floor (tokens, actors, policy) without the SaaS reading source.  
+5. **Polyglot by design** — TS, Python, Go, Delphi, Rust, … plus community packs in **this** repo.  
+
+Full capability matrix below. Other tools can sit **beside** OrcheMax; we sell governed workshops and a CTO overlook — not another agent IDE.
+
+**Buy vs build:** your job is to ship and invoice, not invent AI babysitting infrastructure. For about a week of a cheap engineer’s salary you get a local assembly line on your hardware, audited when you link the cloud.
+
+→ Product, signup, plans: **[orchemax.com](https://orchemax.com)**
 
 ---
 
-## What is *this* repository?
+## What is *this* repository (orchemax-orch)?
 
-| | **orchemax-orch** (here) | **OrcheMax** (product) |
-|--|--------------------------|-------------------------|
-| Job | Community catalog of language seeds + optional packs | Governed workshop + CTO overlook |
-| You get | JSON lang seeds, GATES/SHARED snippets, Claude rules | `orch` CLI, locks, bus, guards, init, MCP, gateway |
-| License | MIT, public | Commercial product + Free→Enterprise plans |
-| Required? | No — OrcheMax runs without it | Yes — this is the runtime |
-| Scope | **Any** language the community packs | Language-agnostic core + embedded lang seeds |
+This GitHub repo is the **public pantry of language craft** that feeds OrcheMax workshops.
 
-**One sentence:** *OrcheMax runs the workshop; orchemax-orch is the public pantry of stack craft you paste in.*
+| | **OrcheMax** (product) | **orchemax-orch** (here) |
+|--|------------------------|---------------------------|
+| Job | Run and govern the workshop | Publish seeds, gates, SHARED tips, Claude rules |
+| You install | `orch` + account (optional) | `git clone` → merge into your workshop |
+| License | Commercial + Free plan | **MIT** |
+| Required? | This is the runtime | **No** — OrcheMax works without it |
+| Languages | Agnostic core | **Any** language the community packs |
+
+**One sentence:** OrcheMax runs the floor; **orchemax-orch** is where the community writes “don’t forget charset / FireDAC / Go errs …” so you paste what matches *your* stack.
 
 ---
 
-## Multi-agent teamwork (product context)
+## Multi-agent teamwork (product + packs)
 
-Same story as the [landing](https://orchemax.com) — so this repo’s place is clear:
-
-| Pillar | What OrcheMax does | What packs add |
-|--------|--------------------|----------------|
-| Many agents, one factory | One **Chair** per project; workers for secondary tasks; message bus | Stack-specific “don’t forget X” for those agents |
-| Teamwork without stomping | Shared **locks**, search-before-create via **symbols** | Language footguns (encoding, FireDAC, Go errs, …) |
-| Stop the duplicate mess | Shared reuse rules; code stays local | SHARED.md snippets per layer / language |
+| Pillar | OrcheMax does | Packs (here) add |
+|--------|---------------|------------------|
+| Many agents, one factory | One Chair; workers; message bus | Stack “don’t forget X” for those agents |
+| Teamwork without stomping | Locks + symbols before invent | Language footguns (encoding, DB drivers, …) |
+| Stop the duplicate mess | Shared reuse; code stays local | SHARED.md snippets per layer / language |
 
 ---
 
@@ -67,7 +100,6 @@ Peers are **orchestrators** (Orca, Traycer, OpenClaw, Hermes, Prime Agent…) �
 | Source leaves your machine? | Local ADE | Local Host; cloud syncs task data | Self-host / your gateway | Local agent execution | **Code local; SaaS metadata only** |
 | Polyglot workshops | ADE-centric | Host-centric | Channel-centric | Harness-centric | **~30 language templates + this packs repo** |
 
-Other tools can sit **beside** OrcheMax. OrcheMax sells governed workshops and a CTO overlook — not another agent IDE.  
 **This GitHub repo** does not compete with Orca/Traycer; it **feeds** OrcheMax workshops with community language craft.
 
 ---
@@ -93,15 +125,13 @@ Other tools can sit **beside** OrcheMax. OrcheMax sells governed workshops and a
 
 ## How you work (day-to-day)
 
-Aligned with the product guide:
-
-1. **Install & bind** — `orch` in its own folder; `orch setup` / workshop root separate from the install.  
+1. **Install & bind** — `orch` in its own folder; workshop root separate from the install.  
 2. **Open a seat** — `orch opencode` / `orch claude` / … in a registered project; first interactive seat is Chair.  
 3. **Chair vs workers** — one director; spawn workers for secondary tasks; don’t open a second Chair.  
 4. **Shared code** — lock → edit → release; search symbols before inventing.  
 5. **Talk on the bus** — orch messaging, not a parallel vendor chat between agents.  
 6. **Optional cloud** — link account for caps / CTO overlook; source stays local.  
-7. **Optional packs (this repo)** — merge `_workshop` + `encoding` + your language packs into SHARED / gates / Claude rules.
+7. **Optional packs (this repo)** — merge `_workshop` + `encoding` + your language packs.
 
 ---
 
@@ -122,8 +152,7 @@ acme-workshop/                 ← WORKSPACE (not a billable project)
 └── …
 ```
 
-Packs never replace your process — they merge under owner markers such as  
-`<!-- owner rules below this line -->`.
+Packs merge under owner markers such as `<!-- owner rules below this line -->`.
 
 ---
 
@@ -143,7 +172,7 @@ SPEC.md          # Formal consumer contract
 
 ### Language seeds (`langs/`)
 
-Same JSON shape OrcheMax embeds for symbol seeding: extensions, comment style, regex rules (or `go-ast`).
+Same JSON shape OrcheMax embeds for symbol seeding.
 
 **Catalog today:** Go, JavaScript, TypeScript, Python, Java, C#, C/C++, Rust, Delphi, PHP, Kotlin, Swift, Ruby, Dart, Scala, Shell, R, Lua, Objective-C, PowerShell, Elixir, Haskell, Perl, Julia, Zig, Groovy, VB.NET, Solidity — and growing.
 
@@ -180,14 +209,9 @@ Delphi is **field-proven depth**, not the mission. Read `_workshop` → `encodin
 git clone https://github.com/gjrivero/orchemax-orch.git
 cd orchemax-orch
 
-# 1) Workshop-agnostic
-#    merge packs/_workshop → SHARED.md, GATES owner section, defaults.yaml hints
-
-# 2) HTML / email
-#    merge packs/encoding → .orch/gates/user/ENCODING.md
-
-# 3) Only your languages
-#    packs/go/  or  packs/delphi/  or  (PR) packs/python/
+# 1) Workshop-agnostic — packs/_workshop
+# 2) HTML / email — packs/encoding
+# 3) Only your languages — packs/go, packs/delphi, (PR) packs/python/ …
 ```
 
 ```text
@@ -197,7 +221,7 @@ orch guard profile lite    # then shared/strict when ready
 orch guard wire --profile
 ```
 
-Future: `orch pack add <id>` using `schemas/pack.manifest.schema.json`. Today: clone and merge.
+Future: `orch pack add <id>`. Today: clone and merge.
 
 ---
 
@@ -225,14 +249,7 @@ Future: `orch pack add <id>` using `schemas/pack.manifest.schema.json`. Today: c
 
 ## Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md). Highest value:
-
-1. Better **`langs/<id>.json`** for any language  
-2. New **`packs/<lang>/`** (python, typescript, rust, …)  
-3. Cross-cutting packs (encoding already started)  
-4. Fixtures for blocking gates  
-
-No product/client brand names inside language packs.
+See [CONTRIBUTING.md](CONTRIBUTING.md). Highest value: better `langs/<id>.json`, new `packs/<lang>/`, cross-cutting packs, fixtures for blocking gates. No product/client brand names inside language packs.
 
 ---
 
