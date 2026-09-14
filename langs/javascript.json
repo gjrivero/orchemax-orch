@@ -1,0 +1,12 @@
+{
+  "id": "js",
+  "exts": [".js", ".mjs", ".cjs", ".jsx"],
+  "comment": "//",
+  "aliases": ["javascript"],
+  "rules": [
+    {"kind": "func", "pattern": "(?m)^(?:export\\s+)?(?:async\\s+)?function\\s+([A-Za-z_$][\\w$]*)", "name_group": 1},
+    {"kind": "type", "pattern": "(?m)^(?:export\\s+)?(?:default\\s+)?class\\s+([A-Za-z_$][\\w$]*)", "name_group": 1},
+    {"kind": "const", "pattern": "(?m)^export\\s+(?:const|let|var)\\s+([A-Za-z_$][\\w$]*)", "name_group": 1},
+    {"kind": "const", "pattern": "(?m)^exports\\.([A-Za-z_$][\\w$]*)\\s*=", "name_group": 1}
+  ]
+}

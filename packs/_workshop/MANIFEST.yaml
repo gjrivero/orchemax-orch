@@ -1,0 +1,30 @@
+id: _workshop
+kind: workshop
+version: 0.1.0
+languages: []
+orch_min: "0.0.0"
+summary: Agnostic workshop defaults — SHARED stubs, project CLAUDE, orch.yaml fragments, gate map.
+depends_on: []
+built_in_orch:
+  - guard lang
+  - guard code-lang
+  - guard ddl
+  - guard comment
+  - guard lock
+  - guard dup
+  - guard tracker
+  - guard add-all
+  - guard shared-brand
+  - guard control-bytes
+  - guard encoding
+  - harness scan
+  - guard wire
+install:
+  shared_docs:
+    - { from: SHARED.md.tmpl, to: "<shared>/SHARED.md", mode: merge }
+  project_docs:
+    - { from: project_CLAUDE.md.tmpl, to: "projects/<app>/CLAUDE.md", mode: seed-once }
+  gates_user:
+    - { from: GATES.md, to: ".orch/gates/user/WORKSHOP.md" }
+  config_fragments:
+    - { from: defaults.yaml, to: "orch.yaml", mode: merge-keys }

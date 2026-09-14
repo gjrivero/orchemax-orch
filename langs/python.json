@@ -1,0 +1,10 @@
+{
+  "id": "python",
+  "exts": [".py", ".pyi"],
+  "comment": "#",
+  "aliases": ["py"],
+  "rules": [
+    {"kind": "func", "pattern": "(?m)^(?:async\\s+)?def\\s+([A-Za-z_][\\w]*)\\s*\\(", "name_group": 1},
+    {"kind": "type", "pattern": "(?m)^class\\s+([A-Za-z_][\\w]*)\\s*[\\(:]", "name_group": 1}
+  ]
+}

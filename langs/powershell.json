@@ -1,0 +1,9 @@
+{
+  "id": "powershell",
+  "exts": [".ps1", ".psm1"],
+  "comment": "#",
+  "aliases": ["ps"],
+  "rules": [
+    {"kind": "func", "pattern": "(?im)^function\\s+([A-Za-z_][\\w-]*)\\s*\\{", "name_group": 1}
+  ]
+}

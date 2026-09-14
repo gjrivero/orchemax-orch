@@ -1,0 +1,8 @@
+{
+  "languages": [
+    "go", "javascript", "typescript", "python", "java", "csharp", "c", "cpp",
+    "rust", "delphi", "php", "kotlin", "swift", "ruby", "dart", "scala",
+    "shell", "r", "lua", "objc", "powershell", "elixir", "haskell", "perl",
+    "julia", "zig", "groovy", "vb", "solidity"
+  ]
+}

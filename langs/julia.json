@@ -1,0 +1,9 @@
+{
+  "id": "julia",
+  "exts": [".jl"],
+  "comment": "#",
+  "rules": [
+    {"kind": "type", "pattern": "(?m)^(?:struct|mutable\\s+struct|abstract\\s+type|primitive\\s+type)\\s+([A-Za-z_][\\w]*)", "name_group": 1},
+    {"kind": "func", "pattern": "(?m)^(?:function|macro)\\s+([A-Za-z_][\\w!]*)", "name_group": 1}
+  ]
+}

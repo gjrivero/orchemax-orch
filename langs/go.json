@@ -1,0 +1,6 @@
+{
+  "id": "go",
+  "exts": [".go"],
+  "comment": "//",
+  "engine": "go-ast"
+}

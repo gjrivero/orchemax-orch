@@ -1,0 +1,9 @@
+{
+  "id": "scala",
+  "exts": [".scala", ".sc"],
+  "comment": "//",
+  "rules": [
+    {"kind": "type", "pattern": "(?m)^[ \\t]*(?:private\\s+|protected\\s+|final\\s+|case\\s+|sealed\\s+|abstract\\s+)*(class|object|trait|enum)\\s+([A-Za-z_][\\w]*)", "name_group": 2},
+    {"kind": "func", "pattern": "(?m)^[ \\t]*(?:override\\s+|private\\s+|protected\\s+|final\\s+)*def\\s+([A-Za-z_][\\w]*)", "name_group": 1}
+  ]
+}

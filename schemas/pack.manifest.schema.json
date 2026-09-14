@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/gjrivero/orchemax-orch/schemas/pack.manifest.schema.json",
+  "title": "Orche pack MANIFEST",
+  "type": "object",
+  "required": ["id", "kind", "version", "summary"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z][a-z0-9_-]*$" },
+    "kind": { "type": "string", "enum": ["language", "workshop", "cross-cutting"] },
+    "version": { "type": "string" },
+    "languages": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "orch_min": { "type": "string" },
+    "summary": { "type": "string" },
+    "depends_on": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "built_in_orch": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "install": { "type": "object" }
+  }
+}

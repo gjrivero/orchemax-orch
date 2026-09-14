@@ -1,0 +1,10 @@
+{
+  "id": "shell",
+  "exts": [".sh", ".bash", ".zsh"],
+  "comment": "#",
+  "aliases": ["bash", "sh"],
+  "rules": [
+    {"kind": "func", "pattern": "(?m)^([A-Za-z_][\\w]*)\\s*\\(\\)\\s*\\{", "name_group": 1},
+    {"kind": "func", "pattern": "(?m)^function\\s+([A-Za-z_][\\w]*)\\s*(?:\\([)]*\\))?\\s*\\{", "name_group": 1}
+  ]
+}

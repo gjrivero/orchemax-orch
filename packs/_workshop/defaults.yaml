@@ -1,0 +1,14 @@
+# Suggested orch.yaml fragments (merge by hand)
+
+workspace:
+  # locale: docs/chat/prose — en | es | …
+  locale: en
+  # code_lang: identifiers + user-visible shipping strings
+  code_lang: en
+
+guard:
+  # lite | shared | strict | bring | none
+  profile: lite
+
+# After shared/product paths exist:
+# orch guard wire --profile

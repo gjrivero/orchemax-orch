@@ -1,0 +1,10 @@
+{
+  "id": "csharp",
+  "exts": [".cs"],
+  "comment": "//",
+  "aliases": ["cs"],
+  "rules": [
+    {"kind": "type", "pattern": "(?m)^[ \\t]*public\\s+(?:static\\s+)?(?:partial\\s+)?(class|struct|interface|enum|record)\\s+([A-Za-z_][\\w]*)", "name_group": 2},
+    {"kind": "func", "pattern": "(?m)^[ \\t]*public\\s+(?:static\\s+)?(?:async\\s+)?[\\w.<>,\\[\\]\\s]+\\s+([A-Z][\\w]*)\\s*\\(", "name_group": 1}
+  ]
+}

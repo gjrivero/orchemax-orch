@@ -1,0 +1,10 @@
+{
+  "id": "kotlin",
+  "exts": [".kt", ".kts"],
+  "comment": "//",
+  "aliases": ["kt"],
+  "rules": [
+    {"kind": "type", "pattern": "(?m)^[ \\t]*(?:public\\s+|internal\\s+|private\\s+|protected\\s+|data\\s+|sealed\\s+|abstract\\s+|open\\s+)*(class|interface|object|enum\\s+class)\\s+([A-Za-z_][\\w]*)", "name_group": 2},
+    {"kind": "func", "pattern": "(?m)^[ \\t]*(?:public\\s+|internal\\s+|private\\s+|protected\\s+|override\\s+|suspend\\s+|inline\\s+)*fun\\s+([A-Za-z_][\\w]*)\\s*[<\\(]", "name_group": 1}
+  ]
+}

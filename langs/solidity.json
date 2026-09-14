@@ -1,0 +1,10 @@
+{
+  "id": "solidity",
+  "exts": [".sol"],
+  "comment": "//",
+  "aliases": ["sol"],
+  "rules": [
+    {"kind": "type", "pattern": "(?m)^(?:abstract\\s+)?(?:contract|interface|library)\\s+([A-Za-z_][\\w]*)", "name_group": 1},
+    {"kind": "func", "pattern": "(?m)^[ \\t]*function\\s+([A-Za-z_][\\w]*)\\s*\\(", "name_group": 1}
+  ]
+}

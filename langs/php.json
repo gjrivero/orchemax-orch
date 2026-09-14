@@ -1,0 +1,10 @@
+{
+  "id": "php",
+  "exts": [".php"],
+  "comment": "//",
+  "rules": [
+    {"kind": "type", "pattern": "(?m)^[ \\t]*(?:abstract\\s+|final\\s+)?class\\s+([A-Za-z_][\\w]*)", "name_group": 1},
+    {"kind": "type", "pattern": "(?m)^[ \\t]*interface\\s+([A-Za-z_][\\w]*)", "name_group": 1},
+    {"kind": "func", "pattern": "(?m)^[ \\t]*(?:public\\s+|protected\\s+|private\\s+|static\\s+)*function\\s+([A-Za-z_][\\w]*)\\s*\\(", "name_group": 1}
+  ]
+}

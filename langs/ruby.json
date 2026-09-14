@@ -1,0 +1,10 @@
+{
+  "id": "ruby",
+  "exts": [".rb"],
+  "comment": "#",
+  "aliases": ["rb"],
+  "rules": [
+    {"kind": "type", "pattern": "(?m)^[ \\t]*(class|module)\\s+([A-Za-z_][\\w:]*)", "name_group": 2},
+    {"kind": "func", "pattern": "(?m)^[ \\t]*def\\s+(?:self\\.)?([A-Za-z_][\\w?!]*)", "name_group": 1}
+  ]
+}

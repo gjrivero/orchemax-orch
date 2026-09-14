@@ -1,0 +1,8 @@
+{
+  "id": "lua",
+  "exts": [".lua"],
+  "comment": "--",
+  "rules": [
+    {"kind": "func", "pattern": "(?m)^(?:local\\s+)?function\\s+([A-Za-z_][\\w:.]*)\\s*\\(", "name_group": 1}
+  ]
+}

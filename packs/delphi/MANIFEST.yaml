@@ -1,0 +1,23 @@
+id: delphi
+kind: language
+version: 0.1.0
+languages: [delphi]
+orch_min: "0.0.0"
+summary: Delphi/Pascal agent craft — FireDAC text params, shared purity, test artifact hygiene; HTMX optional overlay.
+depends_on: [_workshop, encoding]
+built_in_orch:
+  - guard code-lang
+  - guard encoding
+  - guard ddl
+  - guard add-all
+  - guard shared-brand
+  - guard control-bytes
+  - symbols
+install:
+  shared_docs:
+    - { from: SHARED.core.md, to: "core/SHARED.md", mode: merge }
+    - { from: SHARED.core-app.md, to: "core-app/SHARED.md", mode: merge }
+  gates_user:
+    - { from: GATES.md, to: ".orch/gates/user/DELPHI.md" }
+  claude_rules:
+    - { from: claude/RULES.md, to: ".claude/rules/delphi.md" }

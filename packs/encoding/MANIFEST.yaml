@@ -1,0 +1,12 @@
+id: encoding
+kind: cross-cutting
+version: 0.1.0
+languages: []
+orch_min: "0.0.0"
+summary: UTF-8 charset + mojibake checks for HTML and email templates.
+depends_on: [_workshop]
+built_in_orch:
+  - guard encoding
+install:
+  gates_user:
+    - { from: GATES.md, to: ".orch/gates/user/ENCODING.md" }

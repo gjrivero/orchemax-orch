@@ -1,0 +1,10 @@
+{
+  "id": "vb",
+  "exts": [".vb"],
+  "comment": "'",
+  "aliases": ["visualbasic"],
+  "rules": [
+    {"kind": "type", "pattern": "(?im)^[ \\t]*(?:Public\\s+|Private\\s+|Friend\\s+|Partial\\s+)*(Class|Module|Interface|Structure)\\s+([A-Za-z_][\\w]*)", "name_group": 2},
+    {"kind": "func", "pattern": "(?im)^[ \\t]*(?:Public\\s+|Private\\s+|Friend\\s+|Shared\\s+|Overrides\\s+)*(Sub|Function)\\s+([A-Za-z_][\\w]*)", "name_group": 2}
+  ]
+}

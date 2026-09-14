@@ -1,0 +1,11 @@
+{
+  "id": "rust",
+  "exts": [".rs"],
+  "comment": "//",
+  "aliases": ["rs"],
+  "rules": [
+    {"kind": "func", "pattern": "(?m)^[ \\t]*pub(?:\\s*\\([^)]*\\))?\\s+(?:async\\s+)?fn\\s+([A-Za-z_][\\w]*)", "name_group": 1},
+    {"kind": "type", "pattern": "(?m)^[ \\t]*pub(?:\\s*\\([^)]*\\))?\\s+(struct|enum|trait|type)\\s+([A-Za-z_][\\w]*)", "name_group": 2},
+    {"kind": "const", "pattern": "(?m)^[ \\t]*pub(?:\\s*\\([^)]*\\))?\\s+(?:const|static)\\s+([A-Za-z_][\\w]*)", "name_group": 1}
+  ]
+}

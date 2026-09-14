@@ -1,0 +1,11 @@
+{
+  "id": "delphi",
+  "exts": [".pas", ".dpr", ".dpk"],
+  "comment": "//",
+  "aliases": ["pas", "pascal"],
+  "rules": [
+    {"kind": "unit", "pattern": "(?im)^[ \\t]*unit\\s+([A-Za-z_][\\w.]*)\\s*;", "name_group": 1},
+    {"kind": "type", "pattern": "(?im)^[ \\t]*([A-Za-z_][\\w]*)\\s*=\\s*(?:class|record|interface)\\b", "name_group": 1},
+    {"kind": "func", "pattern": "(?im)^[ \\t]*(?:class\\s+)?(function|procedure|constructor|destructor)\\s+([A-Za-z_][\\w.]*)\\s*[\\(;]", "name_group": 2}
+  ]
+}

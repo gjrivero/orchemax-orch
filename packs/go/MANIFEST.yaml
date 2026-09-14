@@ -1,0 +1,16 @@
+id: go
+kind: language
+version: 0.1.0
+languages: [go]
+orch_min: "0.0.0"
+summary: Go workshop starter — relies on Orche go-ast symbols + portable guards.
+depends_on: [_workshop, encoding]
+built_in_orch:
+  - guard code-lang
+  - guard encoding
+  - guard ddl
+  - guard comment
+  - symbols
+install:
+  gates_user:
+    - { from: GATES.md, to: ".orch/gates/user/GO.md" }

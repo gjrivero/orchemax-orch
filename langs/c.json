@@ -1,0 +1,8 @@
+{
+  "id": "c",
+  "exts": [".c"],
+  "comment": "//",
+  "rules": [
+    {"kind": "func", "pattern": "(?m)^[ \\t]*(?:[\\w:<>*&\\s]+)\\s+([A-Za-z_][\\w]*)\\s*\\([^;]*\\)\\s*(?:const\\s*)?\\{", "name_group": 1}
+  ]
+}

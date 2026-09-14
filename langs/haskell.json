@@ -1,0 +1,10 @@
+{
+  "id": "haskell",
+  "exts": [".hs"],
+  "comment": "--",
+  "aliases": ["hs"],
+  "rules": [
+    {"kind": "type", "pattern": "(?m)^(?:data|newtype|type|class)\\s+([A-Za-z_][\\w']*)", "name_group": 1},
+    {"kind": "func", "pattern": "(?m)^([A-Za-z_][\\w']*)\\s+::", "name_group": 1}
+  ]
+}
