@@ -1,0 +1,13 @@
+id: htmx-spa
+kind: cross-cutting
+version: 0.1.0
+languages: []
+orch_min: "0.0.0"
+summary: Optional HTMX SPA shell gate — zero full-document reloads, CLS 0 on swap (Attlas field lesson).
+depends_on: [_workshop]
+built_in_orch: []
+install:
+  gates_user:
+    - { from: GATES.md, to: ".orch/gates/user/HTMX-SPA.md" }
+  tools:
+    - { from: tools/check-spa.mjs, to: "tools/check-spa.mjs" }

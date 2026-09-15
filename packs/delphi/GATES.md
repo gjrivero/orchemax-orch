@@ -12,6 +12,7 @@
 | O.shared-brand | `orch guard shared-brand` | No product names in shared |
 | O.control-bytes | `orch guard control-bytes` | No 0x00/0x08 junk in sources |
 | O.ddl | `orch guard ddl` | Table ⇒ seeder/writer |
+| O.artifacts | `orch guard artifacts` | No `.dcu`/`.o`/`.exe` junk beside source (pre-commit too) |
 
 ## Pack rules (prose / fixtures — wire later if desired)
 
@@ -19,9 +20,9 @@
 |----|------|----------|
 | P.delphi.firedac-text | Use `AddTextParam` for free text — never bare `P.Add('x', string)` (ANSI → `0x00` / `?`) | **block in review**; suite in workshop `core/tests` |
 | P.delphi.null-param | `Add(name, Null)` needs explicit `DataType` or safe sentinel | warn |
-| P.delphi.tests-dir | `.dcu` / trial binaries only under `tests/` (or disposable out/) — never beside shared units | warn → future O.artifacts |
+| P.delphi.tests-dir | Prefer `tests/` for disposable out; **enforced** by O.artifacts when hooks on | warn → **O.artifacts** |
 | P.delphi.sql-in-controller | Controllers stay thin — no SQL string soup in controllers | owner architecture |
-| P.delphi.htmx-spa | Optional Attlas-style: HTMX swaps, no React-by-default | **owner UI stack** — not Orche default |
+| P.delphi.htmx-spa | Optional: install community pack `htmx-spa` (`check-spa.mjs`) | **owner UI stack** — not Orche default |
 | P.delphi.tenant-id | If using `taMultiTenant`, do not also declare `tenant_id` manually | owner schema |
 
 ## Suggested Claude rule

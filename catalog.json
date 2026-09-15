@@ -4,6 +4,7 @@
   "packs": [
     { "id": "_workshop", "path": "packs/_workshop", "kind": "workshop" },
     { "id": "encoding", "path": "packs/encoding", "kind": "cross-cutting" },
+    { "id": "htmx-spa", "path": "packs/htmx-spa", "kind": "cross-cutting" },
     { "id": "delphi", "path": "packs/delphi", "kind": "language" },
     { "id": "go", "path": "packs/go", "kind": "language" }
   ]
