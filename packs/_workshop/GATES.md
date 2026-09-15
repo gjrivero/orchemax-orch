@@ -13,6 +13,7 @@ Taxonomy: **O.** = Orche built-in · **P.** = pack/prose · **W.** = owner judgm
 | O.shared-brand | `orch guard shared-brand` | No product id / `products/<id>` in shared |
 | O.control-bytes | `orch guard control-bytes` | No invisible control bytes in source |
 | O.ddl | `orch guard ddl` | Schema paired with seeder/writer |
+| O.artifacts | `orch guard artifacts` | No `.dcu`/`.o`/`.exe` junk beside shared source |
 | O.comment | `orch guard comment` | Shared exports need one-line purpose |
 | O.lock | `orch lock` / `guard lock` | Shared edits under lock |
 | O.dup | `orch guard dup` + `orch symbols` | Spot duplicate symbols |
@@ -26,7 +27,8 @@ These **O.** rows are **OrcheMax product** features. This pack only documents th
 | Id | Practice |
 |----|----------|
 | W.search-before-create | Grep/symbols before new types; promote generics to shared |
-| W.tests-disposable | Build/test junk only under `tests/` (no `.dcu` beside units) |
+| W.tests-disposable | Prefer `tests/` for junk; **enforce** with `orch guard artifacts` when hooks on |
 | W.stack-declare | Say UI/DB stack once (anti LLM fashion defaults) |
+| W.htmx-spa | Optional pack `htmx-spa` if your UI is HTMX shell swaps |
 
 Language-specific rows live in `packs/<lang>/GATES.md`.
