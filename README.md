@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="docs/brand/logo-h128.png" alt="OrcheMax" height="72"/>
+</p>
+
 # orchemax-orch
 
 **Community language packs for [OrcheMax](https://orchemax.com)**  

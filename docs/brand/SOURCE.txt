@@ -1,0 +1,4 @@
+# Brand assets — Canva "Isotipo + logo Orchemax" (DAHVKzMLzOs)
+# Regenerate: python branding/gen_assets.py
+canva/page1-2000.png  # isotipo master
+canva/page2-2000.png  # logo (isotipo + wordmark) master
