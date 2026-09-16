@@ -66,19 +66,17 @@ Once a seat is open, every agent gets these MCP tools with no extra setup:
 
 **Gateway:** a local API-key vault, not an account login. Add keys once (`orch gateway keys add <provider>`) and every OpenAI-compatible CLI shares **one connection** instead of one per provider; the gateway rotates through your keys on rate limits and applies the same compression to every call. No fixed savings percentage is published anywhere — real compression for your workspace shows up in `orch usage`. Claude Code keeps its own plan login and never routes through this vault (Anthropic's terms forbid third-party login or intermediation of plan credentials).
 
-### Why it beats the real peer (Traycer-class hosts)
+### Why it differs from its closest peer (Traycer)
 
-The competitor that plays in the same game is **Traycer**-style: BYO agents + host/tasks. ADE products like **Orca** are a different category (agent IDE panes) — useful for some teams, but **not the bar OrcheMax is built against**.
+**Traycer** is the closest peer: BYO agents + a host for tasks and reviews. OrcheMax pushes the same idea (keep your CLIs) into a **workshop factory**:
 
-OrcheMax wins the **workshop + governance** wedge:
-
-1. **BYO CLI** — keep Claude/Cursor/OpenCode; `orch` sits underneath (no forced ADE face).  
+1. **BYO CLI** — keep Claude/Cursor/OpenCode; `orch` sits underneath (no forced new window).  
 2. **One Chair law** — stops multi-director chaos.  
 3. **Shared locks + reuse** — workshop law for common code, not only artifacts/reviews.  
 4. **Zero-Code-Leak overlook** — CTOs see tokens/actors/policy without SaaS reading source.  
 5. **Polyglot + packs** — ~30 language templates; this repo feeds stack craft.  
 
-Full matrix below. Other tools can sit **beside** OrcheMax; we sell governed workshops and a CTO overlook — not another agent IDE.
+Full matrix below, including where peers beat us today. We sell governed workshops and a CTO overlook — not another agent IDE.
 
 
 **Buy vs build:** your job is to ship and invoice, not invent AI babysitting infrastructure. For about a week of a cheap engineer’s salary you get a local assembly line on your hardware, audited when you link the cloud.
@@ -115,39 +113,30 @@ This GitHub repo is the **public pantry of language craft** that feeds OrcheMax 
 
 ## Compare: OrcheMax vs other agent orchestrators
 
-**Primary peer:** [Traycer](https://traycer.ai)-class hosts (BYO agents + tasks/reviews).  
-**Not the bar:** ADE panes products (e.g. Orca) — different job; they don’t set OrcheMax’s target.  
-**Adjacent:** OpenClaw/Hermes (personal channel gateways), Prime Agent (research harness).  
-Claude/Cursor are **seats**, not competitors.
+OrcheMax is an **agent orchestrator**: it directs the coding CLIs you already pay for. Personal-assistant gateways such as OpenClaw and Hermes, and agent frameworks such as CrewAI, AutoGen and LangGraph, are **seats and libraries an orchestrator drives** — not competitors, so they are not in this table. **Primary peer:** Traycer.
 
-| Capability | **Traycer** | OpenClaw / Hermes | Prime Agent | Orca (ADE) | **OrcheMax** |
-|------------|-------------|-------------------|-------------|------------|--------------|
-| Job | Host + tasks around BYO agents | Personal multi-channel agent gateway | Self-improving coding / research harness | Parallel agent IDE / ADE | **Governed workshop + CTO overlook** |
-| Keep native agent UI | Chat / Terminal Host | Own runtime face | Own TUI / daemon | Panes / terminals in ADE | **`orch` sits under BYO CLIs** |
-| One director per project | Task-centric Host | Usually one personal brain | Can spawn peers (multi-director risk) | Coordinator / Run (ADE) | **One Chair; workers only for secondary tasks** |
-| Stop stomping shared code | Artifacts / reviews — not shared locks | Not a repo factory | Not workshop locks / symbol law | Worktree isolation (thin workshop law) | **Shared locks + reuse rules** |
-| Agent↔agent bus | A2A with capability gates | Channels to humans / tools | Role-addressed messaging + roster | Orchestration messages / gates | **Disk bus + parent/child/sibling roles** |
-| Org overlook + plans | BYOA + paid tiers | Personal / self-host | OSS harness, not org SaaS | Commercial opaque on pitch | **FREE→TEAM + metadata overlook** |
-| Source leaves your machine? | Local Host; cloud syncs task data | Self-host / your gateway | Local agent execution | Local ADE | **Code local; SaaS metadata only** |
-| Polyglot workshops | Host-centric | Channel-centric | Harness-centric | ADE-centric | **~30 language templates + this packs repo** |
+Every cell below is a fact from the 2026-09-15 orchestrator scan, or *Not documented* — never a guess.
+
+| Capability | Traycer | Paperclip | Gas Town + Beads | Kiro Crew | claude-squad | **OrcheMax** |
+|---|---|---|---|---|---|---|
+| Where it sits | VS Code extension / desktop app, above your agent | Node server + React UI; agents attach | `gt` workspace manager over tmux, `bd` as a second CLI | Gateway + dashboard, run as a systemd/launchd service | tmux TUI, one session per agent | **Under the CLI you already opened: MCP tools + one harness hook** |
+| Who directs | Plan-first modes drive the agents; second director *Not documented* | Org chart of “employees”, approval gates above them | “Mayor” (a Claude Code instance) runs convoys; no second-director rule | A crew delegates to subagents; you approve tool requests | No director — you switch between independent instances | **One Chair per project by arrival order; the second is refused** |
+| Collision handling | Plans before anyone writes; no file locks documented | Atomic task checkout + budget, business level not file level | Worktree per polecat, claimed bead, bisecting merge queue (Refinery) | *Not documented* — no worktrees, locks or merge queue named | One git workspace per instance; isolation by checkout | **Worktree and a shared lock with TTL before the shared edit — no merge queue** |
+| Duplicate prevention | Shared memory across models — context, not symbols | Reuse of documented skills per agent; no symbol registry | Dependency graph in Dolt, queryable by SQL — tasks, not symbols | *Not documented*; semantic memory in-process | None — it is a terminal manager | **`guard dup` on PreToolUse + the exported-signature registry** |
+| Governance | Review Mode; boards a human co-edits live | Org charts, budgets, approval gates, versioned config, rollback | Convoys, Mayor, `bd remember`; no mandatory human gate | Interactive approvals, deny-by-default command catalog, `kirocrew security verify` | No ledger — you read diffs by hand | **Ledger with `task_claim` on the line itself, plus `verify_report`** |
+| Heterogeneous workers | Claude Code, Codex, Cursor, OpenCode | OpenClaw, Claude Code, Codex, Cursor | Claude Code, Copilot, Codex, Gemini; `bd setup` wires more | `kiro-cli` over ACP; no second coding CLI named | `-p` flag swaps claude / codex / aider / gemini | **ACP for Gemini CLI and OpenCode (opt-in); Codex, Claude, Cursor as subprocesses** |
+| Cost read-out | No credit meters on your subscription; own inference billed apart | Budget enforced per agent and per task, atomically | None native; `scheduler.max_polecats` caps concurrency, not spend | *Not documented* — no token count, cost or budget named | None — each instance spends whatever its CLI spends | **`orch usage` / `--leaks` / `--governance` read your transcripts; Team caps a task’s budget** |
+| Code stays local | Local host; cloud may sync task data, Privacy Mode is paid | Yes — MIT, self-hosted Node server | Yes — OSS and local; Beads leaves only on `dolt push` | Yes — Mac, local container or a remote machine you control | Yes — OSS tmux on your machine | **Yes — runtime is local; a linked account gets counters/events, never code** |
+
+**Where they beat us today.** Gas Town’s Refinery is a bisecting merge queue that batches merge requests, runs the gates and isolates the bad one — OrcheMax has no merge queue at all. Paperclip enforces a budget and an approval gate before an agent spends, with versioned config and safe rollback of a bad change. Kiro Crew (AWS, Apache-2.0) runs scheduled work around the clock as a system service, shows each agent’s plan, tool calls, approvals and results in one Activity view, and keeps a verifiable security-event log. Traycer’s Review Mode and shared boards let a human co-edit next to the agents in real time. Multica, left out for lack of a locatable repo, drives about twelve CLIs — more than anyone in the table.
+
+**Not in the table, for width:** Conductor (Melty Labs) — closed-source Mac app, git worktree per agent with diff-first review, Claude Code and Codex only, no open API to add a third, no meter of its own (“you pay only your API cost”), and no duplicate prevention documented.
+
+**Choose Gas Town** if merge throughput across twenty agents is the bottleneck. **Choose Paperclip** if spend caps and approvals matter more than code-level dedup. **Choose Kiro Crew** if you want unattended 24/7 runs on one vendor’s CLI with a sandboxed, audited command surface. **Choose Traycer** if planning and live human review boards are the job. **Choose claude-squad or Conductor** if parallel sessions in isolated worktrees is all you need. **Choose OrcheMax** if the CLI you already opened should stay the CLI you open — with a lock, a registry, a claim and a measured read-out underneath it. We sell governed workshops and a CTO overlook, not another agent IDE.
 
 **This GitHub repo** does not compete with Traycer; it **feeds** OrcheMax workshops with community language craft.
 
-### OrcheMax vs Traycer (primary)
-
-**Traycer** wraps BYO agents with a host, tasks, and reviews. OrcheMax is the same *idea* (keep your CLIs) pushed into a **workshop factory**: one Chair, shared locks, symbol reuse, disk bus, optional Zero-Code-Leak CTO overlook, and language packs (this repo). If you outgrow “task host” and need **repo law + org governance**, that’s the OrcheMax wedge. See [orchemax.com](https://orchemax.com#compare).
-
-### OrcheMax vs OpenClaw / Hermes
-
-**OpenClaw** / **Hermes** excel as personal multi-channel agent gateways. OrcheMax targets **multi-project coding workshops**, not Telegram/WhatsApp-first personal bots. Use them beside OrcheMax for channels; use OrcheMax for the codebase floor.
-
-### OrcheMax vs Prime Agent
-
-**Prime Agent** leans self-improving research harnesses. OrcheMax leans **one Chair + workers**, locks/symbols, and plan-gated overlook — shipping apps under governance.
-
-### OrcheMax vs Orca (different category)
-
-**Orca** is an ADE / parallel-agent IDE. Useful for teams that want panes inside a dedicated product — **not** the competitor OrcheMax is built to displace. OrcheMax keeps **your** Claude/Cursor/OpenCode seats and adds workshop governance underneath. We list it so searchers aren’t confused; we don’t treat it as the peer bar.
+Full matrix and detail: [orchemax.com/compare](https://orchemax.com/compare) · Deep dive: [orchemax.com/vs/traycer](https://orchemax.com/vs/traycer)
 
 ### Search / discoverability
 
