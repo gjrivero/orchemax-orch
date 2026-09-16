@@ -1,8 +1,9 @@
 <p align="center">
-  <img src="docs/brand/isotipo-mark-h64.png" alt="OrcheMax" height="40"/>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/brand/lockup-dark-h64.png">
+    <img src="docs/brand/lockup-light-h64.png" alt="Orchemax" height="56">
+  </picture>
 </p>
-
-# OrcheMax
 
 **orchemax-orch — community language packs for [OrcheMax](https://orchemax.com)**  
 Public craft for any language · Not the product binary · Not Delphi-only
