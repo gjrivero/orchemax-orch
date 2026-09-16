@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/brand/isotipo-128.png" alt="OrcheMax" height="56"/>
+  <img src="docs/brand/isotipo-mark-h64.png" alt="OrcheMax" height="40"/>
 </p>
 
 # OrcheMax
