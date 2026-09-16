@@ -1,6 +1,6 @@
 # Pack: HTMX + SPA shell (optional)
 
-**Not an OrcheMax default.** Use only if your workshop web UI is HTMX swaps on a persistent shell (Attlas-style). React/Vue/Next shops should skip this pack.
+**Not an OrcheMax default.** Use only if your workshop web UI is HTMX swaps on a persistent shell (a persistent-shell style, field-proven in production). React/Vue/Next shops should skip this pack.
 
 ## Why
 
@@ -38,7 +38,7 @@ Exit `1` = fail · `2` = could not measure (never treat unmeasured as green).
 Internal nav = `hx-get` + `hx-select="#spa-content"` + `hx-target="#main-content"` + `hx-swap="innerHTML swap:130ms"` + `hx-push-url`.  
 Shell chrome never repaints. Page scripts use IIFE + `__spaPageInit` (not only `DOMContentLoaded`).
 
-Full patterns: Attlas `ATTLAS_DEV_PATTERNS.md` §4 (workshop-owned).
+Full patterns: your workshop's own `SPA_DEV_PATTERNS.md` §4 (workshop-owned — this pack only ships the enforceable check, not the doctrine doc).
 
 ## Depends on
 

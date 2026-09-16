@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * check-spa.mjs — hace ejecutable la doctrina de ATTLAS_DEV_PATTERNS.md §0.
+ * check-spa.mjs — hace ejecutable la doctrina de SPA_DEV_PATTERNS.md §0.
  *
  * Verifica, sobre una app viva, que la navegacion sea realmente SPA:
  *   1. Una sola navegacion real del documento, recorra las pantallas que recorra.
@@ -109,7 +109,7 @@ const INSTRUMENT = `
      primer pintado del shell, que no tenia ningun problema.
 
      huboSwap separa lo que de verdad es la carga del documento de lo que es
-     hidratacion. Las dos siguen fallando --- ATTLAS_DEV_PATTERNS §11 pide reservar el
+     hidratacion. Las dos siguen fallando --- SPA_DEV_PATTERNS §11 pide reservar el
      hueco con min-height ---, pero cada una con su nombre, que es lo unico que
      hace un fallo accionable.
 
@@ -232,7 +232,7 @@ const bodyVisible = await page.evaluate(() =>
   getComputedStyle(document.body).visibility === 'visible');
 bodyVisible
   ? ok('el body es visible: el guard anti-FOUC se levanto')
-  : fail('el body sigue oculto: el guard anti-FOUC no se levanto (ATTLAS_DEV_PATTERNS §2.1)');
+  : fail('el body sigue oculto: el guard anti-FOUC no se levanto (SPA_DEV_PATTERNS §2.1)');
 
 /* ── 1. Descubrir el nav ───────────────────────────────────────────────────────
    UN DESTINO NO SIEMPRE TIENE UN ATRIBUTO QUE LO NOMBRE.
@@ -256,7 +256,7 @@ bodyVisible
    legible en los mensajes. */
 /* LOGIN Y LOGOUT ESTAN EXENTOS DE LA REGLA, Y ESTE VERIFICADOR NO LO SABIA.
 
-   `ATTLAS_DEV_PATTERNS` §0 lo dice al definir el defecto: es un defecto un
+   `SPA_DEV_PATTERNS` §0 lo dice al definir el defecto: es un defecto un
    `window.location.href` "FUERA del flujo de login/logout". O sea que salir de
    la sesion SI es una navegacion real del documento, a proposito --- hay que
    tirar el shell entero, y un swap no lo hace.
@@ -452,7 +452,7 @@ ok(`${PASSES} pasadas completas sobre ${links.length} destinos`);
 const navCount = await page.evaluate(() => performance.getEntriesByType('navigation').length);
 navCount === 1
   ? ok(`1 sola navegacion real del documento tras ${links.length * PASSES} clicks`)
-  : fail(`${navCount} navegaciones reales del documento: hay links que recargan la pagina (ATTLAS_DEV_PATTERNS §0)`);
+  : fail(`${navCount} navegaciones reales del documento: hay links que recargan la pagina (SPA_DEV_PATTERNS §0)`);
 
 const shifts = await page.evaluate(() => window.__spa.shifts);
 const swapCLS = shifts.filter((s) => s.swap).reduce((a, s) => a + s.v, 0);
@@ -474,7 +474,7 @@ const hydrCLS = shifts.filter((s) => s.fase === 'hidratacion').reduce((a, s) => 
 const RUIDO_CLS = 1e-6;
 swapCLS < RUIDO_CLS
   ? ok('CLS durante los swaps = 0.00')
-  : fail(`CLS durante los swaps = ${swapCLS.toPrecision(3)}, el umbral es 0 (ATTLAS_DEV_PATTERNS §0)`);
+  : fail(`CLS durante los swaps = ${swapCLS.toPrecision(3)}, el umbral es 0 (SPA_DEV_PATTERNS §0)`);
 loadCLS <= 0.1
   ? ok(`CLS de carga inicial = ${loadCLS.toFixed(4)}`)
   : fail(`CLS de carga inicial = ${loadCLS.toFixed(4)}, el umbral es 0.1`);
@@ -485,7 +485,7 @@ loadCLS <= 0.1
 hydrCLS <= 0.1
   ? ok(`CLS de hidratacion = ${hydrCLS.toFixed(4)}`)
   : fail(`CLS de hidratacion = ${hydrCLS.toFixed(4)}, el umbral es 0.1. `
-       + `Son los datos que llegan DESPUES del settle: reserva el hueco (ATTLAS_DEV_PATTERNS §11)`);
+       + `Son los datos que llegan DESPUES del settle: reserva el hueco (SPA_DEV_PATTERNS §11)`);
 
 /* Solo los que NACIERON durante el recorrido. Ver la linea base, arriba: §5
    pide cero timers "de los que ella creo" al salir de una pantalla, no cero
@@ -498,7 +498,7 @@ const timersShell = await page.evaluate(() => (window.__spa.timersBase || new Se
 timers === 0
   ? ok(`sin timers de pantalla vivos al final` +
        (timersShell ? ` (${timersShell} del shell, que sobreviven a proposito)` : ''))
-  : fail(`${timers} setInterval nacidos en el recorrido siguen vivos: falta cleanup (ATTLAS_DEV_PATTERNS §5)`);
+  : fail(`${timers} setInterval nacidos en el recorrido siguen vivos: falta cleanup (SPA_DEV_PATTERNS §5)`);
 
 consoleErrors.length === 0
   ? ok('cero errores de consola')
@@ -506,7 +506,7 @@ consoleErrors.length === 0
 
 overflow.length === 0
   ? ok('sin overflow horizontal')
-  : fail(`overflow horizontal en: ${overflow.slice(0, 3).join(', ')} (ATTLAS_DEV_PATTERNS §6)`);
+  : fail(`overflow horizontal en: ${overflow.slice(0, 3).join(', ')} (SPA_DEV_PATTERNS §6)`);
 
 slow.length === 0
   ? ok(`todos los swaps bajo ${BUDGET_MS}ms`)
@@ -519,5 +519,5 @@ if (problems.length) {
   console.log(`FALLO — ${problems.length} defecto(s) de arquitectura SPA.`);
   process.exit(1);
 }
-console.log('OK — la navegacion cumple ATTLAS_DEV_PATTERNS.md §0.');
+console.log('OK — la navegacion cumple SPA_DEV_PATTERNS.md §0.');
 process.exit(0);

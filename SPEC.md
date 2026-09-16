@@ -116,4 +116,4 @@ Example: `O.encoding` = `orch guard encoding`; `P.delphi.firedac-text` = SHARED 
 
 - Not a marketplace SKU.  
 - Not a replacement for `orch.yaml` or sealed `orch-*` skills.  
-- Not Attlas-the-product; Attlas is a field lab that *feeds* packs.
+- Not any single company's internal product; these packs are fed by real workshop use, not published as a substitute for one.

@@ -4,9 +4,10 @@ This is the **OrcheMax community packs** repo: language seeds and optional craft
 
 ## Add or extend a language seed
 
-1. Add `langs/<id>.json` (see existing files — Go, TypeScript, Python, …).  
-2. Append `<id>` to `langs/catalog.json`.  
-3. If OrcheMax should embed it, note the sync in your PR description.
+1. Add `langs/<id>.json` (see existing files — Go, TypeScript, Python, …): `id`, `exts`, `comment`, and either `engine` (native parser, Go-only today) or a `rules` array of definition regexes.
+2. Append `<id>` to `langs/catalog.json`.
+3. Each `rules` entry is a **definition-rule contract**, not a suggestion: the product's native indexer runs it against every file of that language and feeds the match straight into the symbol index — an `orch:export`-tagged name stays `scope=shared`, everything else lands `scope=local` (see [`langs/README.md`](langs/README.md)). Get `kind`/`pattern`/`name_group` right or the seed silently mis-tags symbols instead of failing loudly.
+4. If OrcheMax should embed it, note the sync in your PR description.
 
 ## Add or extend a pack
 
@@ -32,3 +33,4 @@ Deep packs (like `delphi`) are welcome for **any** stack that has LLM footguns �
 - [ ] Clear O.* (OrcheMax built-in) vs P.* (pack) vs W.* (owner)  
 - [ ] No secrets, no customer data  
 - [ ] Soft-skip / warn vs block is explicit
+- [ ] No private workshop or internal folder names (this is a public repo — packs, docs, fixtures, and JSON seeds must never mention the maker's private repo/folder names; only "OrcheMax" / "orch" / "orchemax-orch" are fine)

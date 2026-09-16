@@ -1,10 +1,10 @@
 <p align="center">
-  <img src="docs/brand/logo-h128.png" alt="OrcheMax" height="72"/>
+  <img src="docs/brand/isotipo-128.png" alt="OrcheMax" height="56"/>
 </p>
 
-# orchemax-orch
+# OrcheMax
 
-**Community language packs for [OrcheMax](https://orchemax.com)**  
+**orchemax-orch — community language packs for [OrcheMax](https://orchemax.com)**  
 Public craft for any language · Not the product binary · Not Delphi-only
 
 ---
@@ -32,18 +32,38 @@ It is **not** another chat tab, not another agent IDE, and not a replacement for
 - Workshops with **shared libraries** across apps (search before invent, lock before edit)  
 - Orgs that want **spend visibility, caps, allowlists, and an overlook** without uploading the repo  
 
-**Day-to-day:** install `orch` → bind a workshop → open a seat (`orch claude`, `orch opencode`, …) → Chair coordinates → workers execute secondary tasks → shared paths under locks → optional account for overlook / plans (Free → Enterprise).
+**Day-to-day:** install `orch` → bind a workshop → open a seat (`orch claude`, `orch opencode`, …) → Chair coordinates → workers execute secondary tasks → shared paths under locks, backed by the call graph → optional gateway for API-key CLIs → optional account for overlook / plans (Free → Enterprise).
 
 ### What it avoids (the pain it kills)
 
 | Without OrcheMax | With OrcheMax |
 |------------------|---------------|
 | Every agent acts like a director → races, duplicate helpers, knotted work | **One Chair** per project; workers for secondary tasks only |
-| Parallel sessions rewrite the same shared unit | **Shared locks** + symbol search before create |
-| Fat `CLAUDE.md` that agents ignore under pressure | Optional **`orch guard *`** (code-lang, encoding, ddl, …) + hooks |
+| Parallel sessions rewrite the same shared unit, or a worker can't see what a sibling project already built | **Shared locks** + full symbol/call graph (`trace_path`, `impact`, `code_snippet`) + cross-project `ask` before create |
+| Fat `CLAUDE.md` that agents ignore under pressure | Optional **`orch guard *`** (code-lang, encoding, ddl, clone detection, …) + opt-in hooks |
 | Vendor chat as the only “bus” between agents | **Disk message bus** (parent / child / sibling) |
 | Surprise invoices; no floor view for the CTO | Caps, usage by project/model, **metadata overlook** |
 | Building your own babysitting infra | Buy the assembly line — ship apps instead |
+
+### What orch gives your agents
+
+Once a seat is open, every agent gets these MCP tools with no extra setup:
+
+| Tool | What it does |
+|------|--------------|
+| `search_shared_symbols` | Full-text search over the shared-scope symbol registry (`orch:export`-tagged) |
+| `trace_path` | Call graph around one symbol — callers, callees, a confidence per edge |
+| `impact` | What a change reaches: symbols in the touched paths plus their callers |
+| `code_snippet` | One symbol's body by line range, instead of reading the whole file |
+| `architecture` | Directory-level map of the workspace — symbols and edge counts per directory |
+| `task_claim` / `task_release` | Atomic claim/release on one ledger checklist item, so two seats never grab the same task |
+| `ask` (with `to_project`) | A worker's blocking question to its Chair, or to another registered project's Chair |
+| `context_externalize` / `context_retrieve` | Crush bulky tool output to disk and pull it back by id only when it's actually needed |
+| `memory_recall` | FTS search over durable local memories before a decision gets reinvented |
+| `usage_status` | Token spend and crush savings by session, worker, and model — content-free |
+| `verify_report` | The worker's own verification evidence (tests run, symbols reused) attached before a session closes |
+
+**Gateway:** a local API-key vault, not an account login. Add keys once (`orch gateway keys add <provider>`) and every OpenAI-compatible CLI shares **one connection** instead of one per provider; the gateway rotates through your keys on rate limits and applies the same compression to every call. No fixed savings percentage is published anywhere — real compression for your workspace shows up in `orch usage`. Claude Code keeps its own plan login and never routes through this vault (Anthropic's terms forbid third-party login or intermediation of plan credentials).
 
 ### Why it beats the real peer (Traycer-class hosts)
 

@@ -3,7 +3,7 @@ kind: cross-cutting
 version: 0.1.0
 languages: []
 orch_min: "0.0.0"
-summary: Optional HTMX SPA shell gate — zero full-document reloads, CLS 0 on swap (Attlas field lesson).
+summary: Optional HTMX SPA shell gate — zero full-document reloads, CLS 0 on swap (field-proven lesson).
 depends_on: [_workshop]
 built_in_orch: []
 install:
