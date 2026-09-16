@@ -8,6 +8,8 @@
 **orchemax-orch — community language packs for [OrcheMax](https://orchemax.com)**  
 Public craft for any language · Not the product binary · Not Delphi-only
 
+Documentation: https://docs.orchemax.com
+
 ---
 
 ## What is OrcheMax?
@@ -164,6 +166,8 @@ Prioritize queries and pages around **OrcheMax vs Traycer**. GitHub Topics: `orc
 ---
 
 ## How you work (day-to-day)
+
+Full walkthrough with commands and examples: [docs.orchemax.com](https://docs.orchemax.com) — start at [Quickstart](https://docs.orchemax.com/quickstart/) and [Organise a workshop](https://docs.orchemax.com/how-to/organise-a-workshop/).
 
 1. **Install & bind** — `orch` in its own folder; workshop root separate from the install.  
 2. **Open a seat** — `orch opencode` / `orch claude` / … in a registered project; first interactive seat is Chair.  
