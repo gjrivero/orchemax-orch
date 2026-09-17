@@ -1,8 +1,8 @@
 # Delphi pack — gates
 
-**O.** Orche built-in · **P.** this pack · **W.** owner judgment
+**O.** Orchemax built-in · **P.** this pack · **W.** owner judgment
 
-## Rely on Orche (do not reimplement)
+## Rely on Orchemax (do not reimplement)
 
 | Id | Command | Notes |
 |----|---------|-------|
@@ -22,7 +22,7 @@
 | P.delphi.null-param | `Add(name, Null)` needs explicit `DataType` or safe sentinel | warn |
 | P.delphi.tests-dir | Prefer `tests/` for disposable out; **enforced** by O.artifacts when hooks on | warn → **O.artifacts** |
 | P.delphi.sql-in-controller | Controllers stay thin — no SQL string soup in controllers | owner architecture |
-| P.delphi.htmx-spa | Optional: install community pack `htmx-spa` (`check-spa.mjs`) | **owner UI stack** — not Orche default |
+| P.delphi.htmx-spa | Optional: install community pack `htmx-spa` (`check-spa.mjs`) | **owner UI stack** — not Orchemax default |
 | P.delphi.tenant-id | If using `taMultiTenant`, do not also declare `tenant_id` manually | owner schema |
 
 ## Suggested Claude rule

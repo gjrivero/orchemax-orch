@@ -1,6 +1,6 @@
 # Workshop pack — agnostic defaults (any language)
 
-Start here for **every** OrcheMax workshop, regardless of Go, TypeScript, Python, Delphi, …
+Start here for **every** Orchemax workshop, regardless of Go, TypeScript, Python, Delphi, …
 
 Language packs (`packs/go`, `packs/delphi`, …) stack **on top** of this. You do not need them all.
 
@@ -13,7 +13,7 @@ Language packs (`packs/go`, `packs/delphi`, …) stack **on top** of this. You d
 | `defaults.yaml` | fragment into `orch.yaml` | merge carefully |
 | `GATES.md` | `.orch/gates/user/WORKSHOP.md` or root GATES owner section | merge |
 
-## OrcheMax built-ins to enable early
+## Orchemax built-ins to enable early
 
 ```text
 orch guard profile lite            # or shared when ready

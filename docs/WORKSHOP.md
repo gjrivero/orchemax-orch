@@ -1,6 +1,6 @@
 # The workshop model
 
-How OrcheMax's runtime concepts map to the files you keep in your own
+How Orchemax's runtime concepts map to the files you keep in your own
 repositories. This repo only documents the model; the runtime lives in the
 `orch` CLI (product, not here).
 
@@ -10,14 +10,14 @@ A **workspace** is where you bind `orch` — one `orch.yaml` + `.orch/` state
 directory. It is never billed and never registered on its own.
 
 A **project** is one registered path inside that workspace, usually one git
-repo (an app, an API, a service). Projects are what OrcheMax meters and what
+repo (an app, an API, a service). Projects are what Orchemax meters and what
 a Chair governs.
 
 ```text
 acme-workshop/                 ← WORKSPACE (not a billable project)
 ├── orch.yaml
 ├── .orch/                     ← runtime state + optional gates/user
-├── CLAUDE.md                  ← thin OrcheMax seed + owner rules
+├── CLAUDE.md                  ← thin Orchemax seed + owner rules
 ├── shared/                    ← or core/, libs/, … (your layout)
 │   └── SHARED.md
 ├── apps/ / products/

@@ -1,6 +1,6 @@
 # Pack: HTMX + SPA shell (optional)
 
-**Not an OrcheMax default.** Use only if your workshop web UI is HTMX swaps on a persistent shell (a persistent-shell style, field-proven in production). React/Vue/Next shops should skip this pack.
+**Not an Orchemax default.** Use only if your workshop web UI is HTMX swaps on a persistent shell (a persistent-shell style, field-proven in production). React/Vue/Next shops should skip this pack.
 
 ## Why
 

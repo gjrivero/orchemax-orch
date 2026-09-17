@@ -1,6 +1,6 @@
 # Encoding pack — HTML / email (any language)
 
-Cross-cutting OrcheMax workshop craft. Applies whether you write Go templates, Delphi HTML, React (if you must), or static sites.
+Cross-cutting Orchemax workshop craft. Applies whether you write Go templates, Delphi HTML, React (if you must), or static sites.
 
 ## Why
 
@@ -12,7 +12,7 @@ LLMs omit charset constantly. Accented or non-English copy without UTF-8 → moj
 copy packs\encoding\GATES.md  <workshop>\.orch\gates\user\ENCODING.md
 ```
 
-Prefer OrcheMax built-in:
+Prefer Orchemax built-in:
 
 ```text
 orch guard encoding path\to\file.html

@@ -14,7 +14,7 @@ copy packs\delphi\GATES.md         <workshop>\.orch\gates\user\DELPHI.md
 copy packs\delphi\claude\RULES.md  <workshop>\.claude\rules\delphi.md
 ```
 
-Enable OrcheMax built-ins: `code_lang: en`, `orch guard encoding` (HTML), `orch guard add-all` on shared repos.
+Enable Orchemax built-ins: `code_lang: en`, `orch guard encoding` (HTML), `orch guard add-all` on shared repos.
 
 ## Depends on
 

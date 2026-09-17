@@ -1,6 +1,6 @@
-# Language seeds (OrcheMax symbol index)
+# Language seeds (Orchemax symbol index)
 
-JSON seeds for **many** languages — same contract OrcheMax embeds for symbol indexing.
+JSON seeds for **many** languages — same contract Orchemax embeds for symbol indexing.
 
 Not a Delphi catalog. See `catalog.json` for the full id list (Go, TypeScript, Python, Rust, Delphi, …).
 
@@ -33,7 +33,7 @@ worker from writing a second copy of a function nobody remembered to tag.
    don't need to be exhaustive, just enough to catch top-level declarations).
 2. Append `<id>` to `catalog.json`'s `languages` array, in the same order the
    file lists them.
-3. If OrcheMax should embed the same seed, say so in your PR — see
+3. If Orchemax should embed the same seed, say so in your PR — see
    [CONTRIBUTING.md](../CONTRIBUTING.md).
 
-Root [SPEC.md](../SPEC.md) and [README.md](../README.md) explain how this feeds OrcheMax workshops.
+Root [SPEC.md](../SPEC.md) and [README.md](../README.md) explain how this feeds Orchemax workshops.

@@ -1,3 +1,3 @@
-Community language packs for OrcheMax (any language). Not the product binary.
+Community language packs for Orchemax (any language). Not the product binary.
 
-![OrcheMax](../docs/brand/isotipo-128.png)
+![Orchemax](../docs/brand/isotipo-128.png)

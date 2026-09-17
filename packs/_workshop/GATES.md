@@ -1,8 +1,8 @@
 # Workshop gates (pack map)
 
-Taxonomy: **O.** = Orche built-in · **P.** = pack/prose · **W.** = owner judgment.
+Taxonomy: **O.** = Orchemax built-in · **P.** = pack/prose · **W.** = owner judgment.
 
-## O — use Orche
+## O — use Orchemax
 
 | Id | Command / feature | Purpose |
 |----|-------------------|---------|
@@ -20,7 +20,7 @@ Taxonomy: **O.** = Orche built-in · **P.** = pack/prose · **W.** = owner judgm
 | O.tracker | `orch guard tracker` | Optional TRACKER table shape (T1–T3) |
 | O.wire | `orch guard wire` | Git / Claude / Cursor adapters |
 
-These **O.** rows are **OrcheMax product** features. This pack only documents them for workshop authors.
+These **O.** rows are **Orchemax product** features. This pack only documents them for workshop authors.
 
 ## W — owner
 

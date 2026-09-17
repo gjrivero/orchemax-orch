@@ -14,4 +14,4 @@ Use with path globs: `**/*.{pas,dpr,dpk,inc}`.
 - Invent React/Vue/Next for this workshop unless the owner asked (if owner declared HTMX/FMX).
 
 ## HTML / email
-If you write `.html` / mail templates: `<meta charset="utf-8">` or `Content-Type: …; charset=utf-8`. Orche: `orch guard encoding`.
+If you write `.html` / mail templates: `<meta charset="utf-8">` or `Content-Type: …; charset=utf-8`. Orchemax: `orch guard encoding`.

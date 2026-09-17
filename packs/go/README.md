@@ -1,7 +1,7 @@
 # Go pack (starter)
 
-Optional language pack for **Go** workshops using OrcheMax.  
-OrcheMax already understands Go AST for symbols (`langs/go.json` → `engine: go-ast`).
+Optional language pack for **Go** workshops using Orchemax.  
+Orchemax already understands Go AST for symbols (`langs/go.json` → `engine: go-ast`).
 
 Ignore this folder if you do not use Go.
 

@@ -1,6 +1,6 @@
 # HTMX / SPA gate (optional pack)
 
-**O.** Orche built-in · **P.** this pack
+**O.** Orchemax built-in · **P.** this pack
 
 | Id | Command / rule | Notes |
 |----|----------------|-------|
@@ -8,4 +8,4 @@
 | P.spa.shell | Persistent shell; swap `#main-content` only | Architecture |
 | P.spa.no-framework-default | No React/Vue/Angular/Next unless owner asks | Anti-LLM bias |
 
-Orche does **not** ship this as `orch guard *` — UI stack is owner choice.
+Orchemax does **not** ship this as `orch guard *` — UI stack is owner choice.

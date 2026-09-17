@@ -1,6 +1,6 @@
 # Encoding gates
 
-| Id | Rule | Orche |
+| Id | Rule | Orchemax |
 |----|------|-------|
 | O.encoding.charset | HTML needs `<meta charset="utf-8">` (or http-equiv); email needs `Content-Type: …; charset=utf-8` | `orch guard encoding` |
 | O.encoding.mojibake | Flag classic mojibake sequences (`Ã©`, `Â¿`, `â€™`, …) | same |
