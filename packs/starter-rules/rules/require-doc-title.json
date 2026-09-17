@@ -1,0 +1,9 @@
+[
+  {
+    "id": "require-doc-title",
+    "on": ["seal", "pre-commit"],
+    "files": ["docs/**/*.md"],
+    "require": "^# ",
+    "message": "a new doc under docs/ needs a top-level '# Title' heading"
+  }
+]

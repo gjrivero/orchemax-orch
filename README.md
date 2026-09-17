@@ -228,10 +228,19 @@ Same JSON shape OrcheMax embeds for symbol seeding.
 | `encoding` | Cross-cutting | Anyone shipping HTML/email |
 | `go` | Language | Go workshops |
 | `delphi` | Language | Delphi/Pascal workshops only |
+| [`starter-rules`](packs/starter-rules/) | Rules starter | `orch pack install`-able example: one `deny`, one `require`, one `cmd` gate to copy and adapt |
 
 Delphi is **field-proven depth**, not the mission. Read `_workshop` → `encoding` → **your** language.
 
+`starter-rules` uses a different, smaller MANIFEST shape than the language
+packs above — see [`catalog/GATES.md`](catalog/GATES.md) for the full gate
+list and [`packs/starter-rules/README.md`](packs/starter-rules/README.md)
+for the install command.
+
 ### OrcheMax built-ins packs document (O.*)
+
+Full table with run points, profile behaviour and the equivalent
+`.orch/gates/user/manifest.json` entry: [`catalog/GATES.md`](catalog/GATES.md).
 
 | Command | Purpose |
 |---------|---------|
@@ -265,7 +274,19 @@ orch guard profile lite    # then shared/strict when ready
 orch guard wire --profile
 ```
 
-Future: `orch pack add <id>`. Today: clone and merge.
+```bash
+git clone https://github.com/gjrivero/orchemax-orch.git
+orch pack install ./orchemax-orch/packs/starter-rules
+```
+
+`orch pack install <git-url>` clones fresh and expects `MANIFEST.yaml` at the
+**root** of that URL — a pack published as its own repo, not a subfolder of
+this one. `starter-rules` installs from a local path (above) until it (or
+this whole repo) gets its own remote. It also only understands the smaller
+MANIFEST shape (`packs/starter-rules/`) — the language packs above
+(`_workshop`, `encoding`, `go`, `delphi`) still install by cloning and
+copying their files in by hand per each pack's own README until they grow
+one too.
 
 ---
 

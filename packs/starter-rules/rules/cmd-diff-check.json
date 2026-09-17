@@ -1,0 +1,9 @@
+[
+  {
+    "id": "cmd-diff-check",
+    "on": ["pre-commit"],
+    "cmd": ["git", "diff", "--cached", "--check", "--"],
+    "message": "git diff --check found trailing whitespace or a leftover conflict marker",
+    "timeout_s": 15
+  }
+]

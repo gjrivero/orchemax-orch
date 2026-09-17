@@ -1,0 +1,11 @@
+name: starter-rules
+version: 0.1.0
+summary: Three example workshop rules (deny, require, cmd) for `orch pack install` — copy, rename, adapt.
+gates:
+  - GATES.md
+rules:
+  - rules/deny-todo.json
+  - rules/require-doc-title.json
+  - rules/cmd-diff-check.json
+docs:
+  - README.md

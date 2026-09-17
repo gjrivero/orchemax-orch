@@ -1,0 +1,8 @@
+[
+  {
+    "id": "deny-todo",
+    "on": ["seal", "pre-commit"],
+    "deny": "TODO",
+    "message": "no TODO left in a sealed change — file a ledger/tracker item instead"
+  }
+]
