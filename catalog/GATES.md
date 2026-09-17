@@ -50,6 +50,12 @@ for those is "no — write a `cmd` gate that shells out to your own script."
 | `guard env-drift [root]` | Denies keys lost/emptied between a `.env.example` and its real instance (genesis) | on-demand, pre-commit/pre-push | Advisory `lite`/`bring`/`none`/unset; blocking `shared`/`strict` | No — diffs two files by key, not by regex |
 | `guard shared-shadow [files...]` | Denies a project file whose path mirrors one already under a shared root (genesis) | on-demand, pre-commit/pre-push | Advisory `lite`/`bring`/`none`/unset; blocking `shared`/`strict` | No — needs the registered shared roots |
 | `guard template-drift [files...]` | Denies a key-set mismatch between a `*.template.json`/`*.example.json` and its instance (genesis) | on-demand, pre-commit/pre-push | Advisory `lite`/`bring`/`none`/unset; blocking `shared`/`strict` | No — same reason as `env-drift` |
+| `guard litter [files...]` | Denies new agent scratch (notes, reports, logs, `-v2`/`final`/`(n)` copies, unlisted dot-folders, byte duplicates, `> nul`-style reserved names) outside `.sandbox/<seat>/` or docs; source/module files never by name; shell redirects (`>`, `tee`, `Out-File`) judged by the IDE hook | on-demand, ide-pre, seal | deny on lite/shared/strict, note on bring, off on none | no (built-in; add paths to `projects[].keep` instead) |
+| `guard principles` | Prints the 9 seeded elemental principles and which are enforced, advisory or guidance | on-demand | n/a | n/a |
+| seal: dangling refs | Deleting or renaming a path another tracked file still names (segment-bounded, rename-aware); comment/`.md` hits are advisory | seal | block on lite/shared/strict, note on bring, off on none | no |
+| seal: unreferenced script | A new `.sh`/`.ps1`/`.cmd`/`.bat`/executable nothing references (a litter-shaped file cannot vouch for it) | seal | follows `guard litter` | no |
+| seal: principle 7 | A test lost assertions or gained a skip while the source it covers changed | seal | advisory; off on none | no |
+| seal: principle 4 | A dispatched worker edited before calling `ask` or stating assumptions (Claude Code transcripts) | seal | advisory; off on none | no |
 
 ## Notes for pack authors
 

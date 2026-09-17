@@ -22,8 +22,10 @@ Task-bound seat. Contract: docs/PROTOCOL-AGENT.md §3.
 - `entitlements_status {}`: plan caps, deny-first.
 
 ## Rules
-- New shared symbol: `orch:export <Name> — <purpose>`.
-- Comments: fact, constraint or non-obvious reason in 1-3 lines; item refs ok; no dates, anecdotes or stories; exported symbols keep a one-line purpose.
+- New symbol: `orch:export <Name> — <purpose>`.
+- Non-code (notes, tests, logs) → `.sandbox/<seat>/`, deleted at close; no `-v2`/`-final`/copies; no `> nul` (`/dev/null`/`$null`); scripts follow it too.
+- Elemental principles: `DEV_PRACTICES.md`.
+- Comments: fact/constraint/reason, 1-3 lines; no dates/stories; exported symbols get a one-line purpose.
 - Echo every acceptance criterion in `verify_report`.
 - Out of scope: ask the Chair; never spawn or open another CLI.
 - Prior seat: skill orch-recall.
