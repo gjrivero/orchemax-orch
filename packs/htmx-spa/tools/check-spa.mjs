@@ -331,19 +331,10 @@ for (let pass = 1; pass <= PASSES; pass++) {
       ? await page.$(`${NAV_SELECTOR.split(',')[0].trim()}[hx-get="${destino.attr}"], a[href="${destino.attr}"]`)
       : (await page.$$(NAV_SELECTOR))[destino.indice] || null;
     if (!el) continue;
-    /* La seccion ACTIVA no se puede clicar, y eso es correcto: un patron muy
-       extendido le pone `pointer-events: none` a `[aria-current="page"]` para
-       que nadie navegue a la pagina en la que ya esta.
-
-       Sin este salto, playwright reintenta el clic hasta agotar el timeout y
-       tira una excepcion cuyo texto --- "<div class=topbar-ctl> intercepts
-       pointer events"--- se lee como un defecto de z-index del producto. Lo
-       midio matchitfy el 2026-08-27: el primer destino de la lista era el
-       activo, asi que el verificador no llegaba a medir NADA y el error
-       apuntaba al sitio equivocado.
-
-       Se salta en vez de forzar `{force: true}`: forzarlo mediria un clic que
-       un usuario no puede dar. */
+    /* Skip the ACTIVE section: `[aria-current="page"]` commonly carries
+       `pointer-events: none`, so a click retries until timeout and surfaces
+       as a fake z-index defect. Skipping beats `{force: true}`, which would
+       measure a click no user can make. */
     /* Y un elemento OCULTO tampoco es un destino, por la misma razon que el
        inerte: nadie lo puede pulsar. Un selector amplio --- y el de una nav por
        JS lo es, porque casa por `onclick` --- recoge de paso los duplicados del
