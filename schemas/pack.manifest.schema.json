@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://github.com/gjrivero/orchemax-orch/schemas/pack.manifest.schema.json",
-  "title": "Orche pack MANIFEST",
+  "title": "Orchemax pack MANIFEST",
   "type": "object",
   "required": ["id", "kind", "version", "summary"],
   "properties": {

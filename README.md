@@ -48,7 +48,7 @@ It is **not** another chat tab, not another agent IDE, and not a replacement for
 | Surprise invoices; no floor view for the CTO | Caps, usage by project/model, **metadata overlook** |
 | Building your own babysitting infra | Buy the assembly line — ship apps instead |
 
-### What orch gives your agents
+### What Orchemax gives your agents
 
 Once a seat is open, every agent gets these MCP tools with no extra setup:
 
@@ -173,7 +173,7 @@ Full walkthrough with commands and examples: [docs.orchemax.com](https://docs.or
 2. **Open a seat** — `orch opencode` / `orch claude` / … in a registered project; first interactive seat is Chair.  
 3. **Chair vs workers** — one director; spawn workers for secondary tasks; don’t open a second Chair.  
 4. **Shared code** — lock → edit → release; search symbols before inventing.  
-5. **Talk on the bus** — orch messaging, not a parallel vendor chat between agents.  
+5. **Talk on the bus** — Orchemax messaging, not a parallel vendor chat between agents.  
 6. **Optional cloud** — link account for caps / CTO overlook; source stays local.  
 7. **Optional packs (this repo)** — merge `_workshop` + `encoding` + your language packs.
 
