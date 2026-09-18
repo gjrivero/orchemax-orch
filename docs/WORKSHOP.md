@@ -73,5 +73,7 @@ force-released with `holder=*`).
 None of the above is a suggestion enforced by prose alone — `task_claim`,
 `ask`, and the graph tools (`trace_path`, `impact`, `code_snippet`,
 `architecture`) are MCP tools the product wires into every seat; see the root
-[README.md](../README.md#what-orch-gives-your-agents) for the full list, and
+[README.md](../README.md#what-orch-gives-your-agents) for the full list,
+[GATEWAY-AGENTS.md](GATEWAY-AGENTS.md) for pointing each coding CLI at the local
+gateway (OpenCode, OpenClaude, Claude Code, Cursor, …), and
 [GATES.md](GATES.md) for the gates that back the shared-code rules above.

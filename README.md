@@ -26,7 +26,7 @@ It is **not** another chat tab, not another agent IDE, and not a replacement for
 | **CLI** | `orch` — opens seats, locks shared code, buses messages, optional guards |
 | **Model** | Your agents keep their **native UI**; Orchemax is the factory underneath |
 | **Code** | Stays on **your machines** (Zero-Code-Leak: SaaS sees usage metadata, never source) |
-| **Stack** | Orchemax itself is Go; **your** workshop is polyglot (~30 language templates) |
+| **Stack** | Orchemax itself is Go; **your** workshop is polyglot (**29** language seeds in `langs/` today — PRs add more) |
 
 ### What it is for
 
@@ -66,7 +66,22 @@ Once a seat is open, every agent gets these MCP tools with no extra setup:
 | `usage_status` | Token spend and crush savings by session, worker, and model — content-free |
 | `verify_report` | The worker's own verification evidence (tests run, symbols reused) attached before a session closes |
 
-**Gateway:** a local API-key vault, not an account login. Add keys once (`orch gateway keys add <provider>`) and every OpenAI-compatible CLI shares **one connection** instead of one per provider; the gateway rotates through your keys on rate limits and applies the same compression to every call. No fixed savings percentage is published anywhere — real compression for your workspace shows up in `orch usage`. Claude Code keeps its own plan login and never routes through this vault (Anthropic's terms forbid third-party login or intermediation of plan credentials).
+**Gateway:** a local API-key vault, not an account login. Add keys once
+(`orch gateway keys add <provider>`) and OpenAI-compatible seats share **one
+connection** with rotation on rate limits and the same compression on every call.
+No fixed savings percentage is published — real compression shows in `orch usage`.
+
+Wire each seat with `orch gateway connect …` (see the matrix):
+
+| Seat | Connect | Notes |
+|------|---------|--------|
+| OpenCode | `connect opencode --allow-user-scope` | writes `opencode.json` |
+| OpenClaude | `connect openclaude --allow-user-scope` | Claude Code UX + third-party providers → `~/.openclaude/settings.json` |
+| Command Code / Copilot / Cursor BYOK | `connect openai` (or `commandcode`) | paste / Settings |
+| Claude Code | `connect claude` | Anthropic plan stays on its own login; API-key passthrough only |
+
+Full matrix: [docs/GATEWAY-AGENTS.md](docs/GATEWAY-AGENTS.md) · Product:
+[docs.orchemax.com/how-to/gateway-keys-and-connect](https://docs.orchemax.com/how-to/gateway-keys-and-connect/).
 
 ### Why it differs from its closest peer (Traycer)
 
@@ -76,7 +91,7 @@ Once a seat is open, every agent gets these MCP tools with no extra setup:
 2. **One Chair law** — stops multi-director chaos.  
 3. **Shared locks + reuse** — workshop law for common code, not only artifacts/reviews.  
 4. **Zero-Code-Leak overlook** — CTOs see tokens/actors/policy without SaaS reading source.  
-5. **Polyglot + packs** — ~30 language templates; this repo feeds stack craft.  
+5. **Polyglot + packs** — **29** language seeds in this repo today; open a PR on `langs/` to add another. Packs feed stack craft.  
 
 Full matrix below, including where peers beat us today. We sell governed workshops and a CTO overlook — not another agent IDE.
 
@@ -203,7 +218,7 @@ Packs merge under owner markers such as `<!-- owner rules below this line -->`.
 ## What’s inside this repo
 
 ```text
-langs/           # ~30 language seeds (symbol index) — Go, TS, Python, Delphi, Rust, …
+langs/           # 29 language seeds today (symbol index) — Go, TS, Python, Delphi, Rust, … — PRs welcome
 packs/
   _workshop/     # Agnostic defaults — START HERE (any language)
   encoding/      # Cross-cutting HTML/email UTF-8 + mojibake
