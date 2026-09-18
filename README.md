@@ -66,21 +66,19 @@ Once a seat is open, every agent gets these MCP tools with no extra setup:
 | `usage_status` | Token spend and crush savings by session, worker, and model — content-free |
 | `verify_report` | The worker's own verification evidence (tests run, symbols reused) attached before a session closes |
 
-**Gateway:** a local API-key vault, not an account login. Add keys once
-(`orch gateway keys add <provider>`) and OpenAI-compatible seats share **one
-connection** with rotation on rate limits and the same compression on every call.
-No fixed savings percentage is published — real compression shows in `orch usage`.
+**Gateway (optional, API-key seats only):** a local vault for **provider API keys**,
+not a replacement for Cursor / Claude / Codex plan logins. Add keys once
+(`orch gateway keys add <provider>`); seats that actually use keys (OpenCode,
+OpenClaude, Command Code, optional BYOK) share one connection with rotation and
+crush. Account seats keep their vendor login — Orchemax still governs them via
+MCP/bus/locks, without routing their model traffic.
 
-Wire each seat with `orch gateway connect …` (see the matrix):
+| Seat kind | Examples | Gateway? |
+|-----------|----------|----------|
+| Account / plan | Cursor, Claude Code (subscription), Codex | **No** (default) |
+| API-key / BYO | OpenCode, OpenClaude, Command Code, Cursor BYOK | **Yes** — `orch gateway connect …` |
 
-| Seat | Connect | Notes |
-|------|---------|--------|
-| OpenCode | `connect opencode --allow-user-scope` | writes `opencode.json` |
-| OpenClaude | `connect openclaude --allow-user-scope` | Claude Code UX + third-party providers → `~/.openclaude/settings.json` |
-| Command Code / Copilot / Cursor BYOK | `connect openai` (or `commandcode`) | paste / Settings |
-| Claude Code | `connect claude` | Anthropic plan stays on its own login; API-key passthrough only |
-
-Full matrix: [docs/GATEWAY-AGENTS.md](docs/GATEWAY-AGENTS.md) · Product:
+Matrix and rules: [docs/GATEWAY-AGENTS.md](docs/GATEWAY-AGENTS.md) · Product:
 [docs.orchemax.com/how-to/gateway-keys-and-connect](https://docs.orchemax.com/how-to/gateway-keys-and-connect/).
 
 ### Why it differs from its closest peer (Traycer)
