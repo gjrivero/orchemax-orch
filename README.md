@@ -34,8 +34,9 @@ It is **not** another chat tab, not another agent IDE, and not a replacement for
 - Teams that already bought Claude / Cursor / OpenCode and need **one director (Chair)** plus workers — not five directors racing the same files  
 - Workshops with **shared libraries** across apps (search before invent, lock before edit)  
 - Orgs that want **spend visibility, caps, allowlists, and an overlook** without uploading the repo  
+- Linked accounts on **Professional+** that want **Telegram Assist HITL** (`/approve` / `/deny` in `/app/assist`) — Free/Starter stay locked on `telegram_hitl`  
 
-**Day-to-day:** install `orch` → bind a workshop → open a seat (`orch claude`, `orch opencode`, …) → Chair coordinates → workers execute secondary tasks → shared paths under locks, backed by the call graph → optional gateway for API-key CLIs → optional account for overlook / plans (Free → Enterprise).
+**Day-to-day:** install `orch` → bind a workshop → open a seat (`orch claude`, `orch opencode`, …) → Chair coordinates → workers execute secondary tasks → shared paths under locks, backed by the call graph → optional gateway for API-key CLIs → optional account for overlook / plans (Free → Enterprise; Assist HITL from Professional).
 
 ### What it avoids (the pain it kills)
 
@@ -187,7 +188,7 @@ Full walkthrough with commands and examples: [docs.orchemax.com](https://docs.or
 3. **Chair vs workers** — one director; spawn workers for secondary tasks; don’t open a second Chair.  
 4. **Shared code** — lock → edit → release; search symbols before inventing.  
 5. **Talk on the bus** — Orchemax messaging, not a parallel vendor chat between agents.  
-6. **Optional cloud** — link account for caps / CTO overlook; source stays local.  
+6. **Optional cloud** — link account for caps / CTO overlook / **Assist HITL (Professional+)**: Telegram `/approve` `/deny` from `/app/assist`; source stays local.  
 7. **Optional packs (this repo)** — merge `_workshop` + `encoding` + your language packs.
 
 ---
@@ -335,4 +336,5 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). Highest value: better `langs/<id>.json`,
 
 MIT — see [LICENSE](LICENSE).
 
-Product site and plans: [orchemax.com](https://orchemax.com).
+Product site and plans: [orchemax.com](https://orchemax.com).  
+Assist HITL (Professional+): [docs/ASSIST-HITL.md](docs/ASSIST-HITL.md) · [docs.orchemax.com](https://docs.orchemax.com/how-to/notifications-and-approvals/).
