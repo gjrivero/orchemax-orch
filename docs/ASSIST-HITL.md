@@ -1,14 +1,10 @@
-# Assist HITL (Professional+)
+# Assist HITL (Team+) vs soft notify (Professional+)
 
-Orchemax SaaS Assist is **live** from **Professional** upward (also Team and
-Enterprise). Free and Starter stay locked on capability `telegram_hitl`.
+| Capability | Min plan | Orchemax price | What it is |
+|------------|----------|----------------|------------|
+| `telegram_notify` | Professional | **$25/mo** | Soft channel: alerts, `/status`, `/answer`, local `orch notify telegram` |
+| `telegram_hitl` | Team | **$49/seat/mo** | Org Assist: `/app/assist` + SaaS bot `/approve` `/deny` `/reject` → notices |
 
-| Surface | What it does |
-|---------|----------------|
-| Console `/app/assist` | Link a Telegram `chat_id`; approve/deny buttons |
-| Orchemax Telegram bot | `/approve` · `/deny` · `/reject` (deny alias) → same `orch_notices` sink as the console |
-| Local `orch notify telegram` | Workshop long-poll for seal/promote/`needs_approval` on **your machine** — separate from SaaS Assist |
+Local BYO Telegram on the workshop machine is not a SaaS upsell. SaaS Assist HITL is Team because peers either give chat free (Hermes/OpenClaw self-host) or bury approvals in a flat hosted plan (Paperclip ~€10/mo all-in) — we price **governance**, not the transport.
 
-Docs: [Notifications and approvals](https://docs.orchemax.com/how-to/notifications-and-approvals/) · [Plans matrix](https://docs.orchemax.com/reference/plans/) · [Gateway and overlook](https://docs.orchemax.com/gateway-and-overlook/).
-
-Team still owns allowlists and work windows. Assist is **not** Team-only.
+Docs: [Notifications and approvals](https://docs.orchemax.com/how-to/notifications-and-approvals/) · [Plans](https://docs.orchemax.com/reference/plans/) · competitor brief in product repo `docs/marketing/telegram-ladder-competitors.md`.
