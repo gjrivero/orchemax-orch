@@ -23,6 +23,27 @@ Opt out for one shell: `ORCH_ENABLE_AGENT_MOUSE=1`.
 If you already set `OPENCODE_DISABLE_MOUSE=true`, Orchemax mirrors
 `CLAUDE_CODE_DISABLE_MOUSE=1` so OpenClaude matches OpenCode.
 
+## OpenClaude always shows `orchemax/pareto` (or another model)
+
+**Cause:** `~/.openclaude/settings.json` had `env.OPENAI_MODEL` pinned.
+OpenClaude merges `settings.env` onto the process at startup, so that value
+wins over the `model` field and the in-UI picker.
+
+**Fix:** keep gateway routing in env, pick the model only via `model`:
+
+```json
+{
+  "model": "orchemax/deepseek-v4.1-flash",
+  "env": {
+    "CLAUDE_CODE_USE_OPENAI": "1",
+    "OPENAI_BASE_URL": "http://127.0.0.1:8788/v1"
+  }
+}
+```
+
+Do **not** put `OPENAI_MODEL` in `env`. `orch openclaude` now scrubs a
+persisted `env.OPENAI_MODEL` on launch so the picker stays sticky.
+
 ## OpenClaude / Claude: no permission prompts (and no silent MCP denials)
 
 **Modes that matter:**
