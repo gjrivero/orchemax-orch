@@ -98,6 +98,12 @@ OPENAI_BASE_URL=http://127.0.0.1:8788/v1
 OPENAI_API_KEY=orch_gk_…
 ```
 
+For **OpenClaude** under `orch openclaude`: prefer **not** pasting the key
+into `settings.json` (session injects `orch_wk_…`), and **never** pin
+`OPENAI_MODEL` in `settings.env` — that overrides the UI model picker.
+Set the choice in the top-level `model` field only. Details:
+[COMMON-SETTINGS.md](COMMON-SETTINGS.md).
+
 ## Pattern for similar agents
 
 Classify once:

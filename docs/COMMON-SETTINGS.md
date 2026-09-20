@@ -177,4 +177,5 @@ OpenCode has an optional file writer (`--allow-user-scope`).
 - [WORKSHOP.md](WORKSHOP.md) — workspace / Chair / workers / schedules  
 - [GATEWAY-AGENTS.md](GATEWAY-AGENTS.md) — seat matrix  
 - [ASSIST-HITL.md](ASSIST-HITL.md) — Team+ Telegram approve/deny  
+- Product: [Common seat tune-ups](https://docs.orchemax.com/how-to/common-seat-tune-ups/)  
 - Product: [Know when a worker finishes or asks](https://docs.orchemax.com/how-to/know-when-a-worker-finishes-or-asks/)
