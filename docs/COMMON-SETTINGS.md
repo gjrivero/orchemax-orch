@@ -23,6 +23,39 @@ Opt out for one shell: `ORCH_ENABLE_AGENT_MOUSE=1`.
 If you already set `OPENCODE_DISABLE_MOUSE=true`, Orchemax mirrors
 `CLAUDE_CODE_DISABLE_MOUSE=1` so OpenClaude matches OpenCode.
 
+## OpenClaude / Claude: no permission prompts (and no silent MCP denials)
+
+**Modes that matter:**
+
+| `defaultMode` | Asks? | What runs |
+|---|---|---|
+| `default` | Yes, often | You approve each sensitive tool |
+| `acceptEdits` | Less | Edits auto; Bash/MCP may still ask |
+| `dontAsk` | Never | **Only** `permissions.allow` — everything else is denied |
+| `bypassPermissions` / `fullAccess` | Never | Tools run without prompting |
+
+If you want **no questions** under Orchemax, prefer `bypassPermissions`
+(workshop locks/guards still apply). Example for `~/.openclaude/settings.json`:
+
+```json
+"permissions": {
+  "defaultMode": "bypassPermissions",
+  "allow": [
+    "mcp__orch__*",
+    "Bash(*)",
+    "Read(*)",
+    "Edit(*)",
+    "Write(*)",
+    "MultiEdit(*)"
+  ]
+}
+```
+
+`dontAsk` alone with a short allow-list is what produced
+`mcp__orch__verify_status has been denied` — add `mcp__orch__*` or switch
+mode. Restart the seat after editing settings. In-session you can also use
+`/permissions` or `/config` if the CLI exposes them.
+
 ## OpenClaude / Claude `dontAsk` denies `mcp__orch__…`
 
 **Symptom:**
