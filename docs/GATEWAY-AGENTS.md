@@ -116,6 +116,17 @@ Classify once:
 Do not invent a second vault. Do not tell plan users to point their IDE at `:8788`.
 Do not add per-CLI connect writers — there are hundreds of agents.
 
+## Seat injection (skills / hooks / gates)
+
+Same doctrine as the gateway: **not** one adapter per agent name.
+
+| Layer | What |
+|-------|------|
+| **Always** | `.agents/skills`, `.orch/` runtime+MCP, seal gates |
+| **Layout families** | Few schemas (`claude_settings`, `cursor_hooks`, `commandcode`) reused by dogfood CLIs that share a config tree |
+
+Full table and anti-patterns: [SEAT-INJECTION.md](SEAT-INJECTION.md).
+
 ## Tool execution permissions & prompt suppression
 
 Orchemax governs the workshop perimeter (git worktrees, `.sandbox/`, audit logs, and quality gates). When agents run under Orchemax, they should not block unattended workers or spam interactive sessions asking for confirmation on every command or file edit.
@@ -142,6 +153,7 @@ orch gateway status
 
 - [WORKSHOP.md](WORKSHOP.md) — workspace / Chair / workers  
 - [COMMON-SETTINGS.md](COMMON-SETTINGS.md) — mouse junk, OpenClaude notify, turn caps, schedule denies  
+- [SEAT-INJECTION.md](SEAT-INJECTION.md) — always kit vs layout families (no agent allowlists)  
 - Product: [Gateway keys and connect](https://docs.orchemax.com/how-to/gateway-keys-and-connect/)  
 - Recipe: [Connect OpenCode](https://docs.orchemax.com/talk-to-orch/connect-opencode-gateway/)  
 - Recipe: [Connect OpenAI-compat agent](https://docs.orchemax.com/talk-to-orch/connect-openclaude-gateway/)

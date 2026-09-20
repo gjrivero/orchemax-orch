@@ -106,6 +106,8 @@ None of the above is a suggestion enforced by prose alone — `task_claim`,
 [README.md](../README.md#what-orch-gives-your-agents) for the full list,
 [GATEWAY-AGENTS.md](GATEWAY-AGENTS.md) for pointing each coding CLI at the local
 gateway (OpenCode, OpenClaude, Claude Code, Cursor, …),
+[SEAT-INJECTION.md](SEAT-INJECTION.md) for the always kit vs layout families
+(skills/hooks — not an agent-name allowlist),
 [COMMON-SETTINGS.md](COMMON-SETTINGS.md) for frequent `orch.yaml` / env tune-ups
 (mouse junk, Notification wire, turn caps), and
 [GATES.md](GATES.md) for the gates that back the shared-code rules above.

@@ -1,27 +1,47 @@
 # Common settings (workshop tune-ups)
 
-Field lessons that improve day-to-day seats. These are **optional** — put them
-in your workshop `orch.yaml` (or the named env) when you hit the symptom.
+Field lessons for day-to-day seats. Optional workshop settings live in
+`orch.yaml` / agent config when you hit the symptom.
 Product docs: [docs.orchemax.com](https://docs.orchemax.com).
 
-## Mouse / focus garbage in the chat (`[I[O`, `<35;…M`)
+## Terminal UI — Orchemax owns it (no mouse tricks)
 
-**Symptom:** clicking or focusing the terminal pastes escape junk into the
-agent chat (OpenCode and OpenClaude / Claude Code family).
-
-**Cause:** the TUI enables DEC mouse/focus reporting; some builds do not
-filter those bytes. Orchemax already resets leftover modes around seats;
-turning mouse off is an **owner choice** (native select works; in-TUI wheel
-scroll usually does not).
+**You do not need OpenCode / Claude Code mouse hacks, Quick Edit toggles, or
+`OPENCODE_DISABLE_MOUSE`.** Interactive seats on Windows go through Orchemax’s
+terminal path so typing, wheel, select/copy, and exit restore match a bare
+vendor CLI.
 
 ```yaml
 agents:
-  disable_mouse: true   # injects OPENCODE_DISABLE_MOUSE + CLAUDE_CODE_DISABLE_MOUSE
+  seat_host: true   # default on Windows; ORCH_SEAT_HOST=0 turns it off
 ```
 
-Opt out for one shell: `ORCH_ENABLE_AGENT_MOUSE=1`.  
-If you already set `OPENCODE_DISABLE_MOUSE=true`, Orchemax mirrors
-`CLAUDE_CODE_DISABLE_MOUSE=1` so OpenClaude matches OpenCode.
+| Capability | Behavior |
+|------------|----------|
+| Host-scroll (Claude-settings family) | ConPTY hold + host VT scrollback |
+| Child-scroll (OpenCode + unknown BYO) | Native attach; vendor TUI owns scroll; orch clears Quick Edit |
+| Live seat ops | `orch seat status\|wait\|read\|report` (+ MCP `seat_*`) |
+| Detach / reattach | LLM `seat_detach`; human returns with `orch <agent>` (hosted hold only) |
+
+Unknown `orch <bin>` defaults to child-scroll — not a name allowlist.
+
+**Escape hatch only** (`seat_host: false`): `agents.disable_mouse: off|clicks|all`
+for Claude-family classic knobs. Orchemax never sets `OPENCODE_DISABLE_MOUSE`
+under seat_host. Prefer leaving seat_host on.
+
+Full how-to:
+[Common seat tune-ups](https://docs.orchemax.com/how-to/common-seat-tune-ups/).
+
+## OpenClaude `/compact` fails (manual + automatic)
+
+**Cause:** `compactModel` is a flash/reasoning model (e.g.
+`orchemax/deepseek-flash-latest`). Summaries land in `reasoning`; OpenClaude
+only reads chat `content`.
+
+**Fix:** `orch openclaude` rewrites weak `compactModel` values in
+`~/.openclaude.json` to `orchemax/pareto` (override
+`ORCH_OPENCLAUDE_COMPACT_MODEL`, opt out with `=off`). Start a new seat, then
+`/compact` again.
 
 ## OpenClaude always shows `orchemax/pareto` (or another model)
 
@@ -109,8 +129,10 @@ settings.
 **Symptom:** OpenClaude waits on a permission / idle prompt; no toast or
 Telegram.
 
-**Cause:** OpenClaude reads `.openclaude/`, not `.claude/`. The Notification
-hook that runs `orch hook notification` must be wired for OpenClaude.
+**Cause:** OpenClaude uses the **Claude settings/hooks schema** under
+`.openclaude/` (not `.claude/`). That is the `claude_settings` layout family —
+same adapter as Claude Code, different config dir. See
+[SEAT-INJECTION.md](SEAT-INJECTION.md).
 
 ```bash
 orch guard wire --openclaude
@@ -118,7 +140,8 @@ orch guard wire --openclaude
 
 Opening `orch openclaude` also injects project
 `.openclaude/settings.local.json` automatically. Claude Code still uses
-`orch guard wire --claude`. Prove desktop: `orch notify test --desktop`.
+`orch guard wire --claude` (same family, `.claude/`). Prove desktop:
+`orch notify test --desktop`.
 
 ## OpenClaude stops at 50 turns
 
@@ -172,10 +195,14 @@ Hundreds of agents share two wires — see [GATEWAY-AGENTS.md](GATEWAY-AGENTS.md
 Prefer `orch gateway connect` (OpenAI-compat) or `connect anthropic`; only
 OpenCode has an optional file writer (`--allow-user-scope`).
 
+Seat skills / hooks follow the same rule: **always kit + few layout families**,
+not an agent-name allowlist — [SEAT-INJECTION.md](SEAT-INJECTION.md).
+
 ## Related
 
 - [WORKSHOP.md](WORKSHOP.md) — workspace / Chair / workers / schedules  
 - [GATEWAY-AGENTS.md](GATEWAY-AGENTS.md) — seat matrix  
+- [SEAT-INJECTION.md](SEAT-INJECTION.md) — always kit vs layout families  
 - [ASSIST-HITL.md](ASSIST-HITL.md) — Team+ Telegram approve/deny  
 - Product: [Common seat tune-ups](https://docs.orchemax.com/how-to/common-seat-tune-ups/)  
 - Product: [Know when a worker finishes or asks](https://docs.orchemax.com/how-to/know-when-a-worker-finishes-or-asks/)

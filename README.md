@@ -24,7 +24,7 @@ It is **not** another chat tab, not another agent IDE, and not a replacement for
 |--|--|
 | **Product** | Orchemax — multi-agent · multi-session **workshop governance** |
 | **CLI** | `orch` — opens seats, locks shared code, buses messages, optional guards |
-| **Model** | Your agents keep their **native UI**; Orchemax is the factory underneath |
+| **Model** | Your agents keep their **native UI**; Orchemax hosts the Windows terminal path (scroll, typing, detach/reattach) underneath |
 | **Code** | Stays on **your machines** (Zero-Code-Leak: SaaS sees usage metadata, never source) |
 | **Stack** | Orchemax itself is Go; **your** workshop is polyglot (**29** language seeds in `langs/` today — PRs add more) |
 
@@ -339,4 +339,5 @@ MIT — see [LICENSE](LICENSE).
 Product site and plans: [orchemax.com](https://orchemax.com).  
 Assist HITL (Team+): [docs/ASSIST-HITL.md](docs/ASSIST-HITL.md) · [docs.orchemax.com](https://docs.orchemax.com/how-to/notifications-and-approvals/).  
 Workshop model + Team schedules: [docs/WORKSHOP.md](docs/WORKSHOP.md) · [docs.orchemax.com/how-to/team-work-schedules](https://docs.orchemax.com/how-to/team-work-schedules/).  
-Common tune-ups (mouse junk, OpenClaude notify, turn caps): [docs/COMMON-SETTINGS.md](docs/COMMON-SETTINGS.md).
+Common tune-ups (mouse junk, OpenClaude notify, turn caps): [docs/COMMON-SETTINGS.md](docs/COMMON-SETTINGS.md).  
+Seat injection (always kit vs layout families — no agent allowlists): [docs/SEAT-INJECTION.md](docs/SEAT-INJECTION.md).
