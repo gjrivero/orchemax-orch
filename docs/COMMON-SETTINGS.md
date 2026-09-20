@@ -23,6 +23,33 @@ Opt out for one shell: `ORCH_ENABLE_AGENT_MOUSE=1`.
 If you already set `OPENCODE_DISABLE_MOUSE=true`, Orchemax mirrors
 `CLAUDE_CODE_DISABLE_MOUSE=1` so OpenClaude matches OpenCode.
 
+## OpenClaude / Claude `dontAsk` denies `mcp__orch__…`
+
+**Symptom:**
+
+```text
+Permission to use mcp__orch__verify_status has been denied because
+Claude Code is running in don't ask mode.
+```
+
+**Cause:** `~/.openclaude/settings.json` (or Claude’s) has
+`permissions.defaultMode: "dontAsk"` and only an explicit allow-list. Tools
+not listed are refused without a prompt. A partial list (`msg_inbox`,
+`task_list`, …) is not enough for `verify_status` / spawn / locks.
+
+**Fix:** allow the whole Orchemax MCP server:
+
+```json
+"permissions": {
+  "allow": ["mcp__orch__*", "…your other rules…"],
+  "defaultMode": "dontAsk"
+}
+```
+
+`orch guard wire --openclaude` (and `--claude`) also merges `mcp__orch__*`
+into the project/local settings block. Restart the seat after changing
+settings.
+
 ## OpenClaude needs a reply — no desktop toast
 
 **Symptom:** OpenClaude waits on a permission / idle prompt; no toast or
