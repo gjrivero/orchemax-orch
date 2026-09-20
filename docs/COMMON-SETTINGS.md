@@ -64,19 +64,19 @@ wins over the `model` field and the in-UI picker.
 Do **not** put `OPENAI_MODEL` in `env`. `orch openclaude` now scrubs a
 persisted `env.OPENAI_MODEL` on launch so the picker stays sticky.
 
-## OpenClaude / Claude: no permission prompts (and no silent MCP denials)
+## OpenClaude / Claude: no permission prompts (Chair and workers)
 
-**Modes that matter:**
+Under Orchemax the **workshop** is the perimeter (locks, guards) — not the
+vendor “Allow this tool?” dialog. Defaults:
 
-| `defaultMode` | Asks? | What runs |
-|---|---|---|
-| `default` | Yes, often | You approve each sensitive tool |
-| `acceptEdits` | Less | Edits auto; Bash/MCP may still ask |
-| `dontAsk` | Never | **Only** `permissions.allow` — everything else is denied |
-| `bypassPermissions` / `fullAccess` | Never | Tools run without prompting |
+- Interactive + headless Claude / OpenClaude / agy: `--dangerously-skip-permissions`
+- `orch guard wire`: sets `permissions.defaultMode: bypassPermissions` when unset
+  and always allows `mcp__orch__*`
+- Workers never have a human at the keyboard — a permission wall is exit **126**
 
-If you want **no questions** under Orchemax, prefer `bypassPermissions`
-(workshop locks/guards still apply). Example for `~/.openclaude/settings.json`:
+Prefer `bypassPermissions` over `dontAsk` (`dontAsk` **denies** anything not
+listed). Example for `~/.openclaude/settings.json` or project
+`.openclaude/settings.local.json`:
 
 ```json
 "permissions": {
@@ -92,10 +92,8 @@ If you want **no questions** under Orchemax, prefer `bypassPermissions`
 }
 ```
 
-`dontAsk` alone with a short allow-list is what produced
-`mcp__orch__verify_status has been denied` — add `mcp__orch__*` or switch
-mode. Restart the seat after editing settings. In-session you can also use
-`/permissions` or `/config` if the CLI exposes them.
+An explicit `defaultMode` you set is never overwritten by wire. Restart the
+seat after editing settings.
 
 ## OpenClaude / Claude `dontAsk` denies `mcp__orch__…`
 
