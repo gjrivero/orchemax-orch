@@ -9,6 +9,20 @@ already have a **vendor login + token plan** keep that login — Cursor, Claude 
 Product how-to:  
 https://docs.orchemax.com/how-to/gateway-keys-and-connect/
 
+## Two protocols (not hundreds of writers)
+
+Hundreds of agent CLIs share **two wires**. Orchemax connect is protocol-first:
+
+| Protocol | Command | Who |
+|----------|---------|-----|
+| **OpenAI-compat** | `orch gateway connect` / `openai` | OpenCode, OpenClaude, Command Code, Copilot BYOK, Cursor BYOK, any unknown BYO CLI |
+| **Anthropic Messages** | `orch gateway connect anthropic` (alias `claude`) | Claude Code **with API key** + `agents.auth.claude: gateway` |
+| **OpenCode file write** (optional) | `orch gateway connect opencode --allow-user-scope` | Only OpenCode's JSON layout — the sole vendor writer |
+| **Account / plan** | — | Cursor subscription, Claude plan, Codex — **no** connect |
+
+Aliases (`openclaude`, `commandcode`, `copilot`, `cursor`, …) still print the
+**openai** paste block. Orchemax does **not** ship a settings writer per CLI.
+
 ## Two kinds of seats
 
 | Kind | Examples | Model auth | Gateway? |
@@ -24,7 +38,7 @@ gateway credential would steal the subscription login and its connectors
 ## When the gateway applies
 
 ```text
-API-key seat (OpenCode, OpenClaude, …)
+API-key seat (any OpenAI-compat BYO agent)
         │  Base URL + virtual orch_gk_…
         ▼
 orch gateway  (:8788)
@@ -47,6 +61,7 @@ orch still under the seat → MCP, bus, locks, usage (not model routing)
 - Upstream secrets live only in machine-home `keys.env` — never in chat or this repo.
 - On a gateway seat the agent sees a **virtual** key (`orch_gk_…`), never upstream secrets.
 - Several keys in one env var (`OPENROUTER_API_KEY=a,b,c`) = rotation ring.
+- Models: `GET /v1/models` on the gateway returns **real upstream ids**.
 
 ## Per-seat matrix
 
@@ -57,17 +72,16 @@ orch still under the seat → MCP, bus, locks, usage (not model routing)
 | **Cursor** (subscription) | `account` | Open `orch cursor`; keep Cursor login. No `gateway connect`. |
 | **Claude Code** (Pro/Max / OAuth) | `account` | Open `orch claude`; keep Anthropic login. Gateway refuses OAuth bearers (`403`). |
 | **Codex** | `account` | Keep OpenAI plan login. |
+| **Antigravity (agy)** | `account` | Open `orch agy`; keeps product login. Orchemax auto-approves tool execution via `--dangerously-skip-permissions`. Machine-wide MCP wire: `orch guard wire --agy --scope user --allow-user-scope`. |
 
 ### API-key / BYO — gateway **does** apply
 
 | Seat | Why | Connect | Config |
 |------|-----|---------|--------|
-| **OpenCode** | TUI + OpenAI-compat providers | `orch gateway connect opencode --allow-user-scope` | `~/.config/opencode/opencode.json` |
-| **OpenClaude** | Claude Code UX + **third-party** provider (not Anthropic plan) | `orch gateway connect openclaude --allow-user-scope` | `~/.openclaude/settings.json` → `env` |
-| **Command Code** | OpenAI-compat CLI | `orch gateway connect commandcode` | print env / paste |
-| **Copilot CLI** (provider key) | OpenAI-compat flags | `orch gateway connect openai` | print env |
-| **Cursor BYOK** (opt-in) | Override OpenAI base URL in Settings | `orch gateway connect openai` | Settings → Models only |
-| **Claude Code** (Anthropic **API key** only) | Passthrough Messages API | `orch gateway connect claude` + `agents.auth.claude: gateway` | paste env — **no** OpenRouter ring |
+| **Any OpenAI-compat BYO** | Dominant wire | `orch gateway connect` | paste Base URL + `orch_gk_…` |
+| **OpenCode** | Optional convenience | `orch gateway connect opencode --allow-user-scope` | writes `~/.config/opencode/opencode.json` |
+| **OpenClaude / Command Code / Copilot / Cursor BYOK** | Same OpenAI wire | aliases → openai paste | agent’s own settings / GUI |
+| **Claude Code** (Anthropic **API key** only) | Messages API passthrough | `orch gateway connect anthropic` + `agents.auth.claude: gateway` | paste env — **no** OpenRouter ring |
 
 ### OpenClaude vs Claude Code
 
@@ -75,19 +89,13 @@ orch still under the seat → MCP, bus, locks, usage (not model routing)
 |--|----------------------------------|-------------------------------------|
 | Typical user | Anthropic plan (login) | Same IDE UX, **other** providers via API keys |
 | Gateway | Off by default | On by default (OpenAI-compat) |
-| Connect | Only if using Anthropic API key | `connect openclaude --allow-user-scope` |
+| Connect | Only if using Anthropic API key → `connect anthropic` | `orch gateway connect` (paste; no settings writer) |
 
-OpenClaude `settings.json` env (gateway seats only):
+Paste for any OpenAI-compat seat:
 
-```json
-{
-  "env": {
-    "CLAUDE_CODE_USE_OPENAI": "1",
-    "OPENAI_BASE_URL": "http://127.0.0.1:8788/v1",
-    "OPENAI_API_KEY": "orch_gk_…",
-    "OPENAI_MODEL": "orchemax/auto"
-  }
-}
+```text
+OPENAI_BASE_URL=http://127.0.0.1:8788/v1
+OPENAI_API_KEY=orch_gk_…
 ```
 
 ## Pattern for similar agents
@@ -95,11 +103,23 @@ OpenClaude `settings.json` env (gateway seats only):
 Classify once:
 
 1. **Account / plan seat** — document “no gateway”; default `agents.auth: account`.
-2. **API-key config-file seat** — OpenCode / OpenClaude style: `connect <id> --allow-user-scope`.
-3. **API-key paste seat** — Command Code / Copilot / Cursor BYOK: `connect openai`.
-4. **Anthropic API-key only** — Claude Code passthrough; never the default for plan users.
+2. **OpenAI-compat** — `orch gateway connect` (paste). Do not add a new writer.
+3. **Anthropic Messages** — `orch gateway connect anthropic`.
+4. **OpenCode only** — optional `--allow-user-scope` file write (unique JSON layout).
 
 Do not invent a second vault. Do not tell plan users to point their IDE at `:8788`.
+Do not add per-CLI connect writers — there are hundreds of agents.
+
+## Tool execution permissions & prompt suppression
+
+Orchemax governs the workshop perimeter (git worktrees, `.sandbox/`, audit logs, and quality gates). When agents run under Orchemax, they should not block unattended workers or spam interactive sessions asking for confirmation on every command or file edit.
+
+Orchemax handles tool auto-approval agnostically through each CLI's native flags:
+- **Antigravity (`agy`)**: `--dangerously-skip-permissions` (injected automatically for both interactive and headless seats)
+- **Cursor (`cursor-agent`)**: `--force --trust --approve-mcps`
+- **OpenCode (`opencode`)**: `run --auto`
+- **Claude Code (`claude`)**: `--dangerously-skip-permissions`
+- **BYO agent**: declare in `orch.yaml` under `agents.interactive.<id>` or `agents.cmds.<id>` with its native non-interactive flags.
 
 ## Minimal commands (API-key seats only)
 
@@ -107,7 +127,8 @@ Do not invent a second vault. Do not tell plan users to point their IDE at `:878
 orch gateway keys add openrouter
 orch gateway setup --live …
 orch gateway
-orch gateway connect openclaude --allow-user-scope   # or opencode
+orch gateway connect                    # OpenAI-compat paste
+# optional: orch gateway connect opencode --allow-user-scope
 orch gateway status
 ```
 
@@ -116,4 +137,4 @@ orch gateway status
 - [WORKSHOP.md](WORKSHOP.md) — workspace / Chair / workers  
 - Product: [Gateway keys and connect](https://docs.orchemax.com/how-to/gateway-keys-and-connect/)  
 - Recipe: [Connect OpenCode](https://docs.orchemax.com/talk-to-orch/connect-opencode-gateway/)  
-- Recipe: [Connect OpenClaude](https://docs.orchemax.com/talk-to-orch/connect-openclaude-gateway/)
+- Recipe: [Connect OpenAI-compat agent](https://docs.orchemax.com/talk-to-orch/connect-openclaude-gateway/)

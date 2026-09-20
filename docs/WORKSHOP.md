@@ -18,14 +18,25 @@ acme-workshop/                 ← WORKSPACE (not a billable project)
 ├── orch.yaml
 ├── .orch/                     ← runtime state + optional gates/user
 ├── CLAUDE.md                  ← thin Orchemax seed + owner rules
+├── doctrine/                  ← cross-project law (orch seeds README only)
+│   └── README.md
+├── docs/                      ← optional workshop-generic notes (not product TRACKER)
 ├── shared/                    ← or core/, libs/, … (your layout)
 │   └── SHARED.md
-├── apps/ / products/
+├── apps/ / products/ / projects/
 │   ├── api/                   ← registered project (.git)
+│   │   └── docs/              ← that project's TRACKER / PRODUCT / specs
 │   └── web/                   ← registered project (.git)
 └── …
 ```
 
+| Path | What belongs there |
+|------|--------------------|
+| `doctrine/` | Rules that apply to **every** project (you add e.g. `WORKSHOP.md`, `PATTERNS.md`) |
+| `docs/` (workshop root) | Optional human notes about the workshop itself |
+| `<project>/docs/` | That project's truth (TRACKER, PRODUCT, specs) |
+
+Orchemax does not invent your folder names under `doctrine/` beyond `README.md`.
 One workspace can hold many projects. A monorepo can register the whole repo
 as one project, or register subdirectories separately — your call.
 
@@ -36,9 +47,19 @@ The first interactive seat opened in a registered project (`orch claude`,
 Chair on the same project is blocked — two directors racing the same files is
 the exact failure mode the workshop model exists to prevent.
 
+**Plan caps (separate from "one Chair per project"):** open-agent Chairs are
+metered by `orch.agents.max`; concurrent workers by `orch.agents.concurrent`.
+MCP-only Chairs do not consume the worker meter. See docs.orchemax.com
+[Chair and workers](https://docs.orchemax.com/chair-and-workers/).
+
 ## Workers
 
-The Chair spawns **workers** for secondary tasks. A worker:
+The Chair spawns **workers** for secondary tasks. Optional
+`agents.workers` in `orch.yaml` is a cheap-worker preference list (agent +
+model); an empty list leaves the Chair's own agent as the default. Live
+spawn still respects the concurrent cap.
+
+A worker:
 
 - executes one task, reports back over the disk message bus (parent / child
   / sibling roles), and does not re-orchestrate or spawn its own workers;
@@ -49,6 +70,15 @@ The Chair spawns **workers** for secondary tasks. A worker:
   and permission events over JSON-RPC instead of scraped stdout, so its
   permission requests route through `ask`/`ask_answer` to the Chair like any
   other worker's would.
+
+## Team work schedules
+
+On **Team+**, the overlook can gate dispatch with a **company timezone** and
+seven weekday rows (On / Off / Ignored). Hours use the company zone, not UTC
+by default. Outside an enforced window the client denies in plain language
+(*Outside the Team work schedule…*), not a machine `plan deny:` string.
+Configure at [orchemax.com/app/schedules](https://orchemax.com/app/schedules);
+full how-to: [Team work schedules](https://docs.orchemax.com/how-to/team-work-schedules/).
 
 ## Cross-project ask
 

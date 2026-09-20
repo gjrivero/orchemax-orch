@@ -9,9 +9,11 @@ Language packs (`packs/go`, `packs/delphi`, …) stack **on top** of this. You d
 | From | To (workshop) | Mode |
 |------|-----------------|------|
 | `SHARED.md.tmpl` | each shared folder `SHARED.md` | merge / fill |
-| `project_CLAUDE.md.tmpl` | `projects/<app>/CLAUDE.md` | seed once |
+| `project_CLAUDE.md.tmpl` | each project's `CLAUDE.md` | seed once |
 | `defaults.yaml` | fragment into `orch.yaml` | merge carefully |
 | `GATES.md` | `.orch/gates/user/WORKSHOP.md` or root GATES owner section | merge |
+
+Orchemax `orch init` also seeds workshop-root `doctrine/README.md` (empty kit) and each project's `docs/TRACKER.md`. Put cross-project law in `doctrine/`; put product truth in that project's `docs/`.
 
 ## Orchemax built-ins to enable early
 

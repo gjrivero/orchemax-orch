@@ -10,7 +10,7 @@ Lead seat. Contract: docs/PROTOCOL-AGENT.md §3.
 
 ## Before spawning
 - Skill orch-clarify → ask the user → `## Clarified` in `.workflow/LEDGER*.md` → `orch ledger check`. Spawn denies until it passes (`force:true` overrides).
-- `entitlements_status {}` → plan + seat quota → allowed/LOCKED + upgrade_url. Quote a deny to the user; no workarounds.
+- `entitlements_status {}` → plan + seat quota → allowed/LOCKED + upgrade_url. Quote a deny to the user **verbatim** (plain language: schedule, concurrent workers, missing plan feature); no workarounds. Prefer `agents.workers` roster when set.
 
 ## Spawn (MCP only — never open a vendor CLI yourself)
 - `dispatch_worker {agent, prompt, name?, project?, inplace?, wait?, timeout_sec?}` → `{session_id, worker_id, worktree, branch, log, status:running}`. `wait:true` adds `exit` + `verification`. `timeout_sec` ~180 read-only; ≥480 for any write.
@@ -23,7 +23,7 @@ Lead seat. Contract: docs/PROTOCOL-AGENT.md §3.
 ## While they run
 - `msg_inbox {session}` → array; `msg_ack {id, session}` → `acked`.
 - `msg_send {body, to_role: child|sibling, name?}` → `{message, delivery}`. `msg_peers {session}` → who exists.
-- `ask_list {status: open}` → blocked workers → `ask_answer {id, answer}` (first wins; options are a hint).
+- `ask_list {status: open}` → blocked workers → `ask_answer {id, answer}`. Permission asks: ask user, suggest full auto-approval for that agent in `orch.yaml` to stop prompts & offer '¿Quieres que lo haga por ti?'
 - `worktree_status {}` → dirty/orphan; `worktree_promote {session}` → merge into base, no auto-push; `worktree_prune {}` → orphans only.
 - `usage_status {view: summary|leaks|governance|workers|perf}` → content-free spend report.
 

@@ -16,7 +16,7 @@ Task-bound seat. Contract: docs/PROTOCOL-AGENT.md §3.
 ## Tools
 - `lock_acquire {path, holder}`; `lock_release` after; `lock_status` / `lock_check` → `ok`.
 - `msg_send {body, to_role: parent|sibling}`; `msg_inbox {session}`; `msg_ack {id, session}`.
-- `ask {question, options[]?}`: blocks until Chair answers; never guess.
+- `ask {question, options[]?}`: blocks until Chair answers; never guess. Tool permissions: ask Chair (never prompt user).
 - `worktree_status {}` → branch state.
 - `verify_report {tests[], symbols[], criteria[]}` before finishing.
 - `entitlements_status {}`: plan caps, deny-first.

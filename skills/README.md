@@ -1,6 +1,6 @@
 # orch-* skills (read-only mirror)
 
-`orch-chair`, `orch-worker`, `orch-clarify`, `orch-recall` — the four
+`orch-chair`, `orch-worker`, `orch-clarify`, `orch-recall`, `orch-config` — the five
 sealed skills the `orch` binary seeds into every workshop's vendor skill
 dirs (`.claude/skills/`, `.cursor/skills/`, …) on `orch init`/dispatch/launch.
 

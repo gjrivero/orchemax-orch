@@ -34,7 +34,7 @@ It is **not** another chat tab, not another agent IDE, and not a replacement for
 - Teams that already bought Claude / Cursor / OpenCode and need **one director (Chair)** plus workers — not five directors racing the same files  
 - Workshops with **shared libraries** across apps (search before invent, lock before edit)  
 - Orgs that want **spend visibility, caps, allowlists, and an overlook** without uploading the repo  
-- Linked accounts: **Professional** soft Telegram notify; **Team+** Assist HITL (`/approve` / `/deny` in `/app/assist`)  
+- Linked accounts: **Professional** soft Telegram notify; **Team+** Assist HITL (`/approve` / `/deny` in `/app/assist`) and optional **work schedules** (company timezone + per-day On/Off/Ignored)  
 
 **Day-to-day:** install `orch` → bind a workshop → open a seat (`orch claude`, `orch opencode`, …) → Chair coordinates → workers execute secondary tasks → shared paths under locks, backed by the call graph → optional gateway for API-key CLIs → optional account for overlook / plans (Free → Enterprise; soft TG notify from Professional, Assist HITL from Team).
 
@@ -337,4 +337,5 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). Highest value: better `langs/<id>.json`,
 MIT — see [LICENSE](LICENSE).
 
 Product site and plans: [orchemax.com](https://orchemax.com).  
-Assist HITL (Team+): [docs/ASSIST-HITL.md](docs/ASSIST-HITL.md) · [docs.orchemax.com](https://docs.orchemax.com/how-to/notifications-and-approvals/).
+Assist HITL (Team+): [docs/ASSIST-HITL.md](docs/ASSIST-HITL.md) · [docs.orchemax.com](https://docs.orchemax.com/how-to/notifications-and-approvals/).  
+Workshop model + Team schedules: [docs/WORKSHOP.md](docs/WORKSHOP.md) · [docs.orchemax.com/how-to/team-work-schedules](https://docs.orchemax.com/how-to/team-work-schedules/).

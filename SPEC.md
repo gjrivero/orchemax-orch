@@ -86,8 +86,10 @@ built_in_orch:          # document Orchemax commands this pack relies on
 Agnostic recommendations:
 
 - Thin root `CLAUDE.md` / `AGENTS.md` pointers
+- `doctrine/` for cross-project law (orch seeds `README.md` only)
+- Workshop-root `docs/` optional (workshop notes, not product TRACKER)
 - `SHARED.md` stub per shared folder
-- `docs/TRACKER.md` vocabulary
+- Per-project `docs/TRACKER.md` vocabulary
 - Profile hints: lite | shared | strict
 
 Language packs **add** to this; they do not replace Orchemax `orch init` seeds.
