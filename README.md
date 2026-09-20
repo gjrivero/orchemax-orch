@@ -338,4 +338,5 @@ MIT — see [LICENSE](LICENSE).
 
 Product site and plans: [orchemax.com](https://orchemax.com).  
 Assist HITL (Team+): [docs/ASSIST-HITL.md](docs/ASSIST-HITL.md) · [docs.orchemax.com](https://docs.orchemax.com/how-to/notifications-and-approvals/).  
-Workshop model + Team schedules: [docs/WORKSHOP.md](docs/WORKSHOP.md) · [docs.orchemax.com/how-to/team-work-schedules](https://docs.orchemax.com/how-to/team-work-schedules/).
+Workshop model + Team schedules: [docs/WORKSHOP.md](docs/WORKSHOP.md) · [docs.orchemax.com/how-to/team-work-schedules](https://docs.orchemax.com/how-to/team-work-schedules/).  
+Common tune-ups (mouse junk, OpenClaude notify, turn caps): [docs/COMMON-SETTINGS.md](docs/COMMON-SETTINGS.md).

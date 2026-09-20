@@ -135,6 +135,7 @@ orch gateway status
 ## Related
 
 - [WORKSHOP.md](WORKSHOP.md) — workspace / Chair / workers  
+- [COMMON-SETTINGS.md](COMMON-SETTINGS.md) — mouse junk, OpenClaude notify, turn caps, schedule denies  
 - Product: [Gateway keys and connect](https://docs.orchemax.com/how-to/gateway-keys-and-connect/)  
 - Recipe: [Connect OpenCode](https://docs.orchemax.com/talk-to-orch/connect-opencode-gateway/)  
 - Recipe: [Connect OpenAI-compat agent](https://docs.orchemax.com/talk-to-orch/connect-openclaude-gateway/)
