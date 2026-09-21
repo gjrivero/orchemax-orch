@@ -89,24 +89,22 @@ A worker:
 
 ## Same CLI on many projects
 
-The first interactive seat in a registered project is that project's Chair.
-Open several projects with the **same** binary (`orch opencode` everywhere)
-using a **display name** so humans and the bus can tell them apart:
+**Human picture:** shop and warehouse, two windows, same agent. Put a sticky
+name on each so they don’t blur into one anonymous “OpenCode”:
 
 ```
-orch opencode --name api-chair --project apps/api
-orch opencode --name web-chair --project apps/web
+orch opencode --name shop --project apps/shop
+orch opencode --name warehouse --project apps/warehouse
 ```
 
-`--name` sets the session display name (default: agent id). It does not
-change the CLI. Cross-project messages use MCP `msg_send` with
-`to_project=<id>` (not `to_agent=opencode` alone — that is ambiguous when
-several OpenCode seats are live). After a shared edit: lock → change →
-release → notify other `to_project` peers; they read `msg_inbox` and retest
-their side.
+You say things like: “shipping label changed — shop prints, warehouse scans;
+tell each other if it breaks.” You never name bus tools. Each Chair does its
+side and leaves a short note for the **other project**. Stuck? Raise a hand and
+wait (`ask`) — don’t invent the answer.
 
-Users speak natural language; the seat maps that to MCP. Full how-to:
-[Same CLI, many projects](https://docs.orchemax.com/how-to/cross-project-seats/).
+`--name` is only the sticky label (default: agent id). Same binary. Don’t aim
+messages at “opencode” alone when several OpenCode desks are open. Full plain
+how-to: [Same CLI, many projects](https://docs.orchemax.com/how-to/cross-project-seats/).
 
 ## Team work schedules
 
