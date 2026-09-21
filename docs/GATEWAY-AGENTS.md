@@ -108,7 +108,9 @@ Set the choice in the top-level `model` field only. Details:
 
 Classify once:
 
-1. **Account / plan seat** — document “no gateway”; default `agents.auth: account`.
+1. **Account / plan seat** — document “no gateway”; default `agents.auth: account`
+   (Cursor subscription, Claude Pro/Max, Codex, agy, …). Field notes:
+   [COMMON-SETTINGS — account / plan login](COMMON-SETTINGS.md#account--plan-login-seats-no-api-key).
 2. **OpenAI-compat** — `orch gateway connect` (paste). Do not add a new writer.
 3. **Anthropic Messages** — `orch gateway connect anthropic`.
 4. **OpenCode only** — optional `--allow-user-scope` file write (unique JSON layout).
@@ -131,12 +133,14 @@ Full table and anti-patterns: [SEAT-INJECTION.md](SEAT-INJECTION.md).
 
 Orchemax governs the workshop perimeter (git worktrees, `.sandbox/`, audit logs, and quality gates). When agents run under Orchemax, they should not block unattended workers or spam interactive sessions asking for confirmation on every command or file edit.
 
-Orchemax handles tool auto-approval agnostically through each CLI's native flags:
-- **Antigravity (`agy`)**: `--dangerously-skip-permissions` (injected automatically for both interactive and headless seats)
-- **Cursor (`cursor-agent`)**: `--force --trust --approve-mcps`
+Orchemax handles tool auto-approval agnostically through each CLI's native flags
+(interactive **and** headless — vendor allowlists often re-prompt when orch
+rewrites MCP/config; see [COMMON-SETTINGS.md](COMMON-SETTINGS.md#vendor-allowlists--mcp-approval-walls)):
+- **Antigravity (`agy`)**: `--dangerously-skip-permissions` (both seats)
+- **Cursor (`cursor-agent`)**: interactive `--approve-mcps --trust`; headless also `--force` + `--output-format json`
 - **OpenCode (`opencode`)**: `run --auto`
 - **Claude Code (`claude`)**: `--dangerously-skip-permissions`
-- **BYO agent**: declare in `orch.yaml` under `agents.interactive.<id>` or `agents.cmds.<id>` with its native non-interactive flags.
+- **BYO agent**: declare in `orch.yaml` under `agents.interactive.<id>` **and** `agents.cmds.<id>` with its native non-interactive / approve-MCP flags.
 
 ## Minimal commands (API-key seats only)
 

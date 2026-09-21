@@ -11,12 +11,15 @@ entries — never `switch preset { "openclaude": … }` for each new binary.
 
 | Surface | Where | Notes |
 |---------|--------|--------|
-| Sealed skills by **role** | `.agents/skills/orch-*` | Chair vs worker set; vendor-neutral |
-| Runtime + orch MCP | `.orch/ORCH_RUNTIME.md`, `.orch/mcp.json` | Every seat |
-| Continuity | `.agents/rules/…` + `.orch/LAST_SESSION.md` | Chat is not memory |
+| Compact protocol | SessionStart `additionalContext` (Claude family) + Cursor alwaysApply `.cursor/rules/orch-protocol.mdc` | Role-scoped chair/worker; **no** public `*/skills/orch-*` by default |
+| Runtime depth | `.orch/ORCH_RUNTIME.md` | Every seat; refreshed on open |
+| Orch MCP | `.orch/mcp.json` / `.mcp.json` | Server ids **`orchemax`** (preferred) and **`orch`** (alias). If another tool is named `orch`, call Orchemax as `orchemax`. |
+| Continuity | `.orch/LAST_SESSION.md` | Chat is not memory |
 | Gates | Seal path (dup, shared-lock, `.orch/gates/*`) | Run even when the CLI has **no** hooks |
-| SessionStart orientation | Hook `additionalContext` + `reloadSkills` | Chair/worker pointer |
-| UserPromptSubmit | Same notify-hook | On "toma contexto" / "eres Chair" **injects** `.orch/LAST_SESSION.md` into context (skills alone are soft) |
+| UserPromptSubmit | Same notify-hook | On “take context” / Chair cues injects `.orch/LAST_SESSION.md` |
+
+Escape hatch: `ORCH_LEGACY_SKILLS=1` restores durable sealed `orch-*` skill
+folders for one release. Default private mode sweeps them on launch.
 
 A BYO binary with no catalog hint still gets this kit. Governance does not
 wait for a named adapter.
@@ -33,16 +36,13 @@ that family. Catalog entries that share a schema point at the same
 | `cursor_hooks` | `.cursor/hooks.json` | `.cursor` | Cursor Agent |
 | `commandcode` | Command Code settings + mod | `.commandcode` | Command Code |
 
-Skills under a vendor tree use the same `SkillRoot` (e.g. `.openclaude/skills`)
-**in addition to** `.agents/skills`.
-
 If the CLI has no hook surface, orch does **not** invent one. Seal gates +
-MCP + neutral skills still apply.
+MCP + compact protocol still apply.
 
 ## Pattern for a new agent (dogfood)
 
 1. Open it with `orch <name>` (PATH LookPath — no catalog required).
-2. Confirm the **always** kit (skills, MCP, seal).
+2. Confirm the **always** kit (compact protocol, MCP under `orchemax`|`orch`, seal).
 3. If notify / write-dup hooks are missing, classify the **schema**:
    - Same JSON as Claude settings? → `HookLayout: claude_settings` + its config dir.
    - Cursor-style hooks file? → `cursor_hooks`.
@@ -56,9 +56,11 @@ MCP + neutral skills still apply.
 - Growing `case "agentname":` lists in dispatch / wire.
 - Shipping a settings writer per CLI (gateway already forbids this).
 - Expecting vendor hooks for a CLI that has none — use seal + MCP instead.
+- Seeding browsable `*/skills/orch-*` in workshops (R15 private default).
 
 ## Related
 
+- Product how-to: [Silent seat protocol](https://docs.orchemax.com/how-to/silent-seat-protocol/)  
 - [GATEWAY-AGENTS.md](GATEWAY-AGENTS.md) — two protocols, not hundreds of writers  
-- [COMMON-SETTINGS.md](COMMON-SETTINGS.md) — terminal UI (Orchemax-owned), OpenClaude notify / permissions / turns  
-- [WORKSHOP.md](WORKSHOP.md) — Chair / workers / workspace  
+- [COMMON-SETTINGS.md](COMMON-SETTINGS.md) — terminal UI, permissions, notify  
+- [WORKSHOP.md](WORKSHOP.md) — Chair / workers / same-CLI multi-project  

@@ -122,6 +122,104 @@ not listed are refused without a prompt. A partial list (`msg_inbox`,
 into the project/local settings block. Restart the seat after changing
 settings.
 
+## Vendor allowlists / MCP approval walls
+
+**Pattern:** Orchemax rewrites seat MCP/config every launch (fresh
+`ORCH_SESSION`, role, paths). Many CLIs key a **local allowlist / hash** off
+that file. When the hash changes, the vendor re-prompts — fine in a desktop
+IDE, fatal for headless workers, and on some Windows TUIs the approve dialog
+**hangs** after you pick an option (you must kill the terminal).
+
+Do **not** treat this as an Orchemax name-whitelist. Prefer each CLI’s native
+auto-approve flag on **both** interactive and headless presets. When you add a
+BYO agent, put the same class of flag in `agents.interactive.<id>` and
+`agents.cmds.<id>`.
+
+| CLI / surface | What re-prompts | Orchemax default / fix |
+|---------------|-----------------|------------------------|
+| **Cursor** (`cursor-agent`) | Project MCP server approval (`~/.cursor/projects/…/mcp-approvals.json` hashes the server entry; orch puts `ORCH_SESSION` in `.cursor/mcp.json` env → new hash almost every seat) | Interactive: `cursor-agent --approve-mcps --trust`. Headless: `-p … --force --trust --approve-mcps` |
+| **Claude / OpenClaude / agy** | Per-tool “Allow?” | `--dangerously-skip-permissions` on interactive + headless |
+| **Claude-settings `dontAsk`** | MCP tools missing from `permissions.allow` | Allow `mcp__orch__*` (see section above); prefer `bypassPermissions` |
+| **OpenCode** | Tool approval in `run` | `opencode run --auto` |
+| **agy MCP** | No per-workspace MCP at all | `orch guard wire --agy --scope user --allow-user-scope` once |
+| **BYO** | Whatever their docs call trust / yolo / approve-mcp | Declare native flags in `orch.yaml`; never rely on a human at the worker keyboard |
+
+### Cursor: MCP approve TUI freezes on `orch cursor`
+
+**Symptom:**
+
+```text
+The following MCP servers need to be approved:
+  • orch (command: …\orch.exe)
+  [a] Approve all servers
+  …
+  ⏳ Applying your selection...
+```
+
+Terminal never recovers — you close the window.
+
+**Cause:** interactive preset used to be bare `cursor-agent` (no
+`--approve-mcps`). Orch’s rewritten `.cursor/mcp.json` misses Cursor’s
+approval whitelist → TUI every launch; applying the selection often hangs
+under the seat console.
+
+**Fix:** update `orch` (interactive default is now
+`cursor-agent --approve-mcps --trust`). Override without upgrading:
+
+```yaml
+agents:
+  interactive:
+    cursor: cursor-agent --approve-mcps --trust
+```
+
+```powershell
+$env:ORCH_AGENT_CMD = "cursor-agent --approve-mcps --trust"
+orch cursor-agent
+```
+
+Headless workers already required `--approve-mcps` (otherwise
+`MCP server does not exist: orch` / “not loaded (needs approval)” with exit 0).
+
+## Account / plan login seats (no API key)
+
+**Pattern:** Cursor, Claude Code (Pro/Max), Codex, agy (and similar) already
+have a **vendor login + token plan**. Orchemax still sits under them for MCP,
+bus, locks and usage — but **model traffic does not** go through the local
+gateway. Default `agents.auth.<preset>: account`.
+
+A fresh `orch setup` seeds `agents.auth` (account vs gateway examples),
+`agents.interactive.cursor` (`--approve-mcps --trust`), and two placeholder
+`agents.workers` rows (`your-account-agent-here` / `your-gateway-agent-here`)
+so workshops see both modes before filling real CLIs. Untouched placeholders
+never spawn.
+
+Do **not** put provider keys in `keys.env` for these seats, and do **not** run
+`orch gateway connect` to replace the login.
+
+| Seat | Default `agents.auth` | What you do |
+|------|----------------------|-------------|
+| **Cursor** (subscription) | `account` | `orch cursor`; stay logged in. No API key. |
+| **Claude Code** (Pro/Max / OAuth) | `account` | `orch claude`; keep Anthropic login. Gateway refuses OAuth (`403`). |
+| **Codex** | `account` | Keep the OpenAI / Codex plan login. |
+| **Antigravity (agy)** | `account` | `orch agy`; keep product login. |
+| **Gemini CLI** (login) | `account` | Product login — not Orchemax vault keys. |
+
+**Same CLI, key mode** (only when you mean it): Cursor BYOK / Copilot with
+provider key → `orch gateway connect`; Claude with Anthropic **API key** →
+`orch gateway connect anthropic` + `agents.auth.claude: gateway`; OpenCode /
+OpenClaude / Command Code / unknown BYO → vault + gateway.
+
+```yaml
+agents:
+  auth:
+    claude: gateway   # Anthropic API key — not the Pro/Max login
+```
+
+**Anti-patterns:** pointing plan seats at `:8788`; expecting gateway crush on
+account seats; hardcoding a short name list of “who uses account” — classify by
+credential mode (`account` vs `gateway`). Full matrix:
+[GATEWAY-AGENTS.md](GATEWAY-AGENTS.md).
+
 ## OpenClaude needs a reply — no desktop toast
 
 **Symptom:** OpenClaude waits on a permission / idle prompt; no toast or
@@ -190,8 +288,10 @@ agents:
 ## Gateway: protocols, not per-CLI writers
 
 Hundreds of agents share two wires — see [GATEWAY-AGENTS.md](GATEWAY-AGENTS.md).
-Prefer `orch gateway connect` (OpenAI-compat) or `connect anthropic`; only
-OpenCode has an optional file writer (`--allow-user-scope`).
+**Account / plan seats** (Cursor, Claude Pro/Max, Codex, …) skip the gateway —
+see [Account / plan login seats](#account--plan-login-seats-no-api-key) above.
+Prefer `orch gateway connect` (OpenAI-compat) or `connect anthropic` only for
+**API-key** seats; only OpenCode has an optional file writer (`--allow-user-scope`).
 
 Seat skills / hooks follow the same rule: **always kit + few layout families**,
 not an agent-name allowlist — [SEAT-INJECTION.md](SEAT-INJECTION.md).

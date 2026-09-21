@@ -55,9 +55,25 @@ MCP-only Chairs do not consume the worker meter. See docs.orchemax.com
 ## Workers
 
 The Chair spawns **workers** for secondary tasks. Optional
-`agents.workers` in `orch.yaml` is a cheap-worker preference list (agent +
-model); an empty list leaves the Chair's own agent as the default. Live
-spawn still respects the concurrent cap.
+`agents.workers` in `orch.yaml` is a preference roster (agent + optional
+model + tier). List order is preference. An empty list / untouched
+`your-*-here` placeholders leaves the Chair's own agent as the default.
+Live spawn still respects the concurrent cap.
+
+Two credential lanes (mix freely):
+
+| Tier / auth | Meaning |
+|-------------|---------|
+| `account` | Vendor plan login. `model` is the **vendor** LLM default (e.g. sonnet). No API key. |
+| `cheap` / gateway | Orch gateway + keys. `model` is the gateway id (bare → `orchemax/<id>`). BYO CLIs (OpenCode, …) use provider **orchemax** as the default account. |
+
+`workers[].auth` wins over `tier` when set. Otherwise `tier: account|login|plan`
+→ account; `cheap|free|paid|local|gateway|…` → gateway.
+
+Workers are **not** a substitute for other project Chairs. Secondary work
+inside one project → spawn. Talk to another open project → bus
+(`to_project` / peers). See
+[Same CLI, many projects](https://docs.orchemax.com/how-to/cross-project-seats/).
 
 A worker:
 
@@ -70,6 +86,27 @@ A worker:
   and permission events over JSON-RPC instead of scraped stdout, so its
   permission requests route through `ask`/`ask_answer` to the Chair like any
   other worker's would.
+
+## Same CLI on many projects
+
+The first interactive seat in a registered project is that project's Chair.
+Open several projects with the **same** binary (`orch opencode` everywhere)
+using a **display name** so humans and the bus can tell them apart:
+
+```
+orch opencode --name api-chair --project apps/api
+orch opencode --name web-chair --project apps/web
+```
+
+`--name` sets the session display name (default: agent id). It does not
+change the CLI. Cross-project messages use MCP `msg_send` with
+`to_project=<id>` (not `to_agent=opencode` alone — that is ambiguous when
+several OpenCode seats are live). After a shared edit: lock → change →
+release → notify other `to_project` peers; they read `msg_inbox` and retest
+their side.
+
+Users speak natural language; the seat maps that to MCP. Full how-to:
+[Same CLI, many projects](https://docs.orchemax.com/how-to/cross-project-seats/).
 
 ## Team work schedules
 
