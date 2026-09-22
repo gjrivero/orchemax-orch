@@ -1,9 +1,20 @@
 {
   "id": "java",
-  "exts": [".java"],
+  "exts": [
+    ".java"
+  ],
   "comment": "//",
   "rules": [
-    {"kind": "type", "pattern": "(?m)^[ \\t]*public\\s+(?:static\\s+)?(?:final\\s+)?(class|interface|enum|record)\\s+([A-Za-z_][\\w]*)", "name_group": 2},
-    {"kind": "func", "pattern": "(?m)^[ \\t]*public\\s+(?:static\\s+)?(?:final\\s+)?[\\w.<>,\\[\\]\\s]+\\s+([A-Z][\\w]*)\\s*\\(", "name_group": 1}
+    {
+      "kind": "type",
+      "pattern": "(?m)^[ \\t]*public\\s+(?:static\\s+)?(?:final\\s+)?(class|interface|enum|record)\\s+([A-Za-z_][\\w]*)",
+      "name_group": 2
+    },
+    {
+      "kind": "func",
+      "pattern": "(?m)^[ \\t]*public\\s+(?:static\\s+)?(?:final\\s+)?[\\w.<>,\\[\\]\\s]+\\s+([A-Z][\\w]*)\\s*\\(([^)]*)\\)",
+      "name_group": 1,
+      "params_group": 2
+    }
   ]
 }

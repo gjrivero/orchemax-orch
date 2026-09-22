@@ -19,7 +19,15 @@ every file of that language, in addition to the `orch:export`-tag scan:
 ```
 
 `kind` labels the symbol (`func`, `type`, `unit`, …), `pattern` is the regex,
-`name_group` is the capture group holding its name. Every match becomes a row
+`name_group` is the capture group holding its name, and the optional
+`params_group` is the capture holding the declaration's parameter list.
+
+`params_group` is what lets two overloads of one name be told apart. Without it
+every `foo(...)` normalizes to the same string, so a duplicate gate comparing
+signatures is really comparing names — and the "this method already exists in
+another project, promote it to shared" advice fires on homonyms. A rule that
+cannot see a parameter list simply omits it, and those gates stay quiet for that
+language instead of guessing. Every match becomes a row
 in the native index: one already carrying an `orch:export` tag stays
 `scope=shared` (what `search_shared_symbols` returns); everything else lands
 as `scope=local` — invisible to that search, but visible to the graph tools

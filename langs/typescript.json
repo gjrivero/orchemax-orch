@@ -1,12 +1,36 @@
 {
   "id": "ts",
-  "exts": [".ts", ".tsx", ".mts", ".cts"],
+  "exts": [
+    ".ts",
+    ".tsx",
+    ".mts",
+    ".cts"
+  ],
   "comment": "//",
-  "aliases": ["typescript"],
+  "aliases": [
+    "typescript"
+  ],
   "rules": [
-    {"kind": "func", "pattern": "(?m)^export\\s+(?:async\\s+)?function\\s+([A-Za-z_$][\\w$]*)", "name_group": 1},
-    {"kind": "type", "pattern": "(?m)^export\\s+(?:default\\s+)?class\\s+([A-Za-z_$][\\w$]*)", "name_group": 1},
-    {"kind": "type", "pattern": "(?m)^export\\s+(?:type|interface)\\s+([A-Za-z_$][\\w$]*)", "name_group": 1},
-    {"kind": "const", "pattern": "(?m)^export\\s+(?:const|let|var|enum)\\s+([A-Za-z_$][\\w$]*)", "name_group": 1}
+    {
+      "kind": "func",
+      "pattern": "(?m)^export\\s+(?:async\\s+)?function\\s+([A-Za-z_$][\\w$]*)\\s*\\(([^)]*)\\)",
+      "name_group": 1,
+      "params_group": 2
+    },
+    {
+      "kind": "type",
+      "pattern": "(?m)^export\\s+(?:default\\s+)?class\\s+([A-Za-z_$][\\w$]*)",
+      "name_group": 1
+    },
+    {
+      "kind": "type",
+      "pattern": "(?m)^export\\s+(?:type|interface)\\s+([A-Za-z_$][\\w$]*)",
+      "name_group": 1
+    },
+    {
+      "kind": "const",
+      "pattern": "(?m)^export\\s+(?:const|let|var|enum)\\s+([A-Za-z_$][\\w$]*)",
+      "name_group": 1
+    }
   ]
 }

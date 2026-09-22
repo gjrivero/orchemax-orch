@@ -1,10 +1,24 @@
 {
   "id": "python",
-  "exts": [".py", ".pyi"],
+  "exts": [
+    ".py",
+    ".pyi"
+  ],
   "comment": "#",
-  "aliases": ["py"],
+  "aliases": [
+    "py"
+  ],
   "rules": [
-    {"kind": "func", "pattern": "(?m)^(?:async\\s+)?def\\s+([A-Za-z_][\\w]*)\\s*\\(", "name_group": 1},
-    {"kind": "type", "pattern": "(?m)^class\\s+([A-Za-z_][\\w]*)\\s*[\\(:]", "name_group": 1}
+    {
+      "kind": "func",
+      "pattern": "(?m)^(?:async\\s+)?def\\s+([A-Za-z_][\\w]*)\\s*\\(([^)]*)\\)",
+      "name_group": 1,
+      "params_group": 2
+    },
+    {
+      "kind": "type",
+      "pattern": "(?m)^class\\s+([A-Za-z_][\\w]*)\\s*[\\(:]",
+      "name_group": 1
+    }
   ]
 }
