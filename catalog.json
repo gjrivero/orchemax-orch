@@ -2,10 +2,35 @@
   "$schema": "./pack.manifest.schema.json",
   "description": "Index of community packs (not language seeds — those live under langs/)",
   "packs": [
-    { "id": "_workshop", "path": "packs/_workshop", "kind": "workshop" },
-    { "id": "encoding", "path": "packs/encoding", "kind": "cross-cutting" },
-    { "id": "htmx-spa", "path": "packs/htmx-spa", "kind": "cross-cutting" },
-    { "id": "delphi", "path": "packs/delphi", "kind": "language" },
-    { "id": "go", "path": "packs/go", "kind": "language" }
+    {
+      "id": "_workshop",
+      "path": "packs/_workshop",
+      "kind": "workshop"
+    },
+    {
+      "id": "delphi",
+      "path": "packs/delphi",
+      "kind": "language"
+    },
+    {
+      "id": "encoding",
+      "path": "packs/encoding",
+      "kind": "cross-cutting"
+    },
+    {
+      "id": "es-tuteo",
+      "path": "packs/es-tuteo",
+      "kind": "cross-cutting"
+    },
+    {
+      "id": "go",
+      "path": "packs/go",
+      "kind": "language"
+    },
+    {
+      "id": "htmx-spa",
+      "path": "packs/htmx-spa",
+      "kind": "cross-cutting"
+    }
   ]
 }

@@ -1,0 +1,12 @@
+id: es-tuteo
+kind: cross-cutting
+version: 0.1.0
+languages: []
+orch_min: "0.0.0"
+summary: Spanish prose addresses the reader as tú, never Rioplatense vos. A house style, not engineering — install it only if it is yours.
+depends_on: []
+built_in_orch: []
+install:
+  gates_user:
+    - { from: rules/tuteo.json, to: ".orch/gates/user/rules/tuteo.json" }
+    - { from: GATES.md, to: ".orch/gates/user/ES-TUTEO.md" }

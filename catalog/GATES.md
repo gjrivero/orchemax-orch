@@ -68,3 +68,15 @@ for those is "no — write a `cmd` gate that shells out to your own script."
   regex is short — the built-in has already been proven against the seal
   path, the IDE hook, and the git hook; a duplicate copy drifts the moment
   one side changes.
+
+## Where a preference lives
+
+Orchemax's built-in checks are engineering: a formatter with one possible output, a
+test that must fail before its fix, a field nobody reads. A preference — how you
+address a reader, how long you like a comment — is not one of those, so it does not
+ship in the binary. It installs from here, and a workshop that does not share the
+preference never installs it.
+
+`es-tuteo` is the first of these: Spanish prose addressed as tú rather than
+Rioplatense vos. It used to be `orch guard voseo`, a built-in, until the owner said
+plainly that everyone speaks how they like.

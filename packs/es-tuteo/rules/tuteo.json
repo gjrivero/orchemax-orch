@@ -1,0 +1,32 @@
+[
+  {
+    "id": "es-tuteo-pronoun",
+    "on": [
+      "pre-commit",
+      "seal"
+    ],
+    "files": [
+      "**/*.md",
+      "**/*.html",
+      "**/*.txt"
+    ],
+    "deny": "(?i)(^|[^[:alpha:]])vos([^[:alpha:]]|$)",
+    "severity": "block",
+    "message": "Spanish prose here addresses the reader as tú; 'vos' is Rioplatense. Remove this pack if that is not your house style."
+  },
+  {
+    "id": "es-tuteo-verbs",
+    "on": [
+      "pre-commit",
+      "seal"
+    ],
+    "files": [
+      "**/*.md",
+      "**/*.html",
+      "**/*.txt"
+    ],
+    "deny": "(?i)(^|[^[:alpha:]])(tenés|querés|podés|sabés|conocés|necesitás|pensás|sentís|venís|salís|pedís|dormís|hacés|decís|vivís|sos|mirá|hacé|andá|vení|decí|contá|dejá|pedí|poné|salí|escuchá|llamá|esperá|pasá|pasás|agarrá|cerrá|abrí|seguí|volvé|probá|usá|creá|sentate|quedate|callate|fijate)([^[:alpha:]]|$)",
+    "severity": "block",
+    "message": "Rioplatense verb form in Spanish prose; this pack asks for tú (tienes, quieres, mira, haz)."
+  }
+]

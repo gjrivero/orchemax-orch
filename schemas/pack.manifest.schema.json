@@ -3,25 +3,55 @@
   "$id": "https://github.com/gjrivero/orchemax-orch/schemas/pack.manifest.schema.json",
   "title": "Orchemax pack MANIFEST",
   "type": "object",
-  "required": ["id", "kind", "version", "summary"],
+  "required": [
+    "id",
+    "kind",
+    "version",
+    "summary"
+  ],
   "properties": {
-    "id": { "type": "string", "pattern": "^[a-z][a-z0-9_-]*$" },
-    "kind": { "type": "string", "enum": ["language", "workshop", "cross-cutting"] },
-    "version": { "type": "string" },
+    "id": {
+      "type": "string",
+      "pattern": "^_?[a-z][a-z0-9_-]*$",
+      "description": "Pack id. A leading underscore marks a base pack others depend on (_workshop)."
+    },
+    "kind": {
+      "type": "string",
+      "enum": [
+        "language",
+        "workshop",
+        "cross-cutting"
+      ]
+    },
+    "version": {
+      "type": "string"
+    },
     "languages": {
       "type": "array",
-      "items": { "type": "string" }
+      "items": {
+        "type": "string"
+      }
     },
-    "orch_min": { "type": "string" },
-    "summary": { "type": "string" },
+    "orch_min": {
+      "type": "string"
+    },
+    "summary": {
+      "type": "string"
+    },
     "depends_on": {
       "type": "array",
-      "items": { "type": "string" }
+      "items": {
+        "type": "string"
+      }
     },
     "built_in_orch": {
       "type": "array",
-      "items": { "type": "string" }
+      "items": {
+        "type": "string"
+      }
     },
-    "install": { "type": "object" }
+    "install": {
+      "type": "object"
+    }
   }
 }
