@@ -1,0 +1,11 @@
+id: no-unmeasured-claims
+kind: cross-cutting
+version: "0.1.0"
+summary: "Refuse a percentage stated as a saving in prose you publish, unless it was measured"
+orch_min: "0.0.0"
+languages: []
+built_in_orch: []
+install:
+  gates_user:
+    - { from: rules/claims.json, to: ".orch/gates/user/rules/claims.json" }
+    - { from: GATES.md, to: ".orch/gates/user/NO-UNMEASURED-CLAIMS.md" }

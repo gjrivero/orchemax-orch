@@ -1,0 +1,17 @@
+[
+  {
+    "id": "no-unmeasured-savings-percent",
+    "on": [
+      "pre-commit",
+      "seal"
+    ],
+    "files": [
+      "**/*.md",
+      "**/*.html",
+      "**/*.txt"
+    ],
+    "deny": "(?is)(?:(?:sav(?:e|es|ed|ing|ings)|reduc(?:e|es|ed|tion)|cut(?:s)?|fewer|less|cheaper|smaller|faster|quicker|speed-?up|improve(?:s|ment)?|ahorr\\w*|menos|barato|r[aá]pido|mejora\\w*)[^.\\n]{0,120}[0-9]+(?:[.,][0-9]+)?\\s*%|[0-9]+(?:[.,][0-9]+)?\\s*%[^.\\n]{0,120}(?:sav(?:e|es|ed|ing|ings)|reduc(?:e|es|ed|tion)|cut(?:s)?|fewer|less|cheaper|smaller|faster|quicker|speed-?up|improve(?:s|ment)?|ahorr\\w*|menos|barato|r[aá]pido|mejora\\w*))",
+    "severity": "block",
+    "message": "a percentage stated as a saving needs a measured counterfactual beside it - name what it was measured against, or drop the figure"
+  }
+]
