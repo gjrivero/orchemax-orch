@@ -27,5 +27,25 @@
       "name_group": 2,
       "params_group": 3
     }
+  ],
+  "imposed_names": [
+    "Create",
+    "Destroy",
+    "Free",
+    "Execute",
+    "DoExecute",
+    "Assign",
+    "AssignTo",
+    "Clear",
+    "Clone",
+    "GetEnumerator",
+    "AfterConstruction",
+    "BeforeDestruction",
+    "ToString",
+    "Equals",
+    "GetHashCode",
+    "Notification",
+    "DefineProperties",
+    "Loaded"
   ]
 }

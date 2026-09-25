@@ -21,5 +21,17 @@
       "name_group": 1,
       "params_group": 2
     }
+  ],
+  "imposed_names": [
+    "__construct",
+    "__destruct",
+    "__toString",
+    "__invoke",
+    "__get",
+    "__set",
+    "jsonSerialize",
+    "count",
+    "current",
+    "next"
   ]
 }

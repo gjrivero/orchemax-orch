@@ -4,6 +4,6 @@
   "comment": "//",
   "rules": [
     {"kind": "type", "pattern": "(?m)^(?:pub\\s+)?const\\s+([A-Za-z_][\\w]*)\\s*=\\s*(?:struct|enum|union)\\b", "name_group": 1},
-    {"kind": "func", "pattern": "(?m)^(?:pub\\s+)?(?:export\\s+)?fn\\s+([A-Za-z_][\\w]*)\\s*\\(", "name_group": 1}
+    {"kind": "func", "pattern": "(?m)^(?:pub\\s+)?(?:export\\s+)?fn\\s+([A-Za-z_][\\w]*)\\s*\\(([^)]*)\\)", "name_group": 1, "params_group": 2}
   ]
 }

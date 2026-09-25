@@ -16,5 +16,22 @@
       "name_group": 1,
       "params_group": 2
     }
+  ],
+  "imposed_names": [
+    "toString",
+    "equals",
+    "hashCode",
+    "clone",
+    "finalize",
+    "compareTo",
+    "run",
+    "call",
+    "close",
+    "iterator",
+    "get",
+    "set",
+    "accept",
+    "apply",
+    "test"
   ]
 }

@@ -10,27 +10,24 @@ another.
 | Pack-documented (**P.**) | This repo, `packs/<name>/GATES.md` | Language/stack footguns a pack recommends enabling |
 | Owner-written (**W.**) | Your workshop's `.orch/gates/user/` | Company-specific rules `orch` cannot know about |
 
-## O. — product built-ins (this repo only documents them)
+## O. — product built-ins (this repo only points at them)
 
-| Gate | Command | Purpose |
-|------|---------|---------|
-| Language (prose) | `orch guard lang` | Docs/prose text vs `workspace.locale` |
-| Language (code) | `orch guard code-lang` | Identifiers + shipping strings vs `workspace.code_lang` |
-| Encoding | `orch guard encoding` | HTML/email UTF-8 charset + mojibake |
-| Clone detection | `orch guard dup` | Function-body clone detection (Rabin-Karp over normalized tokens) — complements exported-symbol dedup; advisory by default, block opt-in |
-| Schema pairing | `orch guard ddl` | Schema change paired with its seeder/writer |
-| Tracker shape | `orch guard tracker` | Optional `TRACKER.md` table shape (T1–T3) |
-| Add-all | `orch guard add-all` | No `git add -A` on shared repos |
-| Shared-brand | `orch guard shared-brand` | No product/client id inside shared layers |
-| Control bytes | `orch guard control-bytes` | No invisible control bytes in source |
-| Comment | `orch guard comment` | Shared exports need a one-line purpose comment |
-| Lock | `orch lock` / `orch guard lock` | Shared-path edits only under a held lock |
-| Wire | `orch guard wire` | Git / Claude / Cursor harness adapters present |
+There is no list of them here. The binary you have is the list, and each verb's
+one-line description *is* what it checks:
 
-Full descriptions and rationale for each: [`packs/_workshop/GATES.md`](../packs/_workshop/GATES.md)
-(the canonical **O.**/**W.** table this repo ships); language-specific rows
-live in `packs/<lang>/GATES.md`, e.g. [`packs/go/GATES.md`](../packs/go/GATES.md),
-[`packs/delphi/GATES.md`](../packs/delphi/GATES.md).
+```
+orch guard --help                 # every built-in, with what it checks
+orch guard explain <file>         # what every rule answers about one file
+orch guard principles             # which elemental principles a gate enforces
+```
+
+A hand-kept copy of that list used to live in this file. It went stale in the two
+ways a hand-kept list does: it named twelve of them, and it described the tracker
+gate as checking three rules when the gate had grown to five.
+
+The generated, always-current reference is
+[Languages and guards](https://docs.orchemax.com/reference/languages-and-guards/) —
+every `orch guard` verb, read straight from the source that defines it.
 
 ## Hooks — opt-in, not gates
 
@@ -54,6 +51,7 @@ deprecated value must not silently grant a consent it never asked for.
 | A rule that applies to any workshop, any stack | Propose it as an **O.** built-in (product repo, not here) |
 | A footgun specific to one language/stack | `packs/<lang>/GATES.md` (this repo) |
 | A rule specific to your company's process | Your workshop's `.orch/gates/user/` — never this repo |
+| A language the symbol index does not know | `langs/<id>.json` here, or `.orch/langs/<id>.json` to try it in your workshop first — see [`langs/README.md`](../langs/README.md) |
 
 See [WORKSHOP.md](WORKSHOP.md) for the workspace/project/Chair/worker model
 these gates operate on, and [CONTRIBUTING.md](../CONTRIBUTING.md) for how to

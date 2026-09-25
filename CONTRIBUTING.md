@@ -4,10 +4,30 @@ This is the **Orchemax community packs** repo: language seeds and optional craft
 
 ## Add or extend a language seed
 
+Try it in your own workshop first: the same document at `.orch/langs/<id>.json`
+is loaded over the embedded catalog, and `orch workspace` prints which languages
+came from there. Full walkthrough:
+[Add your language](https://docs.orchemax.com/how-to/add-your-language/). Then:
+
 1. Add `langs/<id>.json` (see existing files — Go, TypeScript, Python, …): `id`, `exts`, `comment`, and either `engine` (native parser, Go-only today) or a `rules` array of definition regexes.
 2. Append `<id>` to `langs/catalog.json`.
 3. Each `rules` entry is a **definition-rule contract**, not a suggestion: the product's native indexer runs it against every file of that language and feeds the match straight into the symbol index — an `orch:export`-tagged name stays `scope=shared`, everything else lands `scope=local` (see [`langs/README.md`](langs/README.md)). Get `kind`/`pattern`/`name_group` right or the seed silently mis-tags symbols instead of failing loudly.
-4. If Orchemax should embed it, note the sync in your PR description.
+4. If Orchemax should embed it, note the sync in your PR description. These files
+   and the copy the product embeds are kept identical, and a test there fails when
+   they diverge.
+5. Include `params_group` whenever the declaration line shows the parameter list —
+   without it two overloads normalize to one string and the duplicate gate compares
+   names instead of signatures. Omit it when the grammar does not show one; do not
+   guess.
+
+## Rules for your own workshop, not for this repo
+
+A rule about your company's process belongs in your workshop's
+`.orch/gates/user/manifest.json`, never here — `deny`/`require` regexes or a
+`cmd` to run, judged at the same cut points as the built-ins
+([Your own rules](https://docs.orchemax.com/how-to/your-own-rules/)). Send it
+here only once it is general enough that a stranger's workshop wants it, and then
+it arrives as a pack.
 
 ## Add or extend a pack
 

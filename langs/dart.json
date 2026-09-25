@@ -1,9 +1,31 @@
 {
   "id": "dart",
-  "exts": [".dart"],
+  "exts": [
+    ".dart"
+  ],
   "comment": "//",
   "rules": [
-    {"kind": "type", "pattern": "(?m)^(?:abstract\\s+)?(?:class|mixin|enum|extension)\\s+([A-Za-z_][\\w]*)", "name_group": 1},
-    {"kind": "func", "pattern": "(?m)^(?:Future(?:<[^>]+>)?|void|String|int|double|bool|dynamic|num|Object)\\s+([a-z][\\w]*)\\s*\\([^;{]*\\)\\s*(?:async\\s*)?\\{", "name_group": 1}
+    {
+      "kind": "type",
+      "pattern": "(?m)^(?:abstract\\s+)?(?:class|mixin|enum|extension)\\s+([A-Za-z_][\\w]*)",
+      "name_group": 1
+    },
+    {
+      "kind": "func",
+      "pattern": "(?m)^(?:Future(?:<[^>]+>)?|void|String|int|double|bool|dynamic|num|Object)\\s+([a-z][\\w]*)\\s*\\(([^;{]*)\\)\\s*(?:async\\s*)?\\{",
+      "name_group": 1,
+      "params_group": 2
+    }
+  ],
+  "imposed_names": [
+    "toString",
+    "noSuchMethod",
+    "operator==",
+    "hashCode",
+    "build",
+    "dispose",
+    "initState",
+    "createState",
+    "call"
   ]
 }

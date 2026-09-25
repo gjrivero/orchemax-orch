@@ -1,9 +1,28 @@
 {
   "id": "swift",
-  "exts": [".swift"],
+  "exts": [
+    ".swift"
+  ],
   "comment": "//",
   "rules": [
-    {"kind": "type", "pattern": "(?m)^[ \\t]*(?:public\\s+|open\\s+|internal\\s+|fileprivate\\s+|private\\s+)*(class|struct|enum|protocol|actor)\\s+([A-Za-z_][\\w]*)", "name_group": 2},
-    {"kind": "func", "pattern": "(?m)^[ \\t]*(?:public\\s+|open\\s+|internal\\s+|fileprivate\\s+|private\\s+|static\\s+|class\\s+|mutating\\s+)*func\\s+([A-Za-z_][\\w]*)\\s*[<\\(]", "name_group": 1}
+    {
+      "kind": "type",
+      "pattern": "(?m)^[ \\t]*(?:public\\s+|open\\s+|internal\\s+|fileprivate\\s+|private\\s+)*(class|struct|enum|protocol|actor)\\s+([A-Za-z_][\\w]*)",
+      "name_group": 2
+    },
+    {
+      "kind": "func",
+      "pattern": "(?m)^[ \\t]*(?:public\\s+|open\\s+|internal\\s+|fileprivate\\s+|private\\s+|static\\s+|class\\s+|mutating\\s+)*func\\s+([A-Za-z_][\\w]*)\\s*(?:<[^>]*>)?\\s*\\(([^)]*)\\)",
+      "name_group": 1,
+      "params_group": 2
+    }
+  ],
+  "imposed_names": [
+    "init",
+    "deinit",
+    "description",
+    "hash",
+    "encode",
+    "decode"
   ]
 }

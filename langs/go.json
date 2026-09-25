@@ -1,6 +1,37 @@
 {
   "id": "go",
-  "exts": [".go"],
+  "exts": [
+    ".go"
+  ],
   "comment": "//",
-  "engine": "go-ast"
+  "engine": "go-ast",
+  "imposed_names": [
+    "Error",
+    "String",
+    "Read",
+    "Write",
+    "Close",
+    "ServeHTTP",
+    "MarshalJSON",
+    "UnmarshalJSON",
+    "MarshalText",
+    "UnmarshalText",
+    "Len",
+    "Less",
+    "Swap",
+    "Next",
+    "Scan",
+    "Value",
+    "Unwrap",
+    "Is",
+    "As",
+    "Format",
+    "GoString",
+    "Seek",
+    "Flush",
+    "Reset",
+    "Done",
+    "Deadline",
+    "Err"
+  ]
 }

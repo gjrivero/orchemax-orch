@@ -6,6 +6,6 @@
   "rules": [
     {"kind": "type", "pattern": "(?m)^@interface\\s+([A-Za-z_][\\w]*)", "name_group": 1},
     {"kind": "type", "pattern": "(?m)^@implementation\\s+([A-Za-z_][\\w]*)", "name_group": 1},
-    {"kind": "func", "pattern": "(?m)^[ \\t]*[-+]\\s*\\([^)]+\\)\\s*([A-Za-z_][\\w]*)", "name_group": 1}
+    {"kind": "func", "pattern": "(?m)^[ \\t]*[-+]\\s*\\([^)]+\\)\\s*([A-Za-z_][\\w]*)([^{;]*)", "name_group": 1, "params_group": 2}
   ]
 }

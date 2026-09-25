@@ -20,5 +20,21 @@
       "pattern": "(?m)^class\\s+([A-Za-z_][\\w]*)\\s*[\\(:]",
       "name_group": 1
     }
+  ],
+  "imposed_names": [
+    "__init__",
+    "__del__",
+    "__str__",
+    "__repr__",
+    "__enter__",
+    "__exit__",
+    "__eq__",
+    "__hash__",
+    "__len__",
+    "__iter__",
+    "__next__",
+    "__call__",
+    "__getitem__",
+    "__setitem__"
   ]
 }

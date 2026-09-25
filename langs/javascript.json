@@ -32,5 +32,16 @@
       "pattern": "(?m)^exports\\.([A-Za-z_$][\\w$]*)\\s*=",
       "name_group": 1
     }
+  ],
+  "imposed_names": [
+    "constructor",
+    "toString",
+    "valueOf",
+    "then",
+    "catch",
+    "finally",
+    "next",
+    "render",
+    "componentDidMount"
   ]
 }

@@ -4,6 +4,6 @@
   "comment": "#",
   "rules": [
     {"kind": "type", "pattern": "(?m)^defmodule\\s+([A-Za-z_][\\w.]*)", "name_group": 1},
-    {"kind": "func", "pattern": "(?m)^[ \\t]*def(?:p)?\\s+([A-Za-z_][\\w?!]*)", "name_group": 1}
+    {"kind": "func", "pattern": "(?m)^[ \\t]*def(?:p)?\\s+([A-Za-z_][\\w?!]*)(?:\\s*\\(([^)]*)\\))?", "name_group": 1, "params_group": 2}
   ]
 }

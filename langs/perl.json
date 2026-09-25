@@ -4,6 +4,6 @@
   "comment": "#",
   "rules": [
     {"kind": "type", "pattern": "(?m)^package\\s+([A-Za-z_][\\w:]*)\\s*;", "name_group": 1},
-    {"kind": "func", "pattern": "(?m)^sub\\s+([A-Za-z_][\\w]*)\\s*\\{", "name_group": 1}
+    {"kind": "func", "pattern": "(?m)^sub\\s+([A-Za-z_][\\w]*)\\s*(?:\\(([^)]*)\\))?\\s*\\{", "name_group": 1, "params_group": 2}
   ]
 }

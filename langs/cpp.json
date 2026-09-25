@@ -1,10 +1,36 @@
 {
   "id": "cpp",
-  "exts": [".cpp", ".cc", ".cxx", ".hpp", ".h"],
+  "exts": [
+    ".cpp",
+    ".cc",
+    ".cxx",
+    ".hpp",
+    ".h"
+  ],
   "comment": "//",
-  "aliases": ["c++", "cxx"],
+  "aliases": [
+    "c++",
+    "cxx"
+  ],
   "rules": [
-    {"kind": "type", "pattern": "(?m)^[ \\t]*(?:class|struct)\\s+([A-Za-z_][\\w]*)\\s*[{:]", "name_group": 1},
-    {"kind": "func", "pattern": "(?m)^[ \\t]*(?:[\\w:<>*&\\s]+)\\s+([A-Za-z_][\\w]*)\\s*\\([^;]*\\)\\s*(?:const\\s*)?\\{", "name_group": 1}
+    {
+      "kind": "type",
+      "pattern": "(?m)^[ \\t]*(?:class|struct)\\s+([A-Za-z_][\\w]*)\\s*[{:]",
+      "name_group": 1
+    },
+    {
+      "kind": "func",
+      "pattern": "(?m)^[ \\t]*(?:[\\w:<>*&\\s]+)\\s+([A-Za-z_][\\w]*)\\s*\\(([^;]*)\\)\\s*(?:const\\s*)?\\{",
+      "name_group": 1,
+      "params_group": 2
+    }
+  ],
+  "imposed_names": [
+    "operator=",
+    "operator==",
+    "begin",
+    "end",
+    "swap",
+    "clone"
   ]
 }

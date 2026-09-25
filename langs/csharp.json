@@ -19,5 +19,16 @@
       "name_group": 1,
       "params_group": 2
     }
+  ],
+  "imposed_names": [
+    "Dispose",
+    "ToString",
+    "Equals",
+    "GetHashCode",
+    "GetEnumerator",
+    "CompareTo",
+    "Clone",
+    "MoveNext",
+    "Reset"
   ]
 }

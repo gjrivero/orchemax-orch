@@ -32,5 +32,17 @@
       "pattern": "(?m)^export\\s+(?:const|let|var|enum)\\s+([A-Za-z_$][\\w$]*)",
       "name_group": 1
     }
+  ],
+  "imposed_names": [
+    "constructor",
+    "toString",
+    "valueOf",
+    "then",
+    "catch",
+    "finally",
+    "next",
+    "render",
+    "ngOnInit",
+    "ngOnDestroy"
   ]
 }

@@ -4,6 +4,6 @@
   "comment": "#",
   "aliases": ["ps"],
   "rules": [
-    {"kind": "func", "pattern": "(?im)^function\\s+([A-Za-z_][\\w-]*)\\s*\\{", "name_group": 1}
+    {"kind": "func", "pattern": "(?im)^function\\s+([A-Za-z_][\\w-]*)\\s*(?:\\(([^)]*)\\))?\\s*\\{", "name_group": 1, "params_group": 2}
   ]
 }
