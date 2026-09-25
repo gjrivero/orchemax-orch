@@ -8,3 +8,8 @@ Thumbs.db
 # Local scratch
 .tmp/
 scratch/
+
+# orch sandbox — agent scratch (item 144), never versioned
+.sandbox/
+.claude/settings.local.json
+.openclaude/settings.local.json

@@ -60,12 +60,19 @@ model + tier). List order is preference. An empty list / untouched
 `your-*-here` placeholders leaves the Chair's own agent as the default.
 Live spawn still respects the concurrent cap.
 
+### Universal context-mode communication & auto-installed Pi
+
+- **Cross-model context-mode communication:** Unlike vendor-walled solutions like Claude (where communication only works between Claudes), Orchemax provides token-saving context-mode communication across **any agent and any LLM model** (Claude, Cursor, OpenCode, Codex, Gemini, DeepSeek, local models, etc.). This universal cross-model communication is a core architectural differentiator.
+- **Auto-installed Pi for external workers:** When configuring workers with different LLMs from the primary Chair, Orchemax automatically installs and manages **Pi** under machine tools. No manual CLI installation or script wrangling is required.
+- **Speed & token isolation:** Secondary workers execute their tasks externally in dedicated worktrees. The primary Chair remains light, fast, and completely free from context pollution or token degradation. The only tokens consumed are what that worker's LLM specifically spends on its assigned subtask, avoiding compounding token bloat on the orchestrator.
+- **Dynamic dashboard metrics:** Token meters, gateway savings, and execution counters refresh dynamically in the local dashboard (`/app/board`).
+
 Two credential lanes (mix freely):
 
 | Tier / auth | Meaning |
 |-------------|---------|
 | `account` | Vendor plan login. `model` is the **vendor** LLM default (e.g. sonnet). No API key. |
-| `cheap` / gateway | Orch gateway + keys. `model` is the gateway id (bare → `orchemax/<id>`). BYO CLIs (OpenCode, …) use provider **orchemax** as the default account. |
+| `cheap` / gateway | Orch gateway + keys. `model` is the gateway id (bare → `orchemax/<id>`). BYO CLIs (OpenCode, Pi, …) use provider **orchemax** as the default account. |
 
 `workers[].auth` wins over `tier` when set. Otherwise `tier: account|login|plan`
 → account; `cheap|free|paid|local|gateway|…` → gateway.
@@ -77,11 +84,12 @@ inside one project → spawn. Talk to another open project → bus
 
 A worker:
 
-- executes one task, reports back over the disk message bus (parent / child
+- executes one task, reports back over the message bus (parent / child
   / sibling roles), and does not re-orchestrate or spawn its own workers;
+- communicates in token-saving context-mode with the Chair and peers;
 - asks the Chair a blocking question with `ask` instead of guessing, when a
   decision genuinely is not the worker's to make;
-- can be a native BYO agent under its own subprocess, or — for Claude Code,
+- can be a native BYO agent under its own subprocess (or auto-installed Pi for external LLMs), or — for Claude Code,
   Codex, Gemini CLI and OpenCode — an ACP-driven agent: structured tool-call
   and permission events over JSON-RPC instead of scraped stdout, so its
   permission requests route through `ask`/`ask_answer` to the Chair like any

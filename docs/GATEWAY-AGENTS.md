@@ -80,6 +80,7 @@ orch still under the seat → MCP, bus, locks, usage (not model routing)
 |------|-----|---------|--------|
 | **Any OpenAI-compat BYO** | Dominant wire | `orch gateway connect` | paste Base URL + `orch_gk_…` |
 | **OpenCode** | Optional convenience | `orch gateway connect opencode --allow-user-scope` | writes `~/.config/opencode/opencode.json` |
+| **Pi** | External worker preset (different LLMs) | Auto-installed by Orchemax; routes to gateway `orchemax` provider | Automatic; no manual config required |
 | **OpenClaude / Command Code / Copilot / Cursor BYOK** | Same OpenAI wire | aliases → openai paste | agent’s own settings / GUI |
 | **Claude Code** (Anthropic **API key** only) | Messages API passthrough | `orch gateway connect anthropic` + `agents.auth.claude: gateway` | paste env — **no** OpenRouter ring |
 

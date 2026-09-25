@@ -1,0 +1,10 @@
+---
+description: Points Cursor at this project's AGENTS.md (orch workspace rules digest).
+alwaysApply: true
+---
+
+<!-- orch:begin -->
+# AGENTS.md
+Read `AGENTS.md` in this project root before editing — workspace rules digest
+(locale, gates, sandbox, how to reach orch).
+<!-- orch:end -->
