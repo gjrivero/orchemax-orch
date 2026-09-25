@@ -36,6 +36,15 @@ as `scope=local` — invisible to that search, but visible to the graph tools
 (`trace_path`, `impact`, `code_snippet`, `architecture`). That is what stops a
 worker from writing a second copy of a function nobody remembered to tag.
 
+## `bom_required`
+
+`"bom_required": true` says the compiler reads a file with no UTF-8 byte-order mark
+in the machine's legacy code page. Delphi does, and nothing else here does: a unit
+holding any byte above ASCII — any script, not only accents — compiles and ships
+every one of those characters as two. `orch guard encoding` denies that file when
+the flag is set. Leave it out unless the toolchain really behaves this way; a BOM is
+noise elsewhere, and Go refuses one outright.
+
 ## Try it in your own workshop first
 
 A seed does not need this repo to work. Drop the same document at
