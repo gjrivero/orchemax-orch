@@ -15,7 +15,8 @@ entries — never `switch preset { "openclaude": … }` for each new binary.
 | Runtime depth | `.orch/ORCH_RUNTIME.md` | Every seat; refreshed on open |
 | Orch MCP | `.orch/mcp.json` / `.mcp.json` | Server ids **`orchemax`** (preferred) and **`orch`** (alias). If another tool is named `orch`, call Orchemax as `orchemax`. |
 | Continuity | `.orch/LAST_SESSION.md` | Chat is not memory |
-| Gates | Seal path (dup, shared-lock, `.orch/gates/*`) | Run even when the CLI has **no** hooks |
+| Gates | Seal path (dup, shared-lock, `.orch/gates/*`); from 0.5.0 (preview) a worker's commit also runs the seal's gates | Run even when the CLI has **no** hooks |
+| Shell safety | Stdin-safe shells (0.5.0, preview) | A command that would wait on stdin forever (bare interpreter/REPL, empty heredoc) is refused for every seat, with the fix in one line |
 | UserPromptSubmit | Same notify-hook | On “take context” / Chair cues injects `.orch/LAST_SESSION.md` |
 
 Escape hatch: `ORCH_LEGACY_SKILLS=1` restores durable sealed `orch-*` skill

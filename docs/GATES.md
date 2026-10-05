@@ -29,6 +29,20 @@ The generated, always-current reference is
 [Languages and guards](https://docs.orchemax.com/reference/languages-and-guards/) —
 every `orch guard` verb, read straight from the source that defines it.
 
+## When gates run (Orchemax 0.5.0 — preview)
+
+Every tool call is judged by hooks at the moment of action, and a worker's
+commit runs the same gates the final seal runs (generated outputs unstaged,
+ledger edits, removed tests, unlocked shared writes, red-first). A worker
+learns in seconds instead of after a full seal; the seal stays as the
+backstop. A command that would wait on stdin forever (a bare interpreter/REPL,
+an empty heredoc) is refused for every seat, with the fix in one line.
+
+Every error becomes a row that moves detect → correct → improve (a gate) →
+memorize (a lesson) → learn (shown at the action) → repeat (verified no
+recurrence); a gate that catches an error before harm counts as the mechanism
+holding. Release notes: [docs.orchemax.com/en/releases/0.5.0](https://docs.orchemax.com/en/releases/0.5.0).
+
 ## Hooks — opt-in, not gates
 
 Two harness hooks rewrite tool output *before* it reaches the agent's

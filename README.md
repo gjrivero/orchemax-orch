@@ -12,6 +12,24 @@ Documentation: https://docs.orchemax.com
 
 ---
 
+## Orchemax 0.5.0 — preview, early access by invitation
+
+Orchemax is the background layer for coding agents: it works with the agent CLI you already use (`claude`, `codex`, `cursor`, `opencode`, `openclaude`, `pi`, …). Only sessions opened with `orch <agent>` get its rules, gates, memory and lessons. Request early access on the waitlist at [orchemax.com](https://orchemax.com); release notes: [docs.orchemax.com/en/releases/0.5.0](https://docs.orchemax.com/en/releases/0.5.0).
+
+What 0.5.0 brings:
+
+1. **Gates at the moment of action** — every tool call is judged by hooks, and a worker's commit runs the same gates the final seal runs, so it learns in seconds instead of after a full seal. The seal stays as the backstop.
+2. **Stdin-safe shells** — a command that would wait on stdin forever (a bare interpreter/REPL, an empty heredoc) is refused for every seat, with the fix in one line.
+3. **Orchemax releases what it fills** — it measures its own footprint (build cache, worktrees, scratch, logs) in `orch stats`, trims the Go build cache when idle and over its limit, removes stray `orch` binaries at start, and frees dead workers' worktrees without losing their branches or uncommitted work.
+4. **A truthful session start** — the Chair's start card is built from Orchemax's own records: sessions that died are shown as died, branches already merged are not listed.
+5. **The improvement cycle as a mechanism** — every error becomes a row that moves detect → correct → improve (a gate) → memorize (a lesson) → learn (shown at the action) → repeat (verified no recurrence).
+6. **The Chair is held to the same rules** — briefs without invariants-with-tests or an out-of-scope section are refused, and the land never blocks itself.
+7. **Faster dispatch** — one dispatch spawns fewer git processes (142 → 99 measured on one test run).
+
+Language packs and seeds in this repository are unchanged by 0.5.0.
+
+---
+
 ## What is Orchemax?
 
 **Orchemax is the product that governs multi-agent AI coding teams** — a local workshop factory plus an optional cloud overlook for whoever pays the bill.
