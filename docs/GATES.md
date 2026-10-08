@@ -44,7 +44,7 @@ recurrence); a gate that catches an error before harm counts as the mechanism
 holding. A lesson broken after it was shown becomes a gate; until it has one,
 only base work is dispatched (the needs-gate), and every override is written and
 counted. Proof is proportional: a change runs only the tests it reaches, reuses
-passes on identical code, and a change that skipped full verification is
+passes on identical code where already recorded (partly shipped), and a change that skipped full verification is
 labelled unverified, never passed. `orch try` installs accepted branches for a
 live trial without running a suite; `orch land` verifies and lands them.
 Nightly verification in a window you set is **planned**. Release notes: [docs.orchemax.com/en/releases/0.6.0](https://docs.orchemax.com/en/releases/0.6.0).
