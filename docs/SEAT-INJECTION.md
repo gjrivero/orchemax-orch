@@ -15,8 +15,10 @@ entries — never `switch preset { "openclaude": … }` for each new binary.
 | Runtime depth | `.orch/ORCH_RUNTIME.md` | Every seat; refreshed on open |
 | Orch MCP | `.orch/mcp.json` / `.mcp.json` | Server ids **`orchemax`** (preferred) and **`orch`** (alias). If another tool is named `orch`, call Orchemax as `orchemax`. |
 | Continuity | `.orch/LAST_SESSION.md` | Chat is not memory |
-| Gates | Seal path (dup, shared-lock, `.orch/gates/*`); from 0.5.0 (preview) a worker's commit also runs the seal's gates | Run even when the CLI has **no** hooks |
-| Shell safety | Stdin-safe shells (0.5.0, preview) | A command that would wait on stdin forever (bare interpreter/REPL, empty heredoc) is refused for every seat, with the fix in one line |
+| Gates | Seal path (dup, shared-lock, `.orch/gates/*`); from 0.5.0 a worker's commit also runs the seal's gates | Run even when the CLI has **no** hooks |
+| Shell safety | Stdin-safe shells (0.5.0) | A command that would wait on stdin forever (bare interpreter/REPL, empty heredoc) is refused for every seat, with the fix in one line |
+| Session start and close | Chair first message + start brief (0.6.0, preview) | The Chair opens in `workspace.locale` with a brief built from Orchemax's own records; closing a Chair runs no worker seal tests, merge preview or repo gate |
+| Scratch | `.sandbox/<seat>/` | Agent notes and scratch, swept after `guard.sandbox_days` (default 14); never durable knowledge |
 | UserPromptSubmit | Same notify-hook | On “take context” / Chair cues injects `.orch/LAST_SESSION.md` |
 
 Escape hatch: `ORCH_LEGACY_SKILLS=1` restores durable sealed `orch-*` skill

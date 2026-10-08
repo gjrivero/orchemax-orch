@@ -49,7 +49,12 @@ the exact failure mode the workshop model exists to prevent.
 
 **Plan caps (separate from "one Chair per project"):** open-agent Chairs are
 metered by `orch.agents.max`; concurrent workers by `orch.agents.concurrent`.
-MCP-only Chairs do not consume the worker meter. See docs.orchemax.com
+MCP-only Chairs do not consume the worker meter. Limits per plan (projects,
+open Chairs, concurrent workers, monthly dispatches) are in the README
+[Plans](../README.md#plans) table; the plan-limit wiring is in progress.
+
+A workshop is removable by deleting one folder: orch data lives only under
+`<workshop>/.orch/` and each project's `.sandbox/<seat>/`. See docs.orchemax.com
 [Chair and workers](https://docs.orchemax.com/chair-and-workers/).
 
 ## Workers

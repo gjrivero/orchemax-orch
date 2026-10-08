@@ -29,7 +29,7 @@ The generated, always-current reference is
 [Languages and guards](https://docs.orchemax.com/reference/languages-and-guards/) —
 every `orch guard` verb, read straight from the source that defines it.
 
-## When gates run (Orchemax 0.5.0 — preview)
+## When gates run (Orchemax 0.6.0 — preview)
 
 Every tool call is judged by hooks at the moment of action, and a worker's
 commit runs the same gates the final seal runs (generated outputs unstaged,
@@ -41,7 +41,13 @@ an empty heredoc) is refused for every seat, with the fix in one line.
 Every error becomes a row that moves detect → correct → improve (a gate) →
 memorize (a lesson) → learn (shown at the action) → repeat (verified no
 recurrence); a gate that catches an error before harm counts as the mechanism
-holding. Release notes: [docs.orchemax.com/en/releases/0.5.0](https://docs.orchemax.com/en/releases/0.5.0).
+holding. A lesson broken after it was shown becomes a gate; until it has one,
+only base work is dispatched (the needs-gate), and every override is written and
+counted. Proof is proportional: a change runs only the tests it reaches, reuses
+passes on identical code, and a change that skipped full verification is
+labelled unverified, never passed. `orch try` installs accepted branches for a
+live trial without running a suite; `orch land` verifies and lands them.
+Nightly verification in a window you set is **planned**. Release notes: [docs.orchemax.com/en/releases/0.6.0](https://docs.orchemax.com/en/releases/0.6.0).
 
 ## Hooks — opt-in, not gates
 

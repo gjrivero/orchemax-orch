@@ -12,21 +12,35 @@ Documentation: https://docs.orchemax.com
 
 ---
 
-## Orchemax 0.5.0 — preview, early access by invitation
+## Orchemax 0.6.0 — preview, early access by invitation
 
-Orchemax is the background layer for coding agents: it works with the agent CLI you already use (`claude`, `codex`, `cursor`, `opencode`, `openclaude`, `pi`, …). Only sessions opened with `orch <agent>` get its rules, gates, memory and lessons. Request early access on the waitlist at [orchemax.com](https://orchemax.com); release notes: [docs.orchemax.com/en/releases/0.5.0](https://docs.orchemax.com/en/releases/0.5.0).
+Orchemax is the background layer for coding agents: it works with the agent CLI you already use (`claude`, `codex`, `cursor`, `opencode`, `openclaude`, `pi`, …). Only sessions opened with `orch <agent>` get its rules, gates, memory and lessons. Request early access on the waitlist at [orchemax.com](https://orchemax.com); release notes: [docs.orchemax.com/en/releases/0.6.0](https://docs.orchemax.com/en/releases/0.6.0).
 
-What 0.5.0 brings:
+What 0.6.0 brings, on top of 0.5.0 (gates at the moment of action, stdin-safe shells, a truthful session start, the improvement cycle):
 
-1. **Gates at the moment of action** — every tool call is judged by hooks, and a worker's commit runs the same gates the final seal runs, so it learns in seconds instead of after a full seal. The seal stays as the backstop.
-2. **Stdin-safe shells** — a command that would wait on stdin forever (a bare interpreter/REPL, an empty heredoc) is refused for every seat, with the fix in one line.
-3. **Orchemax releases what it fills** — it measures its own footprint (build cache, worktrees, scratch, logs) in `orch stats`, trims the Go build cache when idle and over its limit, removes stray `orch` binaries at start, and frees dead workers' worktrees without losing their branches or uncommitted work.
-4. **A truthful session start** — the Chair's start card is built from Orchemax's own records: sessions that died are shown as died, branches already merged are not listed.
-5. **The improvement cycle as a mechanism** — every error becomes a row that moves detect → correct → improve (a gate) → memorize (a lesson) → learn (shown at the action) → repeat (verified no recurrence).
-6. **The Chair is held to the same rules** — briefs without invariants-with-tests or an out-of-scope section are refused, and the land never blocks itself.
-7. **Faster dispatch** — one dispatch spawns fewer git processes (142 → 99 measured on one test run).
+1. **Proof is proportional and never blocks you** — writing code never waits on a test suite and a session close never runs one. A change runs only the tests it reaches and reuses passes on identical code; full verification is announced with its measured time and you choose when it runs. A change that skipped it is labelled unverified, never passed. Running only the tests an impact analysis reaches at land is **planned**.
+2. **`orch try <session|branch>...`** — merges accepted branches onto main in a train directory, builds, installs the result with a rollback copy and runs no test suite. It moves no branch and pushes nothing. It prints `ready to try live: <commit> installed (<elapsed>)`, `orch status` shows it as unverified until a later `orch land --install` replaces it, and `orch try --rollback` restores the previous install.
+3. **`orch land`** — merges accepted branches, runs whole-package verification, bisects a failing train by branch, reruns only the failing tests, lands the rest, and can push and install. Land hygiene (an already-merged branch is reported superseded and skipped; a land waits while a seal, audit or whole-package run is live; temp files stay in the workshop) is in progress. **Nightly verification** is **planned**: you set a start and end time (`verify.nightly.start` / `verify.nightly.end`), the full land runs alone in that window and only steps that fit before the end, Team work schedules bound it, and the morning start brief reports landed, failed (test and file) and deferred.
+4. **Session start and close** — the Chair opens with its own first message (in `workspace.locale`, `en` or `es-US`, tú/usted from `workspace.address`) and a start brief: last-session card, pinned memories, recent recurred lessons, open learning-cycle rows, work state and pending decisions. An animated progress line shows the current step and elapsed time while a seat starts and closes (silent off a terminal and under `NO_COLOR`, `ORCH_NO_SPIN`, `ORCH_QUIET`). Closing a Chair is light: no worker seal tests, merge preview or repo gate; it judges only its own commits. A sealing worker is never shown as stalled, and a queued dispatch waits while the load that blocks it is alive. Saving the handoff and card at each state change, so close returns instantly and start reads a pre-built brief, is **planned**.
+5. **Quieter notifications** — desktop toasts only when you must act. Worker results (sealed, failed, ended, stalled, needs an answer, handoff) never toast while a Chair is open, the Chair's idle prompt does not toast while its own land, audit or seal runs, and every `notify.log` line ends with `delivered=toast` or `delivered=none reason=<reason>`. Covering the remaining callers and a toast timeout is in progress.
+6. **A workshop you can remove by deleting one folder** — orch data lives only under `<workshop>/.orch/` and each project's `.sandbox/<seat>/`; seat temp files moved into `.sandbox/<seat>/tmp`, and moving the default scratch root into the workshop is in progress. Agent notes and scratch go under `.sandbox/<seat>/`, swept after `guard.sandbox_days` (default 14); durable knowledge lives in memory and tracked files, never there.
+7. **Learning that reaches the action** — lessons are shown at the action they are about (dispatch, brief, audit, land, edit). A lesson broken after it was shown becomes a gate; until it has one, only base work is dispatched (the needs-gate). Every override is written and counted, and recurrences are counted per lesson. Batches of new gates are being built.
 
-Language packs and seeds in this repository are unchanged by 0.5.0.
+### Plans
+
+Limits are being wired into the product (in progress); prices are set. Every limit names the plan that lifts it. There is no hourly or 5-hour window, and LLM spend stays BYO: you pay your own provider.
+
+| | Free | Starter | Professional | Team |
+|---|---|---|---|---|
+| Price | $0 | $10/mo | $25/mo | $35/seat/mo (3-seat minimum) |
+| Projects | 2 | 5 | 15 | 100 |
+| Open Chairs | 2 | 2 | 3 | 1 per seat |
+| Concurrent workers | 0 | 1 | 3 | 10 pooled |
+| Dispatches per month | — | 300 | 1,500 | 6,000 |
+
+Free is the full Chair (gates, memory, lessons, session start and close) with no workers. A 14-day Professional trial without a card is **planned**. Annual billing is not announced.
+
+Language packs and seeds in this repository are unchanged by 0.6.0.
 
 ---
 
