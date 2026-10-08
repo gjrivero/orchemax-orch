@@ -13,24 +13,3 @@ scratch/
 .sandbox/
 .claude/settings.local.json
 .openclaude/settings.local.json
-# orch run scaffolding (not the worker's own output)
-.cursor/mcp.json
-.mcp.json
-.orch-run.cmd
-.orch-prompt.txt
-.orch-agent.log
-.orch-agent-*.log
-.cursor/hooks.json
-.claude/skills/orch-*/
-.agents/
-.orch/*
-!.orch/gates/
-.opencode/
-.commandcode/
-.agents/rules/orch-last-session.md
-.claude/rules/orch-last-session.md
-.openclaude/rules/orch-last-session.md
-.cursor/rules/orch-last-session.md
-.cursor/rules/orch-last-session.mdc
-.commandcode/rules/orch-last-session.md
-.opencode/rules/orch-last-session.md
