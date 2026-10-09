@@ -60,7 +60,7 @@ Every pack has:
 
 ```yaml
 id: delphi
-kind: language          # language | workshop | cross-cutting
+kind: language          # language | cross-cutting
 version: 0.1.0
 languages: [delphi]     # empty if workshop/cross-cutting
 orch_min: "0.0.0"       # semver floor when known
@@ -72,7 +72,7 @@ install:
     - { from: GATES.md, to: ".orch/gates/user/DELPHI.md" }
   claude_rules:
     - { from: claude/RULES.md, to: ".claude/rules/delphi.md" }
-depends_on: [_workshop] # optional pack ids
+depends_on: [encoding]  # optional pack ids
 built_in_orch:          # document Orchemax commands this pack relies on
   - guard code-lang
   - guard encoding
@@ -80,19 +80,6 @@ built_in_orch:          # document Orchemax commands this pack relies on
 ```
 
 `mode: merge` = never wipe owner content; append under owner markers when present.
-
-## 3. Workshop defaults (`packs/_workshop`)
-
-Agnostic recommendations:
-
-- Thin root `CLAUDE.md` / `AGENTS.md` pointers
-- `doctrine/` for cross-project law (orch seeds `README.md` only)
-- Workshop-root `docs/` optional (workshop notes, not product TRACKER)
-- `SHARED.md` stub per shared folder
-- Per-project `docs/TRACKER.md` vocabulary
-- Profile hints: lite | shared | strict
-
-Language packs **add** to this; they do not replace Orchemax `orch init` seeds.
 
 ## 4. Gates taxonomy
 

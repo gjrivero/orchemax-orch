@@ -31,7 +31,7 @@ it arrives as a pack.
 
 ## Add or extend a pack
 
-1. Prefer starting from `packs/_workshop` (agnostic) or `packs/go` (thin language template).  
+1. Start from `packs/go` (thin language template).  
 2. Fill `MANIFEST.yaml` + `GATES.md` + short `README.md`.  
 3. Keep SHARED snippets **agnostic** (no client/product names).  
 4. Add `fixtures/` if you introduce a hard deny.  
@@ -43,11 +43,11 @@ Deep packs (like `delphi`) are welcome for **any** stack that has LLM footguns �
 
 Prose names the product **Orchemax**. `orch` stays literal only for the
 command, the binary, config/dirs (`orch.yaml`, `.orch/`), code identifiers,
-skill names (`orch-chair`, …), and the MCP server name — never as a stand-in
+and the MCP server name — never as a stand-in
 for the product in a sentence. Check before you send a PR:
 
 ```bash
-grep -rnE '\borch\b' --include='*.md' README.md SPEC.md CONTRIBUTING.md catalog/ packs/ skills/README.md docs/ langs/ | grep -viE '`orch|orch\.(yaml|exe)|\.orch/|orch-[a-z]+|orch (guard|pack|init|claude|opencode|lock|symbols|usage|skill|harness|memory|setup)'
+grep -rnE '\borch\b' --include='*.md' README.md SPEC.md CONTRIBUTING.md packs/ langs/ | grep -viE '`orch|orch\.(yaml|exe)|\.orch/|orch-[a-z]+|orch (guard|pack|init|claude|opencode|lock|symbols|usage|skill|harness|memory|setup)'
 ```
 
 Any survivor naming the product itself (not the CLI) should read **Orchemax**.
@@ -57,7 +57,7 @@ Any survivor naming the product itself (not the CLI) should read **Orchemax**.
 - Brand: **Orchemax** (product), `orch` (CLI), **orchemax-orch** (this repo).  
 - English for pack docs (LLM reliability). Owner workshops may translate.  
 - Short GATES tables; long war stories → optional `NOTES.md`.  
-- MIT license; by contributing you agree the same.
+- License: CC BY-NC-SA 4.0 (see LICENSE); by contributing you license your contribution the same way.
 
 ## Review checklist
 

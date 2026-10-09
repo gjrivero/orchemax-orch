@@ -4,7 +4,7 @@ version: 0.1.0
 languages: [delphi]
 orch_min: "0.0.0"
 summary: Delphi/Pascal agent craft — FireDAC text params, shared purity, test artifact hygiene; HTMX optional overlay.
-depends_on: [_workshop, encoding]
+depends_on: [encoding]
 built_in_orch:
   - guard code-lang
   - guard encoding

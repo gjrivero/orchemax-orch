@@ -13,7 +13,7 @@
     "id": {
       "type": "string",
       "pattern": "^_?[a-z][a-z0-9_-]*$",
-      "description": "Pack id. A leading underscore marks a base pack others depend on (_workshop)."
+      "description": "Pack id. A leading underscore marks a base pack others depend on."
     },
     "kind": {
       "type": "string",

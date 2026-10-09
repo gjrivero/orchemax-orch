@@ -1,7 +1,7 @@
 # Delphi / Pascal pack (one language among many)
 
 Optional pack for workshops that use **Delphi/Pascal**.  
-If your workshop is Go/TS/Python only, **ignore this folder** — use `packs/_workshop` + `packs/go` (or your language) instead.
+If your workshop is Go/TS/Python only, **ignore this folder** — use `packs/go` (or your language) instead.
 
 This pack exists because Delphi + LLMs has sharp, measured footguns (FireDAC text params, `.dcu` placement). The same pattern applies to other languages via their own packs.
 
@@ -18,6 +18,5 @@ Enable Orchemax built-ins: `code_lang: en`, `orch guard encoding` (HTML), `orch 
 
 ## Depends on
 
-- `packs/_workshop` (agnostic)
 - `packs/encoding` (if you ship HTML/email)
 - Language seed: `langs/delphi.json`

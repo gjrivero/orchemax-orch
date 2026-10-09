@@ -42,5 +42,4 @@ Full patterns: your workshop's own `SPA_DEV_PATTERNS.md` §4 (workshop-owned —
 
 ## Depends on
 
-- `packs/_workshop`
 - Does **not** require Delphi — any HTMX product can use it

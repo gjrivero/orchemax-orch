@@ -3,11 +3,6 @@
   "description": "Index of community packs (not language seeds — those live under langs/)",
   "packs": [
     {
-      "id": "_workshop",
-      "path": "packs/_workshop",
-      "kind": "workshop"
-    },
-    {
       "id": "delphi",
       "path": "packs/delphi",
       "kind": "language"
@@ -30,11 +25,6 @@
     {
       "id": "htmx-spa",
       "path": "packs/htmx-spa",
-      "kind": "cross-cutting"
-    },
-    {
-      "id": "no-unmeasured-claims",
-      "path": "packs/no-unmeasured-claims",
       "kind": "cross-cutting"
     }
   ]

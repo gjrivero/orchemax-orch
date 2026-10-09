@@ -13,3 +13,11 @@ scratch/
 .sandbox/
 .claude/settings.local.json
 .openclaude/settings.local.json
+
+# Agent seat files orch seeds locally for this checkout; never published
+AGENTS.md
+CLAUDE.md
+GEMINI.md
+.cursor/
+.claude/
+.openclaude/
