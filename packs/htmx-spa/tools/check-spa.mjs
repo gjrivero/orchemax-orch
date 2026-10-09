@@ -14,10 +14,10 @@
  * duplicados aparecen en la TERCERA navegacion.
  *
  * Uso:
- *   node core/tools/check-spa.mjs http://localhost:8080/app/
- *   node core/tools/check-spa.mjs http://localhost:8080/app/ --token <jwt>
- *   node core/tools/check-spa.mjs http://localhost:8080/app/ --nav "#app-sidebar a[hx-get]"
- *   node core/tools/check-spa.mjs http://localhost:8080/app/ --mobile
+ *   node packs/htmx-spa/tools/check-spa.mjs http://localhost:8080/app/
+ *   node packs/htmx-spa/tools/check-spa.mjs http://localhost:8080/app/ --token <jwt>
+ *   node packs/htmx-spa/tools/check-spa.mjs http://localhost:8080/app/ --nav "#app-sidebar a[hx-get]"
+ *   node packs/htmx-spa/tools/check-spa.mjs http://localhost:8080/app/ --mobile
  *
  * Requiere Playwright. Sale con 1 si algo falla, 2 si no pudo medir.
  * Un check que no puede medir NO reporta verde.

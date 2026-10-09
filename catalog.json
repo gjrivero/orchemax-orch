@@ -1,5 +1,5 @@
 {
-  "$schema": "./pack.manifest.schema.json",
+  "$schema": "./schemas/pack.manifest.schema.json",
   "description": "Index of community packs (not language seeds — those live under langs/)",
   "packs": [
     {
