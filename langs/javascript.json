@@ -1,5 +1,14 @@
 {
   "id": "js",
+  "test_files": [
+    "*.test.*",
+    "*.spec.*"
+  ],
+  "build_output_dirs": [
+    "node_modules/",
+    "dist/",
+    "build/"
+  ],
   "exts": [
     ".js",
     ".mjs",

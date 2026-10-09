@@ -1,5 +1,15 @@
 {
   "id": "python",
+  "test_files": [
+    "test_*.py",
+    "*_test.py"
+  ],
+  "build_output_dirs": [
+    "__pycache__/"
+  ],
+  "ide_junk_dirs": [
+    ".venv/"
+  ],
   "exts": [
     ".py",
     ".pyi"

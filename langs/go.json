@@ -1,5 +1,11 @@
 {
   "id": "go",
+  "test_files": [
+    "*_test.go"
+  ],
+  "unit_manifests": [
+    "go.mod"
+  ],
   "exts": [
     ".go"
   ],

@@ -1,5 +1,12 @@
 {
   "id": "kotlin",
+  "test_files": [
+    "src/test/**"
+  ],
+  "build_output_dirs": [
+    "build/",
+    "target/"
+  ],
   "exts": [
     ".kt",
     ".kts"

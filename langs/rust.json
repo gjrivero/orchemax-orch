@@ -1,5 +1,11 @@
 {
   "id": "rust",
+  "test_files": [
+    "tests/**"
+  ],
+  "build_output_dirs": [
+    "target/"
+  ],
   "exts": [
     ".rs"
   ],

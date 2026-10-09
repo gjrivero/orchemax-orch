@@ -1,5 +1,22 @@
 {
   "id": "delphi",
+  "test_files": [
+    "*Test*.pas",
+    "*Tests*.pas"
+  ],
+  "unit_manifests": [
+    "*.dpr",
+    "*.dproj"
+  ],
+  "build_output_dirs": [
+    "Win32/",
+    "Win64/",
+    "*.dcu"
+  ],
+  "ide_junk_dirs": [
+    "__history/",
+    "__recovery/"
+  ],
   "exts": [
     ".pas",
     ".dpr",

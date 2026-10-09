@@ -1,5 +1,12 @@
 {
   "id": "java",
+  "test_files": [
+    "src/test/**"
+  ],
+  "build_output_dirs": [
+    "build/",
+    "target/"
+  ],
   "exts": [
     ".java"
   ],

@@ -1,5 +1,12 @@
 {
   "id": "cpp",
+  "test_files": [
+    "*_test.cpp",
+    "*Test.cpp"
+  ],
+  "build_output_dirs": [
+    "build/"
+  ],
   "exts": [
     ".cpp",
     ".cc",

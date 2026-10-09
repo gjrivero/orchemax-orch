@@ -1,5 +1,12 @@
 {
   "id": "csharp",
+  "test_files": [
+    "*Tests.cs"
+  ],
+  "build_output_dirs": [
+    "bin/",
+    "obj/"
+  ],
   "exts": [
     ".cs"
   ],
