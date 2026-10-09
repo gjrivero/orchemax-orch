@@ -1,8 +1,12 @@
 {
   "id": "delphi",
   "test_files": [
-    "*Test*.pas",
-    "*Tests*.pas"
+    "*Test.pas",
+    "*Tests.pas",
+    "uTest*.pas",
+    "Test[A-Z]*.pas",
+    "Test/**",
+    "Tests/**"
   ],
   "unit_manifests": [
     "*.dpr",
