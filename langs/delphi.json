@@ -27,6 +27,7 @@
     ".dpk"
   ],
   "comment": "//",
+  "block_comments": [["{", "}"], ["(*", "*)"]],
   "aliases": [
     "pas",
     "pascal"
@@ -68,6 +69,13 @@
       "pattern": "(?im)^[ \\t]*(?:class\\s+)?(function|procedure|constructor|destructor)\\s+([A-Za-z_][\\w.]*)\\s*(?:\\(([^)]*)\\))?\\s*[:;]",
       "name_group": 2,
       "params_group": 3
+    }
+  ],
+  "imports": [
+    {
+      "kind": "import",
+      "pattern": "(?im)^[ \\t]*uses\\b([^;]*);",
+      "name_group": 1
     }
   ]
 }

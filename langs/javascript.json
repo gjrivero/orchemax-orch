@@ -16,6 +16,7 @@
     ".jsx"
   ],
   "comment": "//",
+  "block_comments": [["/*", "*/"]],
   "aliases": [
     "javascript"
   ],
@@ -52,5 +53,12 @@
     "next",
     "render",
     "componentDidMount"
+  ],
+  "imports": [
+    {
+      "kind": "import",
+      "pattern": "(?m)^[ \\t]*(?:import\\b[^'\"\\n;]*?|export\\b[^'\"\\n;]*?from|(?:const|let|var)\\b[^\\n=]*=[ \\t]*require\\()[ \\t]*['\"]([^'\"\\n]+)['\"]",
+      "name_group": 1
+    }
   ]
 }

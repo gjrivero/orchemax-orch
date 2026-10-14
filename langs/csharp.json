@@ -11,6 +11,7 @@
     ".cs"
   ],
   "comment": "//",
+  "block_comments": [["/*", "*/"]],
   "aliases": [
     "cs"
   ],
@@ -37,5 +38,12 @@
     "Clone",
     "MoveNext",
     "Reset"
+  ],
+  "imports": [
+    {
+      "kind": "import",
+      "pattern": "(?m)^[ \\t]*using[ \\t]+(?:static[ \\t]+)?([\\w.]+)[ \\t]*;",
+      "name_group": 1
+    }
   ]
 }
