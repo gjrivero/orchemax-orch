@@ -1,7 +1,10 @@
 {
   "id": "java",
   "test_files": [
-    "src/test/**"
+    "src/test/**",
+    "*Test.java",
+    "*Tests.java",
+    "*IT.java"
   ],
   "build_output_dirs": [
     "build/",

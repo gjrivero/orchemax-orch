@@ -1,5 +1,9 @@
 {
   "id": "ruby",
+  "test_files": [
+    "*_spec.rb",
+    "*_test.rb"
+  ],
   "exts": [
     ".rb"
   ],

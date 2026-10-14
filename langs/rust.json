@@ -1,7 +1,8 @@
 {
   "id": "rust",
   "test_files": [
-    "tests/**"
+    "tests/**",
+    "*_test.rs"
   ],
   "build_output_dirs": [
     "target/"
