@@ -41,6 +41,7 @@
     "Write",
     "Close",
     "ServeHTTP",
+    "RoundTrip",
     "MarshalJSON",
     "UnmarshalJSON",
     "MarshalText",
