@@ -1,7 +1,10 @@
 {
   "id": "java",
   "test_files": [
-    "src/test/**"
+    "src/test/**",
+    "*Test.java",
+    "*Tests.java",
+    "*IT.java"
   ],
   "build_output_dirs": [
     "build/",
@@ -11,6 +14,7 @@
     ".java"
   ],
   "comment": "//",
+  "block_comments": [["/*", "*/"]],
   "rules": [
     {
       "kind": "type",
@@ -40,5 +44,12 @@
     "accept",
     "apply",
     "test"
+  ],
+  "imports": [
+    {
+      "kind": "import",
+      "pattern": "(?m)^[ \\t]*import[ \\t]+(?:static[ \\t]+)?([\\w.*]+)[ \\t]*;",
+      "name_group": 1
+    }
   ]
 }

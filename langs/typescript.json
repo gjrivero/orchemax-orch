@@ -16,6 +16,7 @@
     ".cts"
   ],
   "comment": "//",
+  "block_comments": [["/*", "*/"]],
   "aliases": [
     "typescript"
   ],
@@ -53,5 +54,12 @@
     "render",
     "ngOnInit",
     "ngOnDestroy"
+  ],
+  "imports": [
+    {
+      "kind": "import",
+      "pattern": "(?m)^[ \\t]*(?:import\\b[^'\"\\n;]*?|export\\b[^'\"\\n;]*?from)[ \\t]*['\"]([^'\"\\n]+)['\"]",
+      "name_group": 1
+    }
   ]
 }

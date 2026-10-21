@@ -12,16 +12,16 @@ This repository holds the part the community knows best: how each
 **programming language** and each **human language** is written, so Orchemax
 reads and checks your code correctly whatever stack you use.
 
-It is data, not the product. The Orchemax binary embeds a snapshot of it.
+It is data, not the product. The Orchemax binary embeds a snapshot of it, and
+this snapshot is compatible with **Orchemax 0.8.0**.
 
 ## What lives here
 
 | Folder | What it is | Who improves it |
 |---|---|---|
-| `langs/` | One JSON per programming language: file extensions, comment syntax, definition and import rules, test-file naming, build output | Anyone who works in that language |
-| `packs/<language>/` | Language and stack rules (`delphi`, `go`, `htmx-spa`) | Practitioners of that stack |
-| `packs/encoding`, `packs/es-tuteo` | Text encoding and human-language style rules | Anyone shipping that language |
+| `langs/` | One JSON per programming language: file extensions, comment syntax, definition and import rules, test-file naming, build output. This is the language data the binary embeds. | Anyone who works in that language |
 | `schemas/` | The JSON schemas the files above must follow | Maintainers |
+| `catalog.json` | Index of community add-on packs under `packs/`. None are bundled in 0.8.0 — the language data all lives under `langs/`. | Maintainers |
 
 ## Contribute
 

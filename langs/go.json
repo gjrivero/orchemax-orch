@@ -10,7 +10,30 @@
     ".go"
   ],
   "comment": "//",
+  "block_comments": [["/*", "*/"]],
   "engine": "go-ast",
+  "skip_env_words": [
+    "network",
+    "internet",
+    "display"
+  ],
+  "skip_env_tools": [
+    "bash",
+    "sh",
+    "git",
+    "gcc",
+    "cc",
+    "clang",
+    "make",
+    "cmake",
+    "node",
+    "npm",
+    "python",
+    "python3",
+    "java",
+    "dotnet",
+    "docker"
+  ],
   "imposed_names": [
     "Error",
     "String",
@@ -18,6 +41,7 @@
     "Write",
     "Close",
     "ServeHTTP",
+    "RoundTrip",
     "MarshalJSON",
     "UnmarshalJSON",
     "MarshalText",
@@ -39,5 +63,17 @@
     "Done",
     "Deadline",
     "Err"
+  ],
+  "imports": [
+    {
+      "kind": "import",
+      "pattern": "(?m)^[ \\t]*import[ \\t]+(?:[\\w.]+[ \\t]+)?(\"[^\"\\n]+\")",
+      "name_group": 1
+    },
+    {
+      "kind": "import",
+      "pattern": "(?ms)^import[ \\t]*\\(([^)]*)\\)",
+      "name_group": 1
+    }
   ]
 }

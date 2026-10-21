@@ -1,31 +1,6 @@
 {
   "$schema": "./schemas/pack.manifest.schema.json",
-  "description": "Index of community packs (not language seeds — those live under langs/)",
-  "packs": [
-    {
-      "id": "delphi",
-      "path": "packs/delphi",
-      "kind": "language"
-    },
-    {
-      "id": "encoding",
-      "path": "packs/encoding",
-      "kind": "cross-cutting"
-    },
-    {
-      "id": "es-tuteo",
-      "path": "packs/es-tuteo",
-      "kind": "cross-cutting"
-    },
-    {
-      "id": "go",
-      "path": "packs/go",
-      "kind": "language"
-    },
-    {
-      "id": "htmx-spa",
-      "path": "packs/htmx-spa",
-      "kind": "cross-cutting"
-    }
-  ]
+  "description": "Index of community packs under packs/. Language seeds are not listed here — they live under langs/, one JSON per language, discovered by filename. Compatible with Orchemax 0.8.0, which bundles no community packs, so this index is empty until one is contributed.",
+  "orch_min": "0.8.0",
+  "packs": []
 }
