@@ -6,6 +6,20 @@
   "unit_manifests": [
     "go.mod"
   ],
+  "test_runner": "go test -v -timeout={timeout} {pkg}",
+  "test_run_filter": "-run {name}",
+  "timeout_flag": "-timeout={timeout}",
+  "test_selector": "package-dir",
+  "result_parser": "json-events",
+  "result_fail_pattern": "(?m)^\\s*--- FAIL: (\\S+)",
+  "test_name_rule": "^(Test|Benchmark|Fuzz)([^a-z]|$)",
+  "test_decl_pattern": "(?m)^func {name}\\(\\s*\\w+\\s+\\*testing\\.[TB]\\s*\\)",
+  "formatter": {"check": "gofmt", "args": ["-l"], "expected_exit": 0},
+  "race_flag": "-race",
+  "test_command_pattern": "go test\\s+(\\./\\S+)",
+  "verify_commands": ["go test", "gofmt", "go vet", "go build"],
+  "test_skip_dirs": [".git", "node_modules", "vendor", ".sandbox", ".orch", "third_party"],
+  "test_ast_engine": "go-ast",
   "exts": [
     ".go"
   ],
