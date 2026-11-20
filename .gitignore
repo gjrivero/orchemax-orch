@@ -21,3 +21,7 @@ GEMINI.md
 .cursor/
 .claude/
 .openclaude/
+
+# orch — machine bind and state ignored; .orch/gates/ stays versioned
+.orch/*
+!.orch/gates/
